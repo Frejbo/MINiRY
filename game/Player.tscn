@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvd4770g2k43p"]
+
+[ext_resource type="Script" path="res://select.gd" id="1_4kw3x"]
+[ext_resource type="Script" path="res://Player2.gd" id="1_f3h08"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_va5hv"]
+radius = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xh7e"]
+radius = 0.2
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_f3h08")
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_va5hv")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_6xh7e")
+
+[node name="Rotation_Helper" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.799457, 0)
+
+[node name="Camera3d" type="Camera3D" parent="Rotation_Helper"]
+fov = 70.0
+
+[node name="RayCast3d" type="RayCast3D" parent="Rotation_Helper"]
+target_position = Vector3(0, 0, -3)
+collision_mask = 2
+collide_with_areas = true
+script = ExtResource("1_4kw3x")
+
+[node name="NavigationObstacle3d" type="NavigationObstacle3D" parent="."]
+estimate_radius = false
+radius = 0.3

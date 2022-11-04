@@ -1,0 +1,19 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://ctymbwu7imuu3"]
+
+[ext_resource type="Texture2D" uid="uid://dq2lj86vtoi5j" path="res://old_depot_4k.exr" id="1_sgvyp"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kr3bi"]
+panorama = ExtResource("1_sgvyp")
+
+[sub_resource type="Sky" id="Sky_amocm"]
+sky_material = SubResource("PanoramaSkyMaterial_kr3bi")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_amocm")
+tonemap_mode = 2
+ssao_enabled = true
+ssao_intensity = 7.0
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_energy = 2.0

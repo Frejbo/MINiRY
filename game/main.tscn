@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtod260wuix6b"]
+
+[ext_resource type="PackedScene" uid="uid://bvd4770g2k43p" path="res://Player.tscn" id="1_g4fxp"]
+[ext_resource type="Script" path="res://Player.gd" id="2_dhe2c"]
+[ext_resource type="Environment" uid="uid://ctymbwu7imuu3" path="res://default_env.tres" id="2_w6ah1"]
+[ext_resource type="PackedScene" uid="uid://dqaeyvbfcfp2e" path="res://conveyor/conveyorbelt.tscn" id="4_2abgs"]
+[ext_resource type="PackedScene" uid="uid://bkyvx4v1vl35d" path="res://object.tscn" id="5_5bsdr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_78ko6"]
+size = Vector3(10, 2, 10)
+
+[node name="map" type="Node3D"]
+
+[node name="StaticBody3d" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CsgBox3d" type="CSGBox3D" parent="StaticBody3d"]
+size = Vector3(10, 2, 10)
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="StaticBody3d"]
+shape = SubResource("BoxShape3D_78ko6")
+
+[node name="Player" parent="." instance=ExtResource("1_g4fxp")]
+transform = Transform3D(-0.622501, 0, -0.782619, 0, 1, 0, 0.782619, 0, -0.622501, 0, 1.48498, 0)
+script = ExtResource("2_dhe2c")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_w6ah1")
+
+[node name="conveyorbelt" parent="." instance=ExtResource("4_2abgs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38947, 0, 2.45273)
+
+[node name="object" parent="." instance=ExtResource("5_5bsdr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25367, 1.78222, 2.45273)
+
+[node name="conveyorbelt2" parent="." instance=ExtResource("4_2abgs")]
+transform = Transform3D(0.862928, 0, -0.505326, 0, 1, 0, 0.505326, 0, 0.862928, 0.246589, 0, 1.86457)
