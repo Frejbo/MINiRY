@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://mu5ibf2ct5yf"]
+[gd_scene load_steps=15 format=3 uid="uid://mu5ibf2ct5yf"]
 
 [ext_resource type="PackedScene" uid="uid://ba83tcb1xxu8f" path="res://constructor/constructor.gltf" id="1_d342p"]
 [ext_resource type="Script" path="res://constructor/constructor.gd" id="2_tfs24"]
 [ext_resource type="PackedScene" uid="uid://dqaeyvbfcfp2e" path="res://conveyor/conveyorbelt.tscn" id="3_k8chx"]
 [ext_resource type="PackedScene" uid="uid://dpjcisg40fw1s" path="res://items/IronGear.gltf" id="4_2bp50"]
+[ext_resource type="World3D" uid="uid://5tfm6phu8q4y" path="res://Placeholder_environment.tres" id="4_5rr25"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cd3mo"]
 size = Vector3(0.1, 0.862, 1.596)
@@ -134,36 +135,38 @@ _data = {
 "RightArrows": SubResource("Animation_r0snd")
 }
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_05v30"]
-sky_energy_multiplier = 10.0
-
-[sub_resource type="Sky" id="Sky_m4h2c"]
-sky_material = SubResource("ProceduralSkyMaterial_05v30")
-
-[sub_resource type="Environment" id="Environment_l2idx"]
-background_mode = 2
-sky = SubResource("Sky_m4h2c")
-
-[sub_resource type="World3D" id="World3D_xlrhp"]
-environment = SubResource("Environment_l2idx")
-
 [node name="constructor" groups=["safe_to_remove"] instance=ExtResource("1_d342p")]
 script = ExtResource("2_tfs24")
 
-[node name="processArea" type="Area3D" parent="." index="0"]
+[node name="Item" type="SubViewport" parent="." index="0"]
+own_world_3d = true
+world_3d = ExtResource("4_5rr25")
+transparent_bg = true
+size = Vector2i(1024, 1024)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Item" index="0"]
+transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 1, 1, 1)
+fov = 40.0
+
+[node name="item" type="Node3D" parent="Item" index="1"]
+
+[node name="0" parent="Item/item" index="0" instance=ExtResource("4_2bp50")]
+
+[node name="processArea" type="Area3D" parent="." index="1"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="processArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42095, 0)
 shape = SubResource("BoxShape3D_cd3mo")
 
-[node name="conveyorbelt" parent="." index="1" instance=ExtResource("3_k8chx")]
+[node name="conveyorbelt" parent="." index="2" instance=ExtResource("3_k8chx")]
 metadata/object = NodePath("..")
 
-[node name="Material_z+" type="Sprite3D" parent="." index="2"]
+[node name="Material_z+" type="Sprite3D" parent="." index="3"]
 transform = Transform3D(0.07, 2.08616e-09, 0, -2.08616e-09, 0.07, 0, 0, 0, 0.07, 0, 1.488, 1.001)
 texture = SubResource("ViewportTexture_ai2wn")
 
-[node name="Material_z-" type="Sprite3D" parent="." index="3"]
+[node name="Material_z-" type="Sprite3D" parent="." index="4"]
 transform = Transform3D(0.07, 2.08616e-09, 0, -2.08616e-09, 0.07, 0, 0, 0, 0.07, 0, 1.488, -1.001)
 texture = SubResource("ViewportTexture_8084g")
 
@@ -177,7 +180,7 @@ metadata/object = NodePath("../../../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/constructor2/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_fyyjq")
 
-[node name="RightArrow_z+" parent="." index="5" groups=["clickable"]]
+[node name="RightArrow_z+" parent="." index="6" groups=["clickable"]]
 
 [node name="AreaRightArrow_z+" type="Area3D" parent="RightArrow_z+" index="0" groups=["clickable"]]
 transform = Transform3D(4.65653, 4.65653, 0, -4.65653, 4.65653, 0, 0, 0, 6.58533, 0, 0, 0)
@@ -187,7 +190,7 @@ metadata/object = NodePath("../..")
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.434854, 1.4888, -1.01091)
 shape = SubResource("BoxShape3D_rm57k")
 
-[node name="LeftArrow_z+" parent="." index="6" groups=["clickable"]]
+[node name="LeftArrow_z+" parent="." index="7" groups=["clickable"]]
 
 [node name="AreaLeftArrow_z+" type="Area3D" parent="LeftArrow_z+" index="0" groups=["clickable"]]
 transform = Transform3D(4.65653, 4.65653, 0, -4.65653, 4.65653, 0, 0, 0, 6.58533, 0, 0, 0)
@@ -197,7 +200,7 @@ metadata/object = NodePath("../..")
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0.436385, 1.48793, -1.01071)
 shape = SubResource("BoxShape3D_rm57k")
 
-[node name="RightArrow_z-" parent="." index="7" groups=["clickable"]]
+[node name="RightArrow_z-" parent="." index="8" groups=["clickable"]]
 
 [node name="AreaRightArrow_z-" type="Area3D" parent="RightArrow_z-" index="0" groups=["clickable"]]
 transform = Transform3D(4.65653, 4.65653, 0, -4.65653, 4.65653, 0, 0, 0, 6.58533, 0, 0, 0)
@@ -207,7 +210,7 @@ metadata/object = NodePath("../..")
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0.436, 1.488, 1.011)
 shape = SubResource("BoxShape3D_rm57k")
 
-[node name="LeftArrow_z-" parent="." index="8" groups=["clickable"]]
+[node name="LeftArrow_z-" parent="." index="9" groups=["clickable"]]
 
 [node name="AreaLeftArrow_z-" type="Area3D" parent="LeftArrow_z-" index="0" groups=["clickable"]]
 transform = Transform3D(4.65653, 4.65653, 0, -4.65653, 4.65653, 0, 0, 0, 6.58533, 0, 0, 0)
@@ -217,24 +220,9 @@ metadata/object = NodePath("../..")
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.436, 1.488, 1.011)
 shape = SubResource("BoxShape3D_rm57k")
 
-[node name="AnimationArrows" type="AnimationPlayer" parent="." index="10"]
+[node name="AnimationArrows" type="AnimationPlayer" parent="." index="11"]
 libraries = {
 "": SubResource("AnimationLibrary_1tf7s")
 }
-
-[node name="Item" type="SubViewport" parent="." index="11"]
-own_world_3d = true
-world_3d = SubResource("World3D_xlrhp")
-transparent_bg = true
-size = Vector2i(1024, 1024)
-render_target_update_mode = 4
-
-[node name="Camera3D" type="Camera3D" parent="Item" index="0"]
-transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 1, 1, 1)
-fov = 40.0
-
-[node name="item" type="Node3D" parent="Item" index="1"]
-
-[node name="0" parent="Item/item" index="0" instance=ExtResource("4_2bp50")]
 
 [connection signal="body_entered" from="processArea" to="." method="_on_process_area_body_entered"]
