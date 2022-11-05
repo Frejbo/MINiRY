@@ -49,15 +49,21 @@ func _input(event):
 	
 	if event.is_action_pressed("select"):
 		
+		# Pilar på constructor:
 		if is_colliding() and get_collider().is_in_group("clickable"):
 			if "Arrow" in get_collider().name:
 				get_collider().get_parent().get_parent().click_arrow(get_collider())
 		else:
-			
 			if held_item_name == null: return
 			var object = load(held_item_name.replace("blueprint_", "")).instantiate()
 			object.global_transform = held_item.global_transform
 			main.add_child(object)
+		
+		
+		# Spak
+		if is_colliding() and get_collider().is_in_group("clickable"):
+			if get_collider().is_in_group("spak"):
+				get_collider().click()
 	
 	
 	if event.is_action_pressed("secondary"):
@@ -86,6 +92,8 @@ func _process(_delta):
 		held_item.add_child(load(held_item_name).instantiate())
 	
 	# process item
+	held_item.global_position = get_collision_point()
+	
 	held_item.global_rotation.z = 0
 	held_item.global_rotation.x = 0
 	held_item.global_rotation.y = deg_to_rad(held_item_rotation)

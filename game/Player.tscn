@@ -13,8 +13,7 @@
 radius = 0.2
 height = 2.262
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xh7e"]
-radius = 0.2
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_72ios"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_lo6f0"]
 viewport_path = NodePath("hotbar_renders/conveyor")
@@ -71,7 +70,7 @@ visible = false
 mesh = SubResource("CapsuleMesh_va5hv")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_6xh7e")
+shape = SubResource("CylinderShape3D_72ios")
 
 [node name="Rotation_Helper" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.799457, 0)
@@ -110,6 +109,7 @@ size_flags_vertical = 8
 metadata/_edit_use_anchors_ = true
 
 [node name="hotbar" type="HBoxContainer" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
 offset_left = 82.0
 offset_top = 26.0
 offset_right = 330.0
@@ -117,6 +117,7 @@ offset_bottom = 106.0
 
 [node name="conveyor" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
 custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 offset_right = 80.0
 offset_bottom = 80.0
 theme_override_styles/panel = ExtResource("3_gdl7h")
@@ -129,6 +130,7 @@ region_rect = Rect2(70, 70, 70, 70)
 
 [node name="smelter" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
 custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 offset_left = 84.0
 offset_right = 164.0
 offset_bottom = 80.0
@@ -142,6 +144,7 @@ region_rect = Rect2(70, 70, 70, 70)
 
 [node name="constructor" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
 custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 offset_left = 168.0
 offset_right = 248.0
 offset_bottom = 80.0
@@ -188,12 +191,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer/pauseMenu"]
 custom_minimum_size = Vector2(450, 330)
+layout_mode = 2
 offset_right = 450.0
 offset_bottom = 330.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_y36c0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/pauseMenu"]
 process_mode = 4
+layout_mode = 2
 offset_left = 74.0
 offset_top = 69.0
 offset_right = 376.0
@@ -203,6 +208,7 @@ alignment = 1
 
 [node name="fortsätt" type="Button" parent="CanvasLayer/pauseMenu/VBoxContainer"]
 process_mode = 3
+layout_mode = 2
 offset_right = 302.0
 offset_bottom = 61.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -217,6 +223,7 @@ text = "FORTSÄTT"
 
 [node name="avsluta" type="Button" parent="CanvasLayer/pauseMenu/VBoxContainer"]
 process_mode = 3
+layout_mode = 2
 offset_top = 131.0
 offset_right = 302.0
 offset_bottom = 192.0

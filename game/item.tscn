@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsohf66homeql"]
+[gd_scene load_steps=11 format=3 uid="uid://dsohf66homeql"]
 
 [ext_resource type="Script" path="res://item.gd" id="1_g541j"]
 [ext_resource type="PackedScene" uid="uid://4bd78tx4s7jk" path="res://items/IronIngot.gltf" id="2_wdrcf"]
 [ext_resource type="PackedScene" uid="uid://dcj34mbffdb1a" path="res://items/IronOre.gltf" id="3_okyx7"]
 [ext_resource type="PackedScene" uid="uid://dpjcisg40fw1s" path="res://items/IronGear.gltf" id="4_fk2i3"]
 [ext_resource type="PackedScene" uid="uid://bsa3achnnchec" path="res://items/IronRod.gltf" id="5_w4etv"]
+[ext_resource type="PackedScene" uid="uid://b8wvd81shy2av" path="res://items/CopperOre.gltf" id="6_0r2l8"]
+[ext_resource type="PackedScene" uid="uid://bvbbtv283ojro" path="res://items/CopperIngot.gltf" id="7_kwtjc"]
+[ext_resource type="PackedScene" uid="uid://jetplmx1gpb4" path="res://items/CopperWire.gltf" id="8_bax1x"]
+[ext_resource type="PackedScene" uid="uid://dlvuwkgoswvrj" path="res://items/BadAnka.gltf" id="8_cep4n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2vina"]
 size = Vector3(1, 0.2, 1)
@@ -23,6 +27,17 @@ visible = false
 visible = false
 
 [node name="IronRod" parent="AllItems" instance=ExtResource("5_w4etv")]
+visible = false
+
+[node name="CopperOre" parent="AllItems" instance=ExtResource("6_0r2l8")]
+visible = false
+
+[node name="CopperIngot" parent="AllItems" instance=ExtResource("7_kwtjc")]
+visible = false
+
+[node name="CopperWire" parent="AllItems" instance=ExtResource("8_bax1x")]
+
+[node name="BadAnka" parent="AllItems" instance=ExtResource("8_cep4n")]
 visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

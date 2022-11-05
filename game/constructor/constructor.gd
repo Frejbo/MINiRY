@@ -1,12 +1,13 @@
 extends Node3D
 
 var anim = $AnimationPlayer
-var can_produce = [Globals.items.IronGear, Globals.items.IronRod]
+var can_produce = [Globals.items.IronGear, Globals.items.IronRod, Globals.items.CopperWire]
 var producing = Globals.items.IronGear
 
 var made_of = {
 	Globals.items.IronGear: Globals.items.IronIngot,
-	Globals.items.IronRod: Globals.items.IronIngot
+	Globals.items.IronRod: Globals.items.IronIngot,
+	Globals.items.CopperWire: Globals.items.CopperIngot
 }
 
 func _on_process_area_body_entered(body):
@@ -18,8 +19,9 @@ func _on_process_area_body_entered(body):
 	anim.play("ArmatureAction")
 	await anim.animation_finished
 	
-	if body.item == Globals.items.IronIngot:
+	if made_of[producing] == body.item:
 		body.item = producing # converting
+#	if body.item == Globals.items.IronIngot: # måste känna av
 	
 	
 	body.update_material()

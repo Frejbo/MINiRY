@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var belts = [$belt, $belt001]
+@onready var belts = [$belt, $belt001, $belt002]
 
 func _physics_process(_delta):
 	for hjul in get_children():
@@ -30,7 +30,21 @@ func _physics_process(_delta):
 
 
 func _on_item_spawn_timer_timeout():
-	var item = load("res://item.tscn").instantiate()
-	item.item = 0
-	item.global_position = $belt/input0.global_position
+	if $IronSpak.power_on: spawn_item($belt/input0.global_position, Globals.items.IronOre)
+	if $CopperSpak.power_on: spawn_item($belt002/input1.global_position, Globals.items.CopperOre)
+	
+#	var item = preload("res://item.tscn").instantiate()
+#	item.item = Globals.items.IronOre
+#	item.global_position = $belt/input0.global_position
+#	add_child(item)
+#
+#	item = preload("res://item.tscn").instantiate()
+#	item.item = Globals.items.CopperOre
+#	item.global_position = $belt002/input1.global_position
+#	add_child(item)
+
+func spawn_item(position : Vector3, desired_item : Globals.items):
+	var item = preload("res://item.tscn").instantiate()
+	item.item = desired_item
+	item.global_position = position
 	add_child(item)
