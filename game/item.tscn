@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsohf66homeql"]
+
+[ext_resource type="Script" path="res://item.gd" id="1_g541j"]
+[ext_resource type="PackedScene" uid="uid://4bd78tx4s7jk" path="res://items/IronIngot.gltf" id="2_wdrcf"]
+[ext_resource type="PackedScene" uid="uid://dcj34mbffdb1a" path="res://items/IronOre.gltf" id="3_okyx7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2nc0r"]
+size = Vector3(0.8, 0.2, 0.8)
+
+[node name="Item" type="RigidBody3D" groups=["item", "movable"]]
+script = ExtResource("1_g541j")
+item_idx = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_2nc0r")
+
+[node name="AllItems" type="Node3D" parent="."]
+
+[node name="IronOre" parent="AllItems" instance=ExtResource("3_okyx7")]
+visible = false
+
+[node name="IronIngot" parent="AllItems" instance=ExtResource("2_wdrcf")]
+visible = false

@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://4gd2tan1vsly"]
+
+[ext_resource type="Script" path="res://smelter/smelter.gd" id="1_rseaw"]
+[ext_resource type="PackedScene" uid="uid://dkvpu5iv1v0ph" path="res://smelter/smelter.gltf" id="2_wlefa"]
+[ext_resource type="PackedScene" uid="uid://dqaeyvbfcfp2e" path="res://conveyor/conveyorbelt.tscn" id="3_o0c6i"]
+
+[sub_resource type="Curve" id="Curve_2tokk"]
+_data = [Vector2(0, 0.0090909), 0.0, 10.7, 0, 0, Vector2(0.140187, 1), 0.0, 0.0, 0, 0, Vector2(0.813084, 0.772727), -0.542918, -0.542918, 0, 0, Vector2(1, 0.0181818), -5.28052, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_pmkfr"]
+curve = SubResource("Curve_2tokk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_366f6"]
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(0.554, 0.418, 0.731)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_pmkfr")
+color = Color(1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ymb5"]
+transparency = 1
+albedo_color = Color(0.968627, 0.454902, 0, 1)
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 0.690196, 0, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_6wvit"]
+material = SubResource("StandardMaterial3D_2ymb5")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i8sl7"]
+size = Vector3(0.1, 0.862, 1.596)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bsbqn"]
+data = PackedVector3Array(-0.6527, -1, 1, -0.8353, 1, 1, -0.6527, 1, 1, -0.6527, -1, 1, -0.8353, -1, 1, -0.8353, 1, 1, -0.6527, 1, -1, -0.8353, 1, 1, -0.8353, 1, -1, -0.6527, 1, -1, -0.6527, 1, 1, -0.8353, 1, 1, -0.6527, -1, -1, 0, -1, 1, 0, -1, -1, -0.6527, -1, -1, -0.6527, -1, 1, 0, -1, 1, -0.8353, -0.1417, 0.7989, -0.8353, -1, -1, -0.8353, -0.1417, -0.7989, -0.8353, -0.1417, 0.7989, -0.8353, -1, 1, -0.8353, -1, -1, -0.8353, 0.8505, 0.7989, -0.8353, -1, 1, -0.8353, -0.1417, 0.7989, -0.8353, 0.8505, 0.7989, -0.8353, 1, 1, -0.8353, -1, 1, -0.8353, 0.8505, -0.7989, -0.8353, 1, 1, -0.8353, 0.8505, 0.7989, -0.8353, 0.8505, -0.7989, -0.8353, 1, -1, -0.8353, 1, 1, -0.8353, -0.1417, -0.7989, -0.8353, 1, -1, -0.8353, 0.8505, -0.7989, -0.8353, -0.1417, -0.7989, -0.8353, -1, -1, -0.8353, 1, -1, -0.8353, -1, -1, -0.6527, 1, -1, -0.8353, 1, -1, -0.8353, -1, -1, -0.6527, -1, -1, -0.6527, 1, -1, -0.8353, -1, -1, -0.6527, -1, 1, -0.6527, -1, -1, -0.8353, -1, -1, -0.8353, -1, 1, -0.6527, -1, 1, 0.6527, -1, 1, 0.8353, 1, 1, 0.8353, -1, 1, 0.6527, -1, 1, 0.6527, 1, 1, 0.8353, 1, 1, 0.6527, 1, -1, 0.8353, 1, 1, 0.6527, 1, 1, 0.6527, 1, -1, 0.8353, 1, -1, 0.8353, 1, 1, 0.6527, -1, -1, 0, -1, 1, 0.6527, -1, 1, 0.6527, -1, -1, 0, -1, -1, 0, -1, 1, 0.8353, -0.1417, 0.7989, 0.8353, -1, -1, 0.8353, -1, 1, 0.8353, -0.1417, 0.7989, 0.8353, -0.1417, -0.7989, 0.8353, -1, -1, 0.8353, 0.8505, 0.7989, 0.8353, -1, 1, 0.8353, 1, 1, 0.8353, 0.8505, 0.7989, 0.8353, -0.1417, 0.7989, 0.8353, -1, 1, 0.8353, 0.8505, -0.7989, 0.8353, 1, 1, 0.8353, 1, -1, 0.8353, 0.8505, -0.7989, 0.8353, 0.8505, 0.7989, 0.8353, 1, 1, 0.8353, -0.1417, -0.7989, 0.8353, 1, -1, 0.8353, -1, -1, 0.8353, -0.1417, -0.7989, 0.8353, 0.8505, -0.7989, 0.8353, 1, -1, 0.8353, -1, -1, 0.6527, 1, -1, 0.6527, -1, -1, 0.8353, -1, -1, 0.8353, 1, -1, 0.6527, 1, -1, 0.8353, -1, -1, 0.6527, -1, 1, 0.8353, -1, 1, 0.8353, -1, -1, 0.6527, -1, -1, 0.6527, -1, 1, -0.6527, -1, -1, 0, 1, -1, -0.6527, 1, -1, -0.6527, -1, -1, 0, -1, -1, 0, 1, -1, 0, 1, -1, -0.6527, 1, 1, -0.6527, 1, -1, 0, 1, -1, 0, 1, 1, -0.6527, 1, 1, 0, -1, 1, -0.6527, 1, 1, 0, 1, 1, 0, -1, 1, -0.6527, -1, 1, -0.6527, 1, 1, 0.6527, -1, -1, 0, 1, -1, 0, -1, -1, 0.6527, -1, -1, 0.6527, 1, -1, 0, 1, -1, 0, 1, -1, 0.6527, 1, 1, 0, 1, 1, 0, 1, -1, 0.6527, 1, -1, 0.6527, 1, 1, 0, -1, 1, 0.6527, 1, 1, 0.6527, -1, 1, 0, -1, 1, 0, 1, 1, 0.6527, 1, 1, -0.8353, 0.8505, 0.7989, 0, 0.8505, -0.7989, -0.8353, 0.8505, -0.7989, -0.8353, 0.8505, 0.7989, 0, 0.8505, 0.7989, 0, 0.8505, -0.7989, -0.8353, -0.1417, -0.7989, 0, -0.1417, 0.7989, -0.8353, -0.1417, 0.7989, -0.8353, -0.1417, -0.7989, 0, -0.1417, -0.7989, 0, -0.1417, 0.7989, -0.8353, -0.1417, 0.7989, 0, 0.8505, 0.7989, -0.8353, 0.8505, 0.7989, -0.8353, -0.1417, 0.7989, 0, -0.1417, 0.7989, 0, 0.8505, 0.7989, -0.8353, 0.8505, -0.7989, 0, -0.1417, -0.7989, -0.8353, -0.1417, -0.7989, -0.8353, 0.8505, -0.7989, 0, 0.8505, -0.7989, 0, -0.1417, -0.7989, 0.8353, 0.8505, 0.7989, 0, 0.8505, -0.7989, 0, 0.8505, 0.7989, 0.8353, 0.8505, 0.7989, 0.8353, 0.8505, -0.7989, 0, 0.8505, -0.7989, 0.8353, -0.1417, -0.7989, 0, -0.1417, 0.7989, 0, -0.1417, -0.7989, 0.8353, -0.1417, -0.7989, 0.8353, -0.1417, 0.7989, 0, -0.1417, 0.7989, 0.8353, -0.1417, 0.7989, 0, 0.8505, 0.7989, 0, -0.1417, 0.7989, 0.8353, -0.1417, 0.7989, 0.8353, 0.8505, 0.7989, 0, 0.8505, 0.7989, 0.8353, 0.8505, -0.7989, 0, -0.1417, -0.7989, 0, 0.8505, -0.7989, 0.8353, 0.8505, -0.7989, 0.8353, -0.1417, -0.7989, 0, -0.1417, -0.7989)
+
+[node name="smelter" type="StaticBody3D"]
+script = ExtResource("1_rseaw")
+
+[node name="GpuParticles3d" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41268, 0)
+amount = 1024
+lifetime = 20.0
+preprocess = 20.0
+speed_scale = 2.0
+fixed_fps = 60
+visibility_aabb = AABB(-0.586612, -0.434337, -0.699662, 1.17322, 0.62844, 1.39932)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_366f6")
+draw_pass_1 = SubResource("SphereMesh_6wvit")
+
+[node name="smelter2" parent="." instance=ExtResource("2_wlefa")]
+
+[node name="smeltArea" type="Area3D" parent="smelter2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="smelter2/smeltArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42095, 0)
+shape = SubResource("BoxShape3D_i8sl7")
+
+[node name="conveyorbelt" parent="smelter2" instance=ExtResource("3_o0c6i")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("ConcavePolygonShape3D_bsbqn")
+
+[connection signal="body_entered" from="smelter2/smeltArea" to="." method="_on_smelt_area_body_entered"]
+
+[editable path="smelter2"]
