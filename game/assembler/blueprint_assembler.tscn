@@ -13,12 +13,12 @@ material_overlay = ExtResource("2_43yuk")
 transparency = 0.5
 
 [node name="conveyorbelt4" parent="." instance=ExtResource("2_c23rd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.2, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -1)
 
 [node name="conveyorbelt5" parent="." instance=ExtResource("2_c23rd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.2, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 1)
 
 [node name="conveyorbelt6" parent="." instance=ExtResource("2_c23rd")]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 1.301, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.407, 0, 0)
 
 [editable path="assembler"]
