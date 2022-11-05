@@ -59,6 +59,16 @@ func _input(event):
 			object.global_transform = held_item.global_transform
 			main.add_child(object)
 	
+	
+	if event.is_action_pressed("secondary"):
+		# tar bort objekt
+		if not is_colliding(): return
+		if get_collider().has_meta("object"):
+			get_collider().get_node(get_collider().get_meta("object")).queue_free() # tar bort den säkra noden
+		elif get_collider().is_in_group("safe_to_remove"):
+			get_collider().queue_free()
+	
+	
 	if event.is_action_pressed("rotate_left"):
 		held_item_rotation-=45
 	if event.is_action_pressed("rotate_right"):

@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bvd4770g2k43p"]
+[gd_scene load_steps=21 format=3 uid="uid://bvd4770g2k43p"]
 
 [ext_resource type="Script" path="res://select.gd" id="1_4kw3x"]
 [ext_resource type="Script" path="res://Player.gd" id="1_rsm3n"]
 [ext_resource type="PackedScene" uid="uid://dqaeyvbfcfp2e" path="res://conveyor/conveyorbelt.tscn" id="3_aemvj"]
 [ext_resource type="StyleBox" uid="uid://cw7ilj2jxqnpw" path="res://hotbar_bg.tres" id="3_gdl7h"]
+[ext_resource type="Script" path="res://pauseMenu.gd" id="4_ihtkn"]
+[ext_resource type="FontFile" uid="uid://d3atht6ersxhp" path="res://Orbitron-VariableFont_wght.ttf" id="4_p7kp3"]
 [ext_resource type="PackedScene" uid="uid://4gd2tan1vsly" path="res://smelter/smelter.tscn" id="4_shg0q"]
 [ext_resource type="PackedScene" uid="uid://mu5ibf2ct5yf" path="res://constructor/constructor.tscn" id="5_h3soa"]
 
@@ -22,6 +24,31 @@ viewport_path = NodePath("hotbar_renders/smelter")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gaiy3"]
 viewport_path = NodePath("hotbar_renders/constructor")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opth0"]
+bg_color = Color(0.6, 0.6, 0.6, 0.607843)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y36c0"]
+bg_color = Color(0, 0, 0, 0.588235)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7sgv"]
+bg_color = Color(0.760784, 0.54902, 0.32549, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vuv6b"]
 sky_energy_multiplier = 10.0
@@ -126,6 +153,83 @@ texture = SubResource("ViewportTexture_gaiy3")
 offset = Vector2(0, -30)
 region_rect = Rect2(70, 70, 70, 70)
 
+[node name="crosshair" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_opth0")
+
+[node name="pauseMenu" type="CenterContainer" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+anchors_preset = -1
+anchor_left = 0.422
+anchor_top = 0.315
+anchor_right = 0.578
+anchor_bottom = 0.685
+offset_left = 102.26
+offset_top = 184.3
+offset_right = -102.26
+offset_bottom = -184.3
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("4_ihtkn")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/pauseMenu"]
+custom_minimum_size = Vector2(450, 330)
+offset_right = 450.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y36c0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/pauseMenu"]
+process_mode = 4
+offset_left = 74.0
+offset_top = 69.0
+offset_right = 376.0
+offset_bottom = 261.0
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="fortsätt" type="Button" parent="CanvasLayer/pauseMenu/VBoxContainer"]
+process_mode = 3
+offset_right = 302.0
+offset_bottom = 61.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_p7kp3")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_d7sgv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d7sgv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d7sgv")
+text = "FORTSÄTT"
+
+[node name="avsluta" type="Button" parent="CanvasLayer/pauseMenu/VBoxContainer"]
+process_mode = 3
+offset_top = 131.0
+offset_right = 302.0
+offset_bottom = 192.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_p7kp3")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_d7sgv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d7sgv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d7sgv")
+text = "AVSLUTA"
+
 [node name="hotbar_renders" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -171,3 +275,6 @@ render_target_update_mode = 1
 [node name="Camera3D" type="Camera3D" parent="hotbar_renders/constructor/constructor"]
 transform = Transform3D(0.707107, -0.32102, 0.630037, 0, 0.891007, 0.45399, -0.707107, -0.32102, 0.630037, 3, 3, 3)
 fov = 50.0
+
+[connection signal="pressed" from="CanvasLayer/pauseMenu/VBoxContainer/fortsätt" to="CanvasLayer/pauseMenu" method="_on_fortstt_pressed"]
+[connection signal="pressed" from="CanvasLayer/pauseMenu/VBoxContainer/avsluta" to="CanvasLayer/pauseMenu" method="_on_avsluta_pressed"]

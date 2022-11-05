@@ -20,13 +20,13 @@ data = PackedVector3Array(-0.032, 1.7947, 1.0714, 0.032, 1.851, 1.0151, -0.032, 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rm57k"]
 size = Vector3(0.5, 0.5, 0.1)
 
-[sub_resource type="Animation" id="Animation_r0snd"]
-resource_name = "RightArrows"
+[sub_resource type="Animation" id="Animation_54jnw"]
+resource_name = "LeftArrows"
 length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RightArrow_z+:position")
+tracks/0/path = NodePath("LeftArrow_z+:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -38,7 +38,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RightArrow_z-:position")
+tracks/1/path = NodePath("LeftArrow_z-:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -99,13 +99,13 @@ tracks/3/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_54jnw"]
-resource_name = "LeftArrows"
+[sub_resource type="Animation" id="Animation_r0snd"]
+resource_name = "RightArrows"
 length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LeftArrow_z+:position")
+tracks/0/path = NodePath("RightArrow_z+:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -117,7 +117,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LeftArrow_z-:position")
+tracks/1/path = NodePath("RightArrow_z-:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -147,7 +147,7 @@ sky = SubResource("Sky_m4h2c")
 [sub_resource type="World3D" id="World3D_xlrhp"]
 environment = SubResource("Environment_l2idx")
 
-[node name="constructor" instance=ExtResource("1_d342p")]
+[node name="constructor" groups=["safe_to_remove"] instance=ExtResource("1_d342p")]
 script = ExtResource("2_tfs24")
 
 [node name="processArea" type="Area3D" parent="." index="0"]
@@ -157,6 +157,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42095, 0)
 shape = SubResource("BoxShape3D_cd3mo")
 
 [node name="conveyorbelt" parent="." index="1" instance=ExtResource("3_k8chx")]
+metadata/object = NodePath("..")
 
 [node name="Material_z+" type="Sprite3D" parent="." index="2"]
 transform = Transform3D(0.07, 2.08616e-09, 0, -2.08616e-09, 0.07, 0, 0, 0, 0.07, 0, 1.488, 1.001)
@@ -169,8 +170,9 @@ texture = SubResource("ViewportTexture_8084g")
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/4/rotation = Quaternion(3.13928e-07, -2.92855e-07, -0.707107, 0.707107)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Armature/Skeleton3D/constructor2" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Armature/Skeleton3D/constructor2" index="0" groups=["placed"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.91542, 0)
+metadata/object = NodePath("../../../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/constructor2/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_fyyjq")
@@ -179,6 +181,7 @@ shape = SubResource("ConcavePolygonShape3D_fyyjq")
 
 [node name="AreaRightArrow_z+" type="Area3D" parent="RightArrow_z+" index="0" groups=["clickable"]]
 transform = Transform3D(4.65653, 4.65653, 0, -4.65653, 4.65653, 0, 0, 0, 6.58533, 0, 0, 0)
+metadata/object = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightArrow_z+/AreaRightArrow_z+" index="0"]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.434854, 1.4888, -1.01091)
@@ -188,6 +191,7 @@ shape = SubResource("BoxShape3D_rm57k")
 
 [node name="AreaLeftArrow_z+" type="Area3D" parent="LeftArrow_z+" index="0" groups=["clickable"]]
 transform = Transform3D(4.65653, 4.65653, 0, -4.65653, 4.65653, 0, 0, 0, 6.58533, 0, 0, 0)
+metadata/object = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftArrow_z+/AreaLeftArrow_z+" index="0"]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0.436385, 1.48793, -1.01071)
@@ -197,6 +201,7 @@ shape = SubResource("BoxShape3D_rm57k")
 
 [node name="AreaRightArrow_z-" type="Area3D" parent="RightArrow_z-" index="0" groups=["clickable"]]
 transform = Transform3D(4.65653, 4.65653, 0, -4.65653, 4.65653, 0, 0, 0, 6.58533, 0, 0, 0)
+metadata/object = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightArrow_z-/AreaRightArrow_z-" index="0"]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0.436, 1.488, 1.011)
@@ -206,6 +211,7 @@ shape = SubResource("BoxShape3D_rm57k")
 
 [node name="AreaLeftArrow_z-" type="Area3D" parent="LeftArrow_z-" index="0" groups=["clickable"]]
 transform = Transform3D(4.65653, 4.65653, 0, -4.65653, 4.65653, 0, 0, 0, 6.58533, 0, 0, 0)
+metadata/object = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftArrow_z-/AreaLeftArrow_z-" index="0"]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.436, 1.488, 1.011)

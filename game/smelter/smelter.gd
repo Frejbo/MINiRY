@@ -9,5 +9,4 @@ func _on_process_area_body_entered(body):
 	if body.item == Globals.items.IronOre:
 		body.item = Globals.items.IronIngot # IronOre -> IronIngot
 	
-	
 	body.update_material()

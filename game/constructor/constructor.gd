@@ -4,16 +4,22 @@ var anim = $AnimationPlayer
 var can_produce = [Globals.items.IronGear, Globals.items.IronRod]
 var producing = Globals.items.IronGear
 
+var made_of = {
+	Globals.items.IronGear: Globals.items.IronIngot,
+	Globals.items.IronRod: Globals.items.IronIngot
+}
+
 func _on_process_area_body_entered(body):
 	if not body.is_in_group("item"): return # only smelt items... :flushed:
 	
-	if not body.item in can_process: return
+#	if not body.item in can_process: return
+	if body.item != made_of[producing]: return
 	
 	anim.play("ArmatureAction")
 	await anim.animation_finished
 	
 	if body.item == Globals.items.IronIngot:
-		body.item = Globals.items.IronGear # IronOre -> IronIngot
+		body.item = producing # converting
 	
 	
 	body.update_material()

@@ -1,25 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsohf66homeql"]
+[gd_scene load_steps=7 format=3 uid="uid://dsohf66homeql"]
 
 [ext_resource type="Script" path="res://item.gd" id="1_g541j"]
 [ext_resource type="PackedScene" uid="uid://4bd78tx4s7jk" path="res://items/IronIngot.gltf" id="2_wdrcf"]
 [ext_resource type="PackedScene" uid="uid://dcj34mbffdb1a" path="res://items/IronOre.gltf" id="3_okyx7"]
 [ext_resource type="PackedScene" uid="uid://dpjcisg40fw1s" path="res://items/IronGear.gltf" id="4_fk2i3"]
+[ext_resource type="PackedScene" uid="uid://bsa3achnnchec" path="res://items/IronRod.gltf" id="5_w4etv"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1q2ls"]
-height = 0.2
-radius = 0.498318
+[sub_resource type="BoxShape3D" id="BoxShape3D_2vina"]
+size = Vector3(1, 0.2, 1)
 
 [node name="Item" type="RigidBody3D" groups=["item", "movable"]]
 script = ExtResource("1_g541j")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-shape = SubResource("CylinderShape3D_1q2ls")
 
 [node name="AllItems" type="Node3D" parent="."]
 
 [node name="IronOre" parent="AllItems" instance=ExtResource("3_okyx7")]
 
 [node name="IronIngot" parent="AllItems" instance=ExtResource("2_wdrcf")]
+visible = false
 
 [node name="IronGear" parent="AllItems" instance=ExtResource("4_fk2i3")]
+visible = false
+
+[node name="IronRod" parent="AllItems" instance=ExtResource("5_w4etv")]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_2vina")

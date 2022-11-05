@@ -10,6 +10,5 @@ func _physics_process(_delta):
 	
 	for body in area.get_overlapping_bodies():
 		if not body.is_in_group("movable"): continue
-#		if not body is RigidBody3D : continue
 		var forward = -get_global_transform().basis.x
 		body.global_transform.origin += forward*.01

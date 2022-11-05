@@ -1,11 +1,14 @@
 extends Node3D
 
-@onready var area = $belt/Area3D
+@onready var belts = [$belt, $belt001]
 
 func _physics_process(_delta):
 	for hjul in get_children():
 		if not "hjul" in hjul.name: continue
-		hjul.rotate_z(.015)
+		if "90deg" in hjul.name:
+			hjul.rotate_x(.015)
+		else:
+			hjul.rotate_z(.015)
 	
 	# move conveyor UVs
 	var belt_uv = $belt.get_active_material(2).uv1_offset
@@ -14,11 +17,15 @@ func _physics_process(_delta):
 		belt_uv.y = 0
 	$belt.get_active_material(2).uv1_offset = belt_uv
 	
-	for body in area.get_overlapping_bodies():
-		if not body.is_in_group("movable"): continue
-		if not body is RigidBody3D : continue
-		var forward = -get_global_transform().basis.x
-		body.global_transform.origin += forward*.01
+	for belt in belts:
+		var area = belt.get_node("Area3D")
+		for body in area.get_overlapping_bodies():
+			if not body.is_in_group("movable"): continue
+			if not body is RigidBody3D : continue
+			
+			
+			var forward = -belt.get_global_transform().basis.x
+			body.global_transform.origin += forward.rotated(Vector3.UP, deg_to_rad(belt.get_meta("rotation"))) *.01
 
 
 
