@@ -97,7 +97,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_54atf")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oao57"]
-size = Vector3(2.5027, 0.977049, 1)
+size = Vector3(2.5027, 0.977049, 0.711391)
 
 [node name="conveyorbelt" type="StaticBody3D"]
 script = ExtResource("2_kyart")

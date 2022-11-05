@@ -9,8 +9,8 @@ var held_item_rotation = 0
 var ITEMS = {
 	"None": null,
 	"Conveyor": "res://conveyor/blueprint_conveyorbelt.tscn",
-	"Block": "res://object.tscn",
-	"Smelter": "res://smelter/blueprint_smelter.tscn"
+	"Smelter": "res://smelter/blueprint_smelter.tscn",
+	"Constructor": "res://constructor/blueprint_constructor.tscn"
 }
 var held_item_name = ITEMS["None"]
 
@@ -18,9 +18,11 @@ func _input(event):
 	if event.is_action_pressed("1"):
 		held_item_name = ITEMS["Conveyor"]
 	if event.is_action_pressed("2"):
-		held_item_name = ITEMS["Block"]
-	if event.is_action_pressed("3"):
 		held_item_name = ITEMS["Smelter"]
+	if event.is_action_pressed("3"):
+		held_item_name = ITEMS["Constructor"]
+	
+	
 	
 	if event.is_action_pressed("select"):
 		if held_item_name == null: return

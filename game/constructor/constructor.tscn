@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://mu5ibf2ct5yf"]
+
+[ext_resource type="PackedScene" uid="uid://ba83tcb1xxu8f" path="res://constructor/constructor.gltf" id="1_d342p"]
+[ext_resource type="Script" path="res://constructor/constructor.gd" id="2_tfs24"]
+[ext_resource type="PackedScene" uid="uid://dqaeyvbfcfp2e" path="res://conveyor/conveyorbelt.tscn" id="3_k8chx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cd3mo"]
+size = Vector3(0.1, 0.862, 1.596)
+
+[node name="constructor" instance=ExtResource("1_d342p")]
+script = ExtResource("2_tfs24")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/4/rotation = Quaternion(3.13928e-07, -2.92855e-07, -0.707107, 0.707107)
+
+[node name="processArea" type="Area3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="processArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42095, 0)
+shape = SubResource("BoxShape3D_cd3mo")
+
+[node name="conveyorbelt" parent="." index="3" instance=ExtResource("3_k8chx")]
+
+[connection signal="body_entered" from="processArea" to="." method="_on_process_area_body_entered"]

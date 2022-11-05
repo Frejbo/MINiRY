@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvd4770g2k43p"]
+[gd_scene load_steps=6 format=3 uid="uid://bvd4770g2k43p"]
 
 [ext_resource type="Script" path="res://select.gd" id="1_4kw3x"]
 [ext_resource type="Script" path="res://Player.gd" id="1_rsm3n"]
@@ -9,6 +9,8 @@ height = 2.262
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xh7e"]
 radius = 0.2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbdpl"]
 
 [node name="Player" type="CharacterBody3D" groups=["movable"]]
 script = ExtResource("1_rsm3n")
@@ -46,5 +48,30 @@ radius = 0.3
 offset_right = 40.0
 offset_bottom = 23.0
 text = "1: Conveyor
-2: Block
-3: Smelter"
+3: Smelter
+4: Constructor"
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -50.0
+offset_right = 56.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer"]
+offset_left = 31.0
+offset_right = 81.0
+offset_bottom = 50.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 50.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sbdpl")

@@ -5,11 +5,11 @@ extends Node3D
 func _physics_process(_delta):
 	for hjul in get_children():
 		if not "hjul" in hjul.name: continue
-		hjul.rotate_z(.02)
+		hjul.rotate_z(.015)
 	
 	# move conveyor UVs
 	var belt_uv = $belt.get_active_material(2).uv1_offset
-	belt_uv.y += 0.01
+	belt_uv.y += 0.0065
 	if belt_uv.y >= 1:
 		belt_uv.y = 0
 	$belt.get_active_material(2).uv1_offset = belt_uv
@@ -24,6 +24,6 @@ func _physics_process(_delta):
 
 func _on_item_spawn_timer_timeout():
 	var item = load("res://item.tscn").instantiate()
-	item.item_idx = 0
+	item.item = 0
 	item.global_position = $belt/input0.global_position
 	add_child(item)
