@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cswl1ic84xfek"]
 
 [ext_resource type="Material" uid="uid://duww3rttr6fys" path="res://blueprint.tres" id="1_b1k0y"]
-[ext_resource type="PackedScene" uid="uid://l22dbpgqjptb" path="res://conveyor/conveyorbelt.gltf" id="1_wc707"]
+[ext_resource type="PackedScene" uid="uid://by48hm3h8crke" path="res://conveyor/conveyorbelt.gltf" id="1_wc707"]
 
 [node name="conveyorbelt" type="Node3D"]
 

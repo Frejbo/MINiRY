@@ -7,6 +7,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1q2ls"]
 height = 0.2
+radius = 0.498318
 
 [node name="Item" type="RigidBody3D" groups=["item", "movable"]]
 script = ExtResource("1_g541j")

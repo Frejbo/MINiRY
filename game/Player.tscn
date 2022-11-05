@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvd4770g2k43p"]
+[gd_scene load_steps=16 format=3 uid="uid://bvd4770g2k43p"]
 
 [ext_resource type="Script" path="res://select.gd" id="1_4kw3x"]
 [ext_resource type="Script" path="res://Player.gd" id="1_rsm3n"]
+[ext_resource type="PackedScene" uid="uid://dqaeyvbfcfp2e" path="res://conveyor/conveyorbelt.tscn" id="3_aemvj"]
+[ext_resource type="StyleBox" uid="uid://cw7ilj2jxqnpw" path="res://hotbar_bg.tres" id="3_gdl7h"]
+[ext_resource type="PackedScene" uid="uid://4gd2tan1vsly" path="res://smelter/smelter.tscn" id="4_shg0q"]
+[ext_resource type="PackedScene" uid="uid://mu5ibf2ct5yf" path="res://constructor/constructor.tscn" id="5_h3soa"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_va5hv"]
 radius = 0.2
@@ -10,7 +14,27 @@ height = 2.262
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xh7e"]
 radius = 0.2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbdpl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_lo6f0"]
+viewport_path = NodePath("hotbar_renders/conveyor")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wlrej"]
+viewport_path = NodePath("hotbar_renders/smelter")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gaiy3"]
+viewport_path = NodePath("hotbar_renders/constructor")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gsfde"]
+sky_energy_multiplier = 10.0
+
+[sub_resource type="Sky" id="Sky_rfg5v"]
+sky_material = SubResource("ProceduralSkyMaterial_gsfde")
+
+[sub_resource type="Environment" id="Environment_scpyb"]
+background_mode = 2
+sky = SubResource("Sky_rfg5v")
+
+[sub_resource type="World3D" id="World3D_qhgy5"]
+environment = SubResource("Environment_scpyb")
 
 [node name="Player" type="CharacterBody3D" groups=["movable"]]
 script = ExtResource("1_rsm3n")
@@ -44,34 +68,106 @@ radius = 0.3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "1: Conveyor
-3: Smelter
-4: Constructor"
-
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = -1
+anchor_left = 0.392361
+anchor_top = 0.876543
+anchor_right = 0.607639
 anchor_bottom = 1.0
-offset_left = -56.0
-offset_top = -50.0
-offset_right = 56.0
+offset_top = -20.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
+metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer"]
-offset_left = 31.0
-offset_right = 81.0
-offset_bottom = 50.0
+[node name="hotbar" type="HBoxContainer" parent="CanvasLayer/CenterContainer"]
+offset_left = 82.0
+offset_top = 26.0
+offset_right = 330.0
+offset_bottom = 106.0
 
-[node name="Panel" type="Panel" parent="CanvasLayer/CenterContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
-offset_right = 50.0
-offset_bottom = 50.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_sbdpl")
+[node name="conveyor" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
+custom_minimum_size = Vector2(80, 80)
+offset_right = 80.0
+offset_bottom = 80.0
+theme_override_styles/panel = ExtResource("3_gdl7h")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/CenterContainer/hotbar/conveyor"]
+position = Vector2(40, 70)
+texture = SubResource("ViewportTexture_lo6f0")
+offset = Vector2(0, -30)
+region_rect = Rect2(70, 70, 70, 70)
+
+[node name="smelter" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
+custom_minimum_size = Vector2(80, 80)
+offset_left = 84.0
+offset_right = 164.0
+offset_bottom = 80.0
+theme_override_styles/panel = ExtResource("3_gdl7h")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/CenterContainer/hotbar/smelter"]
+position = Vector2(40, 70)
+texture = SubResource("ViewportTexture_wlrej")
+offset = Vector2(0, -30)
+region_rect = Rect2(70, 70, 70, 70)
+
+[node name="constructor" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
+custom_minimum_size = Vector2(80, 80)
+offset_left = 168.0
+offset_right = 248.0
+offset_bottom = 80.0
+theme_override_styles/panel = ExtResource("3_gdl7h")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/CenterContainer/hotbar/constructor"]
+position = Vector2(40, 70)
+texture = SubResource("ViewportTexture_gaiy3")
+offset = Vector2(0, -30)
+region_rect = Rect2(70, 70, 70, 70)
+
+[node name="hotbar_renders" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="conveyor" type="SubViewport" parent="hotbar_renders"]
+own_world_3d = true
+world_3d = SubResource("World3D_qhgy5")
+transparent_bg = true
+size = Vector2i(70, 70)
+render_target_update_mode = 1
+
+[node name="conveyorbelt" parent="hotbar_renders/conveyor" instance=ExtResource("3_aemvj")]
+transform = Transform3D(1, 1.19209e-07, -1.49012e-07, -1.19209e-07, 1, -1.19209e-07, -1.49012e-07, 1.19209e-07, 1, -4.76837e-07, 9.53674e-07, -4.76837e-07)
+
+[node name="Camera3D" type="Camera3D" parent="hotbar_renders/conveyor/conveyorbelt"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707106, 0.707106, -0.707107, -0.5, 0.5, 2, 3, 2)
+fov = 50.0
+
+[node name="smelter" type="SubViewport" parent="hotbar_renders"]
+own_world_3d = true
+world_3d = SubResource("World3D_qhgy5")
+transparent_bg = true
+size = Vector2i(70, 70)
+render_target_update_mode = 1
+
+[node name="smelter" parent="hotbar_renders/smelter" instance=ExtResource("4_shg0q")]
+
+[node name="Camera3D" type="Camera3D" parent="hotbar_renders/smelter/smelter"]
+transform = Transform3D(0.707107, -0.32102, 0.630037, 0, 0.891006, 0.45399, -0.707107, -0.32102, 0.630037, 3, 3, 3)
+fov = 50.0
+
+[node name="constructor" type="SubViewport" parent="hotbar_renders"]
+own_world_3d = true
+world_3d = SubResource("World3D_qhgy5")
+transparent_bg = true
+size = Vector2i(70, 70)
+render_target_update_mode = 1
+
+[node name="constructor" parent="hotbar_renders/constructor" instance=ExtResource("5_h3soa")]
+
+[node name="Camera3D" type="Camera3D" parent="hotbar_renders/constructor/constructor"]
+transform = Transform3D(0.707107, -0.32102, 0.630037, 0, 0.891007, 0.45399, -0.707107, -0.32102, 0.630037, 3, 3, 3)
+fov = 50.0

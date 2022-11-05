@@ -10,4 +10,20 @@
 material_overlay = ExtResource("2_l4yf4")
 transparency = 0.5
 
+[node name="RightArrow_z+" parent="." index="1"]
+material_overlay = ExtResource("2_l4yf4")
+transparency = 0.5
+
 [node name="conveyorbelt" parent="." index="2" instance=ExtResource("3_i36nj")]
+
+[node name="LeftArrow_z+" parent="." index="3"]
+material_overlay = ExtResource("2_l4yf4")
+transparency = 0.5
+
+[node name="RightArrow_z-" parent="." index="4"]
+material_overlay = ExtResource("2_l4yf4")
+transparency = 0.5
+
+[node name="LeftArrow_z-" parent="." index="5"]
+material_overlay = ExtResource("2_l4yf4")
+transparency = 0.5

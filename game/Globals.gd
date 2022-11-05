@@ -1,1 +1,1 @@
-enum items {IronOre, IronIngot, IronGear}
+enum items {IronOre, IronIngot, IronGear, IronRod}

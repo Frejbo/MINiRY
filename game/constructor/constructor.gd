@@ -17,3 +17,13 @@ func _on_process_area_body_entered(body):
 	
 	body.update_material()
 	anim.play_backwards("ArmatureAction")
+
+
+
+func click_arrow(area):
+	if "Right" in area.name:
+		$AnimationArrows.play("RightArrows")
+		
+	
+	if "Left" in area.name:
+		$AnimationArrows.play("LeftArrows")
