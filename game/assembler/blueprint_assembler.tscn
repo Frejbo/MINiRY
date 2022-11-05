@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c50gm17wd7x3r"]
+
+[ext_resource type="PackedScene" uid="uid://dhb0kfdk63r6a" path="res://assembler/assembler.gltf" id="1_6tpsg"]
+[ext_resource type="Material" uid="uid://duww3rttr6fys" path="res://blueprint.tres" id="2_43yuk"]
+[ext_resource type="PackedScene" uid="uid://cswl1ic84xfek" path="res://conveyor/blueprint_conveyorbelt.tscn" id="2_c23rd"]
+
+[node name="blueprint_assembler" type="Node3D"]
+
+[node name="assembler" parent="." instance=ExtResource("1_6tpsg")]
+
+[node name="Assembler" parent="assembler/Assembler001/Skeleton3D" index="0"]
+material_overlay = ExtResource("2_43yuk")
+transparency = 0.5
+
+[node name="conveyorbelt4" parent="." instance=ExtResource("2_c23rd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.2, 0, -1)
+
+[node name="conveyorbelt5" parent="." instance=ExtResource("2_c23rd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.2, 0, 1)
+
+[node name="conveyorbelt6" parent="." instance=ExtResource("2_c23rd")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 1.301, 0, 0)
+
+[editable path="assembler"]

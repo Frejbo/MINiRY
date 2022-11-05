@@ -10,7 +10,8 @@ var ITEMS = {
 	"None": null,
 	"Conveyor": "res://conveyor/blueprint_conveyorbelt.tscn",
 	"Smelter": "res://smelter/blueprint_smelter.tscn",
-	"Constructor": "res://constructor/blueprint_constructor.tscn"
+	"Constructor": "res://constructor/blueprint_constructor.tscn",
+	"Assembler": "res://assembler/blueprint_assembler.tscn"
 }
 var held_item_name = ITEMS["None"]
 
@@ -43,6 +44,11 @@ func _input(event):
 	if event.is_action_pressed("3"):
 		if focus_hotbar(2):
 			held_item_name = ITEMS["Constructor"]
+		else:
+			held_item_name = ITEMS["None"]
+	if event.is_action_pressed("4"):
+		if focus_hotbar(3):
+			held_item_name = ITEMS["Assembler"]
 		else:
 			held_item_name = ITEMS["None"]
 	
