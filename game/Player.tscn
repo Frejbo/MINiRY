@@ -5,14 +5,16 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_va5hv"]
 radius = 0.2
+height = 2.262
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xh7e"]
 radius = 0.2
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["movable"]]
 script = ExtResource("1_rsm3n")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_va5hv")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]

@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-@export_enum(IronOre, IronIngot) var item_idx
+@export var item_idx:Globals.items
 
 # IronOre
 # IronIngot

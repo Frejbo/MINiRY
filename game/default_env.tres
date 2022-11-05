@@ -12,6 +12,7 @@ sky_material = SubResource("PanoramaSkyMaterial_kr3bi")
 background_mode = 2
 sky = SubResource("Sky_amocm")
 tonemap_mode = 2
+ssr_enabled = true
 ssao_enabled = true
 ssao_intensity = 7.0
 ssil_enabled = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqaeyvbfcfp2e"]
+[gd_scene load_steps=10 format=3 uid="uid://dqaeyvbfcfp2e"]
 
 [ext_resource type="Script" path="res://conveyor/conveyorbelt.gd" id="2_kyart"]
 [ext_resource type="PackedScene" uid="uid://l22dbpgqjptb" path="res://conveyor/conveyorbelt.gltf" id="2_m0ebu"]
@@ -96,6 +96,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_54atf")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_oao57"]
+size = Vector3(2.5027, 0.977049, 1)
+
 [node name="conveyorbelt" type="StaticBody3D"]
 script = ExtResource("2_kyart")
 
@@ -111,7 +114,7 @@ mesh = SubResource("ArrayMesh_4q36g")
 [node name="Area3d" type="Area3D" parent="conveyorbelt"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="conveyorbelt/Area3d"]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0.0083122, 0.000154543)
-shape = SubResource("ConcavePolygonShape3D_jo02s")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.527302, 0)
+shape = SubResource("BoxShape3D_oao57")
 
 [editable path="conveyorbelt"]
