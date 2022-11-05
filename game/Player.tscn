@@ -23,18 +23,18 @@ viewport_path = NodePath("hotbar_renders/smelter")
 [sub_resource type="ViewportTexture" id="ViewportTexture_gaiy3"]
 viewport_path = NodePath("hotbar_renders/constructor")
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gsfde"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vuv6b"]
 sky_energy_multiplier = 10.0
 
 [sub_resource type="Sky" id="Sky_rfg5v"]
-sky_material = SubResource("ProceduralSkyMaterial_gsfde")
+sky_material = SubResource("ProceduralSkyMaterial_vuv6b")
 
-[sub_resource type="Environment" id="Environment_scpyb"]
+[sub_resource type="Environment" id="Environment_b7fu4"]
 background_mode = 2
 sky = SubResource("Sky_rfg5v")
 
 [sub_resource type="World3D" id="World3D_qhgy5"]
-environment = SubResource("Environment_scpyb")
+environment = SubResource("Environment_b7fu4")
 
 [node name="Player" type="CharacterBody3D" groups=["movable"]]
 script = ExtResource("1_rsm3n")
