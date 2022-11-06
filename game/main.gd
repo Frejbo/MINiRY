@@ -32,7 +32,8 @@ func input_material(item : Globals.items):
 			continue
 	if not yes: return
 	var label = craft_this.get_node(str(item)+"/Label")
-	label.text = str(label.text.to_int() - 1)
+	if label.text.to_int() > 0:
+		label.text = str(label.text.to_int() - 1)
 	
 	if map.size() != 0: return
 	# complete level
