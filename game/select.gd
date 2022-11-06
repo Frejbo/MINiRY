@@ -98,8 +98,6 @@ func _process(_delta):
 	# process object
 	if held_item.get_child_count() > 0:
 		if held_item.get_child(0).has_node("CollideCheck"):
-			print(held_item.get_child(0).get_node("CollideCheck").has_overlapping_areas())
-			print(held_item.get_child(0).get_node("CollideCheck"))
 			if held_item.get_child(0).get_node("CollideCheck").has_overlapping_areas():
 				load("res://blueprint.tres").albedo_color = Color(210.0/255.0, 0.0/255.0, 90.0/255.0, 150.0/255.0) # red
 				can_place = false

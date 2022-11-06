@@ -42,7 +42,6 @@ var level_time_expectations = {
 	},
 }
 
-
 # spara i filer
 func _notification(what):
 	if what != NOTIFICATION_EXIT_TREE: return

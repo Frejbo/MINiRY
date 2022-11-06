@@ -22,7 +22,9 @@ func switch_pause_mode():
 func _on_avsluta_pressed():
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	get_tree().change_scene_to_packed(preload("res://main_menu.tscn"))
+	await get_tree().process_frame
+	get_tree().change_scene_to_file("res://main_menu.tscn")
+
 
 func _on_fortstt_pressed():
 	switch_pause_mode()
