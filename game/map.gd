@@ -43,8 +43,14 @@ func _on_item_spawn_timer_timeout():
 #	item.global_position = $belt002/input1.global_position
 #	add_child(item)
 
-func spawn_item(position : Vector3, desired_item : Globals.items):
+func spawn_item(place_position : Vector3, desired_item : Globals.items):
 	var item = preload("res://item.tscn").instantiate()
 	item.item = desired_item
-	item.global_position = position
+	item.global_position = place_position
 	add_child(item)
+
+
+func _on_item_output_area_body_entered(body):
+	$Lucka/AnimationPlayer.play("Lucka")
+	await get_tree().create_timer(1).timeout
+	if body.is_in_group("item"): body.queue_free()

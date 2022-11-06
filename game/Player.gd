@@ -37,6 +37,11 @@ func _physics_process(delta):
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED: move_and_slide()
 
 func _ready():
+	$CanvasLayer/CenterContainer/hotbar/conveyor/Sprite2D.texture = $hotbar_renders/conveyor.get_texture()
+	$CanvasLayer/CenterContainer/hotbar/smelter/Sprite2D.texture = $hotbar_renders/smelter.get_texture()
+	$CanvasLayer/CenterContainer/hotbar/constructor/Sprite2D.texture = $hotbar_renders/constructor.get_texture()
+	$CanvasLayer/CenterContainer/hotbar/Assembler/Sprite2D.texture = $hotbar_renders/Assembler.get_texture()
+	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 

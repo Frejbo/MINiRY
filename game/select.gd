@@ -60,6 +60,7 @@ func _input(event):
 			if "Arrow" in get_collider().name:
 				get_collider().get_parent().get_parent().click_arrow(get_collider())
 		else:
+			if not is_colliding(): return
 			if held_item_name == null: return
 			var object = load(held_item_name.replace("blueprint_", "")).instantiate()
 			object.global_transform = held_item.global_transform
@@ -88,6 +89,10 @@ func _input(event):
 
 
 func _process(_delta):
+	if not is_colliding():
+		held_item.hide()
+		return
+	held_item.show()
 #	if held_item.get_child(0).name != held_item.name: #and held_item_name != null
 		# Byt ut objektet under held_item till held_item_name
 	if held_item.get_child_count() > 0:

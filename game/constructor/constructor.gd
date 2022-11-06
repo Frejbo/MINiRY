@@ -10,6 +10,12 @@ var made_of = {
 	Globals.items.CopperWire: Globals.items.CopperIngot
 }
 
+
+func _ready():
+	get_node("Material_z+").texture = $Item.get_texture()
+	get_node("Material_z-").texture = $Item.get_texture()
+
+
 func _on_process_area_body_entered(body):
 	if not body.is_in_group("item"): return # only smelt items... :flushed:
 	
