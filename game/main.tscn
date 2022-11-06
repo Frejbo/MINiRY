@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dtod260wuix6b"]
+[gd_scene load_steps=28 format=3 uid="uid://dtod260wuix6b"]
 
 [ext_resource type="PackedScene" uid="uid://dafa8xsis6sdx" path="res://map.gltf" id="1_6ujcp"]
 [ext_resource type="Script" path="res://main.gd" id="1_fs8ov"]
@@ -6,10 +6,7 @@
 [ext_resource type="Environment" uid="uid://ctymbwu7imuu3" path="res://default_env.tres" id="2_w6ah1"]
 [ext_resource type="Script" path="res://map.gd" id="5_aaccr"]
 [ext_resource type="Material" uid="uid://bbsfamdwmuqmi" path="res://conveyor/belt.tres" id="5_gt3fc"]
-[ext_resource type="World3D" uid="uid://5tfm6phu8q4y" path="res://Placeholder_environment.tres" id="6_bn0td"]
 [ext_resource type="PackedScene" uid="uid://c6h7wdbxlat84" path="res://spak/spak.tscn" id="6_ppcem"]
-[ext_resource type="PackedScene" uid="uid://dlvuwkgoswvrj" path="res://items/BadAnka.gltf" id="6_sr76u"]
-[ext_resource type="PackedScene" uid="uid://jetplmx1gpb4" path="res://items/CopperWire.gltf" id="8_2w4jr"]
 [ext_resource type="FontFile" uid="uid://d3atht6ersxhp" path="res://Orbitron-VariableFont_wght.ttf" id="9_thfed"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_sxj4d"]
@@ -320,36 +317,14 @@ size = Vector3(1.47426, 1.18469, 2.39846)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arjvm"]
 bg_color = Color(0, 0, 0, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.760784, 0.54902, 0.32549, 1)
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_fs8ov")
-
-[node name="Anka" type="SubViewport" parent="."]
-own_world_3d = true
-world_3d = ExtResource("6_bn0td")
-transparent_bg = true
-size = Vector2i(511, 511)
-render_target_update_mode = 1
-
-[node name="Camera3D" type="Camera3D" parent="Anka"]
-transform = Transform3D(0.707107, -0.298836, 0.640857, 0, 0.906308, 0.422618, -0.707107, -0.298836, 0.640857, 1, 1, 1)
-fov = 50.0
-
-[node name="BadAnka" parent="Anka" instance=ExtResource("6_sr76u")]
-transform = Transform3D(-0.993684, 0, -0.112215, 0, 1, 0, 0.112215, 0, -0.993684, 0, 0, -0.126)
-
-[node name="CopperWire" type="SubViewport" parent="."]
-own_world_3d = true
-world_3d = ExtResource("6_bn0td")
-transparent_bg = true
-size = Vector2i(511, 511)
-render_target_update_mode = 1
-
-[node name="Camera3D" type="Camera3D" parent="CopperWire"]
-transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 1, 1, 1)
-fov = 40.0
-
-[node name="CopperWire" parent="CopperWire" instance=ExtResource("8_2w4jr")]
 
 [node name="Player" parent="." instance=ExtResource("1_g4fxp")]
 transform = Transform3D(-0.622501, 0, -0.782619, 0, 1, 0, 0.782619, 0, -0.622501, 0, 1.48498, 0)
@@ -430,39 +405,37 @@ shape = SubResource("BoxShape3D_445ub")
 
 [node name="Screen" type="Node3D" parent="map"]
 
-[node name="SubViewport" type="SubViewport" parent="map/Screen"]
+[node name="level0" type="SubViewport" parent="map/Screen"]
 disable_3d = true
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="map/Screen/SubViewport"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="map/Screen/level0"]
 custom_minimum_size = Vector2(1920, 1080)
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="Panel" type="Panel" parent="map/Screen/SubViewport/AspectRatioContainer"]
+[node name="Panel" type="Panel" parent="map/Screen/level0/AspectRatioContainer"]
 custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_arjvm")
 
-[node name="Label" type="Label" parent="map/Screen/SubViewport/AspectRatioContainer"]
-offset_left = 241.5
-offset_right = 1678.5
-offset_bottom = 84.0
-size_flags_vertical = 0
-theme_override_constants/outline_size = 3
+[node name="Label" type="Label" parent="map/Screen/level0/AspectRatioContainer"]
+layout_mode = 2
+offset_left = 438.0
+offset_top = 414.0
+offset_right = 1481.0
+offset_bottom = 666.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("9_thfed")
 theme_override_font_sizes/font_size = 64
-text = "PLEASE CONSTRUCT THE FOLLOWING:"
+text = "SANDBOX
 
-[node name="TextureRect" type="TextureRect" parent="map/Screen/SubViewport/AspectRatioContainer"]
-offset_left = 960.0
-offset_top = 540.0
-offset_right = 960.0
-offset_bottom = 540.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
+DO  WHATEVER  YOU  WANT"
+horizontal_alignment = 1
 
 [node name="Sprite3D" type="Sprite3D" parent="map/Screen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.413, 9.99)

@@ -1,0 +1,453 @@
+[gd_scene load_steps=16 format=3 uid="uid://bmxqsckbb6ww3"]
+
+[ext_resource type="Texture2D" uid="uid://bjfvlpvox2l1f" path="res://floortexture.png" id="1_jvl57"]
+[ext_resource type="Script" path="res://main_menu.gd" id="1_r0gqw"]
+[ext_resource type="Environment" uid="uid://ctymbwu7imuu3" path="res://default_env.tres" id="2_mwqcu"]
+[ext_resource type="FontFile" uid="uid://d3atht6ersxhp" path="res://Orbitron-VariableFont_wght.ttf" id="4_fj18n"]
+[ext_resource type="PackedScene" uid="uid://4gd2tan1vsly" path="res://smelter/smelter.tscn" id="4_htx7u"]
+[ext_resource type="PackedScene" uid="uid://dqaeyvbfcfp2e" path="res://conveyor/conveyorbelt.tscn" id="4_mpqvy"]
+[ext_resource type="PackedScene" uid="uid://mu5ibf2ct5yf" path="res://constructor/constructor.tscn" id="5_7d54d"]
+[ext_resource type="Texture2D" uid="uid://c0octno42moqc" path="res://ui/Star.png" id="8_2uw6v"]
+[ext_resource type="Texture2D" uid="uid://d32nr01ipqlbs" path="res://ui/Anka.png" id="8_j2x3h"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nccft"]
+size = Vector2(50, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ptoi2"]
+albedo_texture = ExtResource("1_jvl57")
+uv1_scale = Vector3(60, 60, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_74hnt"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngnjq"]
+bg_color = Color(0.760784, 0.54902, 0.32549, 1)
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljnyr"]
+bg_color = Color(0.760784, 0.54902, 0.32549, 0.588235)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mp3ea"]
+bg_color = Color(0.447059, 0.447059, 0.447059, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="main_menu" type="Node3D"]
+script = ExtResource("1_r0gqw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_nccft")
+surface_material_override/0 = SubResource("StandardMaterial3D_ptoi2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_mwqcu")
+
+[node name="machine" type="Node3D" parent="."]
+
+[node name="conveyorbelt" parent="machine" instance=ExtResource("4_mpqvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.426481, 0, 0)
+
+[node name="conveyorbelt7" parent="machine" instance=ExtResource("4_mpqvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1451, 0, 0)
+
+[node name="conveyorbelt8" parent="machine" instance=ExtResource("4_mpqvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.57352, 0, 0)
+
+[node name="conveyorbelt12" parent="machine" instance=ExtResource("4_mpqvy")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 6.52671, 0, 0.849683)
+
+[node name="conveyorbelt18" parent="machine" instance=ExtResource("4_mpqvy")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 7.18984, 0, 2.78361)
+
+[node name="conveyorbelt19" parent="machine" instance=ExtResource("4_mpqvy")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 7.18984, 0, 5.41117)
+
+[node name="conveyorbelt14" parent="machine" instance=ExtResource("4_mpqvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1002, 0, 0)
+
+[node name="conveyorbelt17" parent="machine" instance=ExtResource("4_mpqvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5286, 0, 0)
+
+[node name="conveyorbelt6" parent="machine" instance=ExtResource("4_mpqvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.42648, 0, 0)
+
+[node name="smelter" parent="machine" instance=ExtResource("4_htx7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91219, 0, 0)
+
+[node name="constructor" parent="machine" instance=ExtResource("5_7d54d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+
+[node name="remove_items" type="Area3D" parent="machine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2273, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="machine/remove_items"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.458041, 1.19501, 0)
+shape = SubResource("BoxShape3D_74hnt")
+
+[node name="spawn_items" type="Marker3D" parent="machine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.20617, 1.55408, 5.66544)
+
+[node name="spawn_items_timer" type="Timer" parent="machine"]
+wait_time = 2.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="meny" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.802
+anchor_top = 0.423
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 80
+alignment = 1
+
+[node name="levels" type="Button" parent="CanvasLayer/meny"]
+offset_top = 102.0
+offset_right = 381.0
+offset_bottom = 188.0
+focus_mode = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_fj18n")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_ngnjq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ngnjq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ngnjq")
+text = "LEVELS"
+
+[node name="sandbox" type="Button" parent="CanvasLayer/meny"]
+offset_top = 268.0
+offset_right = 381.0
+offset_bottom = 354.0
+focus_mode = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_fj18n")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_ngnjq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ngnjq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ngnjq")
+text = "SANDBOX"
+
+[node name="avsluta" type="Button" parent="CanvasLayer/meny"]
+offset_top = 434.0
+offset_right = 381.0
+offset_bottom = 520.0
+focus_mode = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_fj18n")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_ngnjq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ngnjq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ngnjq")
+text = "AVSLUTA"
+
+[node name="titel" type="Label" parent="CanvasLayer"]
+offset_right = 976.0
+offset_bottom = 325.0
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 35
+theme_override_fonts/font = ExtResource("4_fj18n")
+theme_override_font_sizes/font_size = 220
+text = "MINiRY"
+horizontal_alignment = 1
+
+[node name="levels" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/levels"]
+custom_minimum_size = Vector2(800, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -150.0
+offset_right = 400.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ljnyr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/levels"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -100.0
+offset_right = 350.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/levels/VBoxContainer"]
+offset_right = 700.0
+offset_bottom = 200.0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="level1" type="Control" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 200.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1"]
+custom_minimum_size = Vector2(200, 200)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mp3ea")
+
+[node name="Label" type="Label" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_fj18n")
+theme_override_font_sizes/font_size = 128
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Starlink" type="Control" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 250.0
+offset_right = 250.0
+offset_bottom = 200.0
+
+[node name="Star" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1/Starlink"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -251.0
+offset_top = -69.0
+offset_right = -182.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("8_2uw6v")
+ignore_texture_size = true
+
+[node name="Star2" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1/Starlink"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -117.0
+offset_top = -69.0
+offset_right = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("8_2uw6v")
+ignore_texture_size = true
+
+[node name="Anka" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("8_j2x3h")
+ignore_texture_size = true
+
+[node name="level2" type="Control" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 250.0
+offset_right = 450.0
+offset_bottom = 200.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2"]
+custom_minimum_size = Vector2(200, 200)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mp3ea")
+
+[node name="Label" type="Label" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_fj18n")
+theme_override_font_sizes/font_size = 128
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Starlink" type="Control" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 250.0
+offset_right = 250.0
+offset_bottom = 200.0
+
+[node name="Star" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2/Starlink"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -251.0
+offset_top = -69.0
+offset_right = -182.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("8_2uw6v")
+ignore_texture_size = true
+
+[node name="Star2" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2/Starlink"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -117.0
+offset_top = -69.0
+offset_right = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("8_2uw6v")
+ignore_texture_size = true
+
+[node name="Anka" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("8_j2x3h")
+ignore_texture_size = true
+
+[node name="level3" type="Control" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 500.0
+offset_right = 700.0
+offset_bottom = 200.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3"]
+custom_minimum_size = Vector2(200, 200)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mp3ea")
+
+[node name="Label" type="Label" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_fj18n")
+theme_override_font_sizes/font_size = 128
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Starlink" type="Control" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 250.0
+offset_right = 250.0
+offset_bottom = 200.0
+
+[node name="Star" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3/Starlink"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -251.0
+offset_top = -69.0
+offset_right = -182.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("8_2uw6v")
+ignore_texture_size = true
+
+[node name="Star2" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3/Starlink"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -117.0
+offset_top = -69.0
+offset_right = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("8_2uw6v")
+ignore_texture_size = true
+
+[node name="Anka" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("8_j2x3h")
+ignore_texture_size = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.80799, 0.280236, -0.518286, 0, 0.879649, 0.475624, 0.589196, -0.3843, 0.710747, -9.746, 3.529, 3.772)
+
+[connection signal="body_entered" from="machine/remove_items" to="." method="_on_remove_items_body_entered"]
+[connection signal="timeout" from="machine/spawn_items_timer" to="." method="_on_spawn_items_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/meny/levels" to="." method="_on_levels_pressed"]
+[connection signal="pressed" from="CanvasLayer/meny/sandbox" to="." method="_on_sandbox_pressed"]
+[connection signal="pressed" from="CanvasLayer/meny/avsluta" to="." method="_on_avsluta_pressed"]

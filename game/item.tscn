@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dlvuwkgoswvrj" path="res://items/BadAnka.gltf" id="8_cep4n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2vina"]
-size = Vector3(1, 0.2, 1)
+size = Vector3(1.1, 0.2, 1.1)
 
 [node name="Item" type="RigidBody3D" groups=["item", "movable"]]
 script = ExtResource("1_g541j")
