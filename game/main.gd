@@ -46,6 +46,10 @@ func input_material(item : Globals.items):
 	else:
 		Globals.level_completion[Globals.current_level] = 1
 	Globals.save_game()
-	get_tree().change_scene_to_packed(load("res://main_menu.tscn"))
+	
+	get_tree().paused = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	var success_screen = load("res://ui/success_screen.tscn").instantiate()
+	$Player/CanvasLayer.add_child(success_screen)
 
 # [{"type":items.IronRod, "amount":10}, {"type":items.CopperWire, "amount":10}]
