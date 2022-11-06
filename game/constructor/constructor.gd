@@ -43,7 +43,6 @@ func _process(_delta):
 	
 	var item = load(Globals.item_paths[producing]).instantiate()
 	item_node.add_child(item)
-	print(producing)
 	currently_producing = producing
 
 func click_arrow(area):

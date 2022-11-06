@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bvpi0xhwvlf7s"]
+[gd_scene load_steps=32 format=3 uid="uid://bvpi0xhwvlf7s"]
 
 [ext_resource type="PackedScene" uid="uid://dqaeyvbfcfp2e" path="res://conveyor/conveyorbelt.tscn" id="1_a6qj3"]
 [ext_resource type="PackedScene" uid="uid://4gd2tan1vsly" path="res://smelter/smelter.tscn" id="2_1js8y"]
@@ -27,6 +27,19 @@ sky = SubResource("Sky_jfb5c")
 
 [sub_resource type="World3D" id="World3D_pe1h1"]
 environment = SubResource("Environment_b7fu4")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ek582"]
+sky_energy_multiplier = 10.0
+
+[sub_resource type="Sky" id="Sky_hqibe"]
+sky_material = SubResource("ProceduralSkyMaterial_ek582")
+
+[sub_resource type="Environment" id="Environment_wkmkg"]
+background_mode = 2
+sky = SubResource("Sky_hqibe")
+
+[sub_resource type="World3D" id="World3D_01cha"]
+environment = SubResource("Environment_wkmkg")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_isihy"]
 bg_color = Color(0, 0, 0, 1)
@@ -78,16 +91,19 @@ fov = 50.0
 
 [node name="smelter" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = SubResource("World3D_pe1h1")
+world_3d = SubResource("World3D_01cha")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
 
+[node name="Camera3D" type="Camera3D" parent="smelter"]
+transform = Transform3D(0.707107, -0.32102, 0.630037, 0, 0.891006, 0.453991, -0.707107, -0.32102, 0.630037, 3, 3, 3)
+fov = 50.0
+
 [node name="smelter" parent="smelter" instance=ExtResource("2_1js8y")]
 
-[node name="Camera3D" type="Camera3D" parent="smelter/smelter"]
-transform = Transform3D(0.707107, -0.32102, 0.630037, 0, 0.891006, 0.45399, -0.707107, -0.32102, 0.630037, 3, 3, 3)
-fov = 50.0
+[node name="GpuParticles3d" parent="smelter/smelter" index="0"]
+emitting = false
 
 [node name="constructor" type="SubViewport" parent="."]
 own_world_3d = true
@@ -209,6 +225,7 @@ fov = 40.0
 
 [node name="level" type="SubViewport" parent="."]
 size = Vector2i(1920, 1080)
+render_target_update_mode = 4
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="level"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -459,3 +476,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_omak0")
 ignore_texture_size = true
+
+[editable path="smelter/smelter"]
+[editable path="smelter/smelter/smelter2"]

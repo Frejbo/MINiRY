@@ -92,20 +92,37 @@ func _process(_delta):
 	if not is_colliding():
 		held_item.hide()
 		return
-	held_item.show()
-#	if held_item.get_child(0).name != held_item.name: #and held_item_name != null
-		# Byt ut objektet under held_item till held_item_name
+	
+	# process object
 	if held_item.get_child_count() > 0:
-		if held_item.get_child(0).name == held_item.name: return
-	
-	if held_item.get_child_count() > 0: held_item.get_child(0).queue_free()
-	if held_item_name != null:
-		held_item.add_child(load(held_item_name).instantiate())
-	
-	# process item
+		if held_item.get_child(0).has_node("CollideCheck"):
+			print(held_item.get_child(0).get_node("CollideCheck").has_overlapping_areas())
+			print(held_item.get_child(0).get_node("CollideCheck"))
+			if held_item.get_child(0).get_node("CollideCheck").has_overlapping_areas():
+				load("res://blueprint.tres").albedo_color = Color(210.0/255.0, 0.0/255.0, 90.0/255.0, 150.0/255.0) # red
+			else:
+				load("res://blueprint.tres").albedo_color = Color(60.0/255.0, 90.0/255.0, 255.0/255.0, 150.0/255.0) # blue
+	held_item.show()
 	held_item.global_position = get_collision_point()
-	
 	held_item.global_rotation.z = 0
 	held_item.global_rotation.x = 0
 	held_item.global_rotation.y = deg_to_rad(held_item_rotation)
 	held_item.global_position.y = 0
+	
+	
+#	if held_item.get_child(0).name != held_item.name: #and held_item_name != null
+		# Byt ut objektet under held_item till held_item_name
+	var actual_name = ""
+	if held_item_name != null:
+		actual_name = held_item_name.replace(":", "").replace(".", "").replace("/", "")
+	if held_item.get_child_count() > 0:
+		if held_item.get_child(0).name == actual_name: return
+	
+	if held_item.get_child_count() > 0: held_item.get_child(0).queue_free()
+	if held_item_name != null:
+		var object = load(held_item_name).instantiate()
+		object.name = held_item_name
+		held_item.add_child(object)
+	
+
+

@@ -142,7 +142,7 @@ alignment = 1
 
 [node name="levels" type="Button" parent="CanvasLayer/meny"]
 offset_top = 102.0
-offset_right = 381.0
+offset_right = 373.0
 offset_bottom = 188.0
 focus_mode = 0
 theme_override_constants/outline_size = 5
@@ -155,7 +155,7 @@ text = "LEVELS"
 
 [node name="sandbox" type="Button" parent="CanvasLayer/meny"]
 offset_top = 268.0
-offset_right = 381.0
+offset_right = 373.0
 offset_bottom = 354.0
 focus_mode = 0
 theme_override_constants/outline_size = 5
@@ -168,7 +168,7 @@ text = "SANDBOX"
 
 [node name="avsluta" type="Button" parent="CanvasLayer/meny"]
 offset_top = 434.0
-offset_right = 381.0
+offset_right = 373.0
 offset_bottom = 520.0
 focus_mode = 0
 theme_override_constants/outline_size = 5
@@ -177,7 +177,7 @@ theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxFlat_ngnjq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ngnjq")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ngnjq")
-text = "AVSLUTA"
+text = "EXIT"
 
 [node name="titel" type="Label" parent="CanvasLayer"]
 offset_right = 976.0

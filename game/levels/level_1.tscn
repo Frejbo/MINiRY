@@ -15,18 +15,18 @@
 [ext_resource type="FontFile" uid="uid://d3atht6ersxhp" path="res://Orbitron-VariableFont_wght.ttf" id="14_7ke00"]
 [ext_resource type="Texture2D" uid="uid://014mqqd162qd" path="res://ui/Kort pil.png" id="15_xyerb"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ek582"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3syrx"]
 sky_energy_multiplier = 10.0
 
 [sub_resource type="Sky" id="Sky_pjlgc"]
-sky_material = SubResource("ProceduralSkyMaterial_ek582")
+sky_material = SubResource("ProceduralSkyMaterial_3syrx")
 
-[sub_resource type="Environment" id="Environment_wkmkg"]
+[sub_resource type="Environment" id="Environment_wugwi"]
 background_mode = 2
 sky = SubResource("Sky_pjlgc")
 
 [sub_resource type="World3D" id="World3D_f44ry"]
-environment = SubResource("Environment_wkmkg")
+environment = SubResource("Environment_wugwi")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmffr"]
 bg_color = Color(0, 0, 0, 1)
@@ -75,12 +75,12 @@ transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
 
+[node name="Camera3D" type="Camera3D" parent="conveyor"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 2, 3, 2)
+fov = 50.0
+
 [node name="conveyorbelt" parent="conveyor" instance=ExtResource("2_5iuc5")]
 transform = Transform3D(1, 1.19209e-07, -1.49012e-07, -1.19209e-07, 1, -1.19209e-07, -1.49012e-07, 1.19209e-07, 1, -4.76837e-07, 9.53674e-07, -4.76837e-07)
-
-[node name="Camera3D" type="Camera3D" parent="conveyor/conveyorbelt"]
-transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707106, 0.707106, -0.707107, -0.5, 0.5, 2, 3, 2)
-fov = 50.0
 
 [node name="smelter" type="SubViewport" parent="."]
 own_world_3d = true
@@ -89,11 +89,14 @@ transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
 
+[node name="Camera3D" type="Camera3D" parent="smelter"]
+transform = Transform3D(0.707107, -0.32102, 0.630037, 0, 0.891006, 0.453991, -0.707107, -0.32102, 0.630037, 3, 3, 3)
+fov = 50.0
+
 [node name="smelter" parent="smelter" instance=ExtResource("3_uw8ns")]
 
-[node name="Camera3D" type="Camera3D" parent="smelter/smelter"]
-transform = Transform3D(0.707107, -0.32102, 0.630037, 0, 0.891006, 0.45399, -0.707107, -0.32102, 0.630037, 3, 3, 3)
-fov = 50.0
+[node name="GpuParticles3d" parent="smelter/smelter" index="0"]
+emitting = false
 
 [node name="constructor" type="SubViewport" parent="."]
 own_world_3d = true
@@ -102,11 +105,11 @@ transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
 
-[node name="constructor" parent="constructor" instance=ExtResource("4_sw34h")]
-
-[node name="Camera3D" type="Camera3D" parent="constructor/constructor"]
-transform = Transform3D(0.707107, -0.32102, 0.630037, 0, 0.891007, 0.45399, -0.707107, -0.32102, 0.630037, 3, 3, 3)
+[node name="Camera3D" type="Camera3D" parent="constructor"]
+transform = Transform3D(0.707107, -0.32102, 0.630037, 0, 0.891006, 0.453991, -0.707107, -0.32102, 0.630037, 3, 3, 3)
 fov = 50.0
+
+[node name="constructor" parent="constructor" instance=ExtResource("4_sw34h")]
 
 [node name="Assembler" type="SubViewport" parent="."]
 own_world_3d = true
@@ -115,11 +118,11 @@ transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
 
-[node name="Assembler2" parent="Assembler" instance=ExtResource("5_x1bll")]
-
-[node name="Camera3D" type="Camera3D" parent="Assembler/Assembler2"]
-transform = Transform3D(-0.707107, 0.343891, -0.61785, 0, 0.873773, 0.486335, 0.707107, 0.343891, -0.61785, -4, 4, -4)
+[node name="Camera3D" type="Camera3D" parent="Assembler"]
+transform = Transform3D(-0.707107, 0.343891, -0.61785, 0, 0.873772, 0.486335, 0.707107, 0.343891, -0.61785, -4, 4, -4)
 fov = 50.0
+
+[node name="Assembler" parent="Assembler" instance=ExtResource("5_x1bll")]
 
 [node name="Anka" type="SubViewport" parent="."]
 own_world_3d = true
@@ -510,3 +513,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_ybv6a")
 ignore_texture_size = true
+
+[editable path="smelter/smelter"]
+[editable path="smelter/smelter/smelter2"]

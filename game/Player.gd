@@ -35,6 +35,9 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED: move_and_slide()
+	
+	if global_position.y < -20: # teleports back up
+		global_position.y = 20
 
 func _ready():
 	$CanvasLayer/CenterContainer/hotbar/conveyor/Sprite2D.texture = $hotbar_renders/conveyor.get_texture()

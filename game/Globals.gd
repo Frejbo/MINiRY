@@ -62,4 +62,3 @@ func _ready():
 		return
 	var file = FileAccess.open(leveldata, FileAccess.READ)
 	level_completion = file.get_var(false)
-	print(level_completion)

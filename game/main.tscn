@@ -313,7 +313,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_445ub"]
-size = Vector3(1.47426, 1.18469, 2.39846)
+size = Vector3(1.47426, 1.18469, 3.48679)
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_fs8ov")
@@ -396,7 +396,7 @@ libraries = {
 }
 
 [node name="item_output_area" type="Area3D" parent="map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.09732, 1.61811, 13.293)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.09732, 1.61811, 12.8221)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="map/item_output_area"]
 shape = SubResource("BoxShape3D_445ub")
