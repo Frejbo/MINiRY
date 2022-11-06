@@ -25,19 +25,19 @@ var level_requirements = {
 	"0": [],
 	"1": [{"type":items.IronRod, "amount":10}, {"type":items.CopperWire, "amount":10}],
 	"2": [{"type":items.BadAnka, "amount":1}],
-	"3": [{"type":items.BadAnka, "amount":1}]
+	"3": [{"type":items.IronGear, "amount":20}, {"type":items.CopperWire, "amount":20}]
 }
 var level_time_expectations = {
 	"1": { # level 1
-		"2": 120, # sekunder för att klara 2 stjärnor
-		"3": 90 # sekunder för att klara 3 stjärnor
+		"2": 130, # sekunder för att klara 2 stjärnor
+		"3": 100 # sekunder för att klara 3 stjärnor
 	},
 	"2": {
-		"2": 45,
-		"3": 30
+		"2": 70,
+		"3": 40
 	},
 	"3": {
-		"2": 45,
-		"3": 30
+		"2": 150,
+		"3": 120
 	},
 }

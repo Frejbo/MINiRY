@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://dk4l6kutrl0yp"]
+
+[ext_resource type="Script" path="res://ui/time_left.gd" id="1_m3hep"]
+[ext_resource type="Texture2D" uid="uid://c0octno42moqc" path="res://ui/Star.png" id="1_mew68"]
+[ext_resource type="Texture2D" uid="uid://d32nr01ipqlbs" path="res://ui/Anka.png" id="2_3nfv2"]
+[ext_resource type="FontFile" uid="uid://d3atht6ersxhp" path="res://Orbitron-VariableFont_wght.ttf" id="3_l1wab"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_67ujf"]
+load_path = "res://.godot/imported/Star.png-fe193f16e268cc5baacdd3409245fe77.ctex"
+
+[node name="time_left" type="SubViewport"]
+transparent_bg = true
+size = Vector2i(200, 175)
+render_target_update_mode = 4
+script = ExtResource("1_m3hep")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+custom_minimum_size = Vector2(200, 175)
+offset_right = 200.0
+offset_bottom = 175.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+metadata/_edit_group_ = true
+
+[node name="Starlink" type="Control" parent="AspectRatioContainer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 12.5
+offset_right = 187.5
+size_flags_vertical = 0
+
+[node name="Star" type="TextureRect" parent="AspectRatioContainer/Starlink"]
+offset_right = 69.0
+offset_bottom = 69.0
+texture = ExtResource("1_mew68")
+ignore_texture_size = true
+
+[node name="Star2" type="TextureRect" parent="AspectRatioContainer/Starlink"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -69.0
+offset_bottom = 69.0
+grow_horizontal = 0
+texture = SubResource("CompressedTexture2D_67ujf")
+ignore_texture_size = true
+
+[node name="Anka" type="TextureRect" parent="AspectRatioContainer"]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 49.5
+offset_right = 149.5
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_3nfv2")
+ignore_texture_size = true
+
+[node name="Label" type="Label" parent="AspectRatioContainer"]
+offset_left = 13.5
+offset_top = 91.0
+offset_right = 186.5
+offset_bottom = 175.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/font = ExtResource("3_l1wab")
+theme_override_font_sizes/font_size = 64
+text = "88.8"
+horizontal_alignment = 1

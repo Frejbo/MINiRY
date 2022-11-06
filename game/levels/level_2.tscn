@@ -209,7 +209,6 @@ fov = 40.0
 
 [node name="level" type="SubViewport" parent="."]
 size = Vector2i(1920, 1080)
-render_target_update_mode = 1
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="level"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -259,7 +258,7 @@ offset_bottom = 556.0
 theme_override_constants/separation = 300
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/craft_this"]
+[node name="7" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/craft_this"]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 offset_left = 760.0
@@ -270,7 +269,7 @@ size_flags_vertical = 4
 texture = SubResource("ViewportTexture_3wwvn")
 ignore_texture_size = true
 
-[node name="Label" type="Label" parent="level/AspectRatioContainer/VBoxContainer/craft_this/TextureRect"]
+[node name="Label" type="Label" parent="level/AspectRatioContainer/VBoxContainer/craft_this/7"]
 self_modulate = Color(1, 1, 1, 0.784314)
 layout_mode = 1
 anchors_preset = 15

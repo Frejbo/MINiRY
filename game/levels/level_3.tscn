@@ -1,0 +1,536 @@
+[gd_scene load_steps=33 format=3 uid="uid://bk3nh6c37b2rh"]
+
+[ext_resource type="PackedScene" uid="uid://dqaeyvbfcfp2e" path="res://conveyor/conveyorbelt.tscn" id="1_a6qj3"]
+[ext_resource type="PackedScene" uid="uid://4gd2tan1vsly" path="res://smelter/smelter.tscn" id="2_1js8y"]
+[ext_resource type="PackedScene" uid="uid://mu5ibf2ct5yf" path="res://constructor/constructor.tscn" id="3_8hm7n"]
+[ext_resource type="PackedScene" uid="uid://s7bg72vhuf1h" path="res://assembler/assembler.tscn" id="4_rsq1b"]
+[ext_resource type="World3D" uid="uid://5tfm6phu8q4y" path="res://Placeholder_environment.tres" id="5_o0mhq"]
+[ext_resource type="PackedScene" uid="uid://dlvuwkgoswvrj" path="res://items/BadAnka.gltf" id="6_6rta5"]
+[ext_resource type="PackedScene" uid="uid://b8wvd81shy2av" path="res://items/CopperOre.gltf" id="7_p3fmv"]
+[ext_resource type="PackedScene" uid="uid://dcj34mbffdb1a" path="res://items/IronOre.gltf" id="8_4gvhw"]
+[ext_resource type="PackedScene" uid="uid://bvbbtv283ojro" path="res://items/CopperIngot.gltf" id="9_yyko7"]
+[ext_resource type="PackedScene" uid="uid://4bd78tx4s7jk" path="res://items/IronIngot.gltf" id="10_rujs5"]
+[ext_resource type="PackedScene" uid="uid://bsa3achnnchec" path="res://items/IronRod.gltf" id="11_cf2ig"]
+[ext_resource type="PackedScene" uid="uid://jetplmx1gpb4" path="res://items/CopperWire.gltf" id="12_3del2"]
+[ext_resource type="FontFile" uid="uid://d3atht6ersxhp" path="res://Orbitron-VariableFont_wght.ttf" id="13_1bilp"]
+[ext_resource type="PackedScene" uid="uid://dpjcisg40fw1s" path="res://items/IronGear.gltf" id="13_vmfmg"]
+[ext_resource type="Texture2D" uid="uid://014mqqd162qd" path="res://ui/Kort pil.png" id="14_afbl2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vuv6b"]
+sky_energy_multiplier = 10.0
+
+[sub_resource type="Sky" id="Sky_jfb5c"]
+sky_material = SubResource("ProceduralSkyMaterial_vuv6b")
+
+[sub_resource type="Environment" id="Environment_b7fu4"]
+background_mode = 2
+sky = SubResource("Sky_jfb5c")
+
+[sub_resource type="World3D" id="World3D_pe1h1"]
+environment = SubResource("Environment_b7fu4")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_isihy"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.760784, 0.54902, 0.32549, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3wwvn"]
+viewport_path = NodePath("CopperWire")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ol28r"]
+viewport_path = NodePath("IronGear")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hqckk"]
+viewport_path = NodePath("CopperOre")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_srd01"]
+viewport_path = NodePath("smelter")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wjpq1"]
+viewport_path = NodePath("CopperIngot")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ivds1"]
+viewport_path = NodePath("constructor")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_svfhx"]
+viewport_path = NodePath("CopperWire")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hy1a2"]
+viewport_path = NodePath("IronOre")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_46w0c"]
+viewport_path = NodePath("smelter")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_o7biq"]
+viewport_path = NodePath("IronIngot")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_m42mt"]
+viewport_path = NodePath("constructor")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_o3upl"]
+viewport_path = NodePath("IronGear")
+
+[node name="level3" type="Node3D"]
+
+[node name="conveyor" type="SubViewport" parent="."]
+own_world_3d = true
+world_3d = SubResource("World3D_pe1h1")
+transparent_bg = true
+size = Vector2i(511, 511)
+render_target_update_mode = 1
+
+[node name="conveyorbelt" parent="conveyor" instance=ExtResource("1_a6qj3")]
+transform = Transform3D(1, 1.19209e-07, -1.49012e-07, -1.19209e-07, 1, -1.19209e-07, -1.49012e-07, 1.19209e-07, 1, -4.76837e-07, 9.53674e-07, -4.76837e-07)
+
+[node name="Camera3D" type="Camera3D" parent="conveyor/conveyorbelt"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707106, 0.707106, -0.707107, -0.5, 0.5, 2, 3, 2)
+fov = 50.0
+
+[node name="smelter" type="SubViewport" parent="."]
+own_world_3d = true
+world_3d = SubResource("World3D_pe1h1")
+transparent_bg = true
+size = Vector2i(511, 511)
+render_target_update_mode = 1
+
+[node name="smelter" parent="smelter" instance=ExtResource("2_1js8y")]
+
+[node name="Camera3D" type="Camera3D" parent="smelter/smelter"]
+transform = Transform3D(0.707107, -0.32102, 0.630037, 0, 0.891006, 0.45399, -0.707107, -0.32102, 0.630037, 3, 3, 3)
+fov = 50.0
+
+[node name="constructor" type="SubViewport" parent="."]
+own_world_3d = true
+world_3d = SubResource("World3D_pe1h1")
+transparent_bg = true
+size = Vector2i(511, 511)
+render_target_update_mode = 1
+
+[node name="constructor" parent="constructor" instance=ExtResource("3_8hm7n")]
+
+[node name="Camera3D" type="Camera3D" parent="constructor/constructor"]
+transform = Transform3D(0.707107, -0.32102, 0.630037, 0, 0.891007, 0.45399, -0.707107, -0.32102, 0.630037, 3, 3, 3)
+fov = 50.0
+
+[node name="Assembler" type="SubViewport" parent="."]
+own_world_3d = true
+world_3d = SubResource("World3D_pe1h1")
+transparent_bg = true
+size = Vector2i(511, 511)
+render_target_update_mode = 1
+
+[node name="Assembler2" parent="Assembler" instance=ExtResource("4_rsq1b")]
+
+[node name="Camera3D" type="Camera3D" parent="Assembler/Assembler2"]
+transform = Transform3D(-0.707107, 0.343891, -0.61785, 0, 0.873773, 0.486335, 0.707107, 0.343891, -0.61785, -4, 4, -4)
+fov = 50.0
+
+[node name="Anka" type="SubViewport" parent="."]
+own_world_3d = true
+world_3d = ExtResource("5_o0mhq")
+transparent_bg = true
+size = Vector2i(511, 511)
+render_target_update_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="Anka"]
+transform = Transform3D(0.707107, -0.298836, 0.640857, 0, 0.906308, 0.422618, -0.707107, -0.298836, 0.640857, 1, 1, 1)
+fov = 50.0
+
+[node name="BadAnka" parent="Anka" instance=ExtResource("6_6rta5")]
+transform = Transform3D(-0.993684, 0, -0.112215, 0, 1, 0, 0.112215, 0, -0.993684, 0, 0, -0.126)
+
+[node name="CopperOre" type="SubViewport" parent="."]
+own_world_3d = true
+world_3d = ExtResource("5_o0mhq")
+transparent_bg = true
+size = Vector2i(511, 511)
+render_target_update_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="CopperOre"]
+transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 1, 1, 1)
+fov = 40.0
+
+[node name="CopperOre" parent="CopperOre" instance=ExtResource("7_p3fmv")]
+
+[node name="IronOre" type="SubViewport" parent="."]
+own_world_3d = true
+world_3d = ExtResource("5_o0mhq")
+transparent_bg = true
+size = Vector2i(511, 511)
+render_target_update_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="IronOre"]
+transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 1, 1, 1)
+fov = 40.0
+
+[node name="IronOre" parent="IronOre" instance=ExtResource("8_4gvhw")]
+
+[node name="CopperIngot" type="SubViewport" parent="."]
+own_world_3d = true
+world_3d = ExtResource("5_o0mhq")
+transparent_bg = true
+size = Vector2i(511, 511)
+render_target_update_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="CopperIngot"]
+transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 1, 1, 1)
+fov = 40.0
+
+[node name="CopperIngot" parent="CopperIngot" instance=ExtResource("9_yyko7")]
+
+[node name="IronIngot" type="SubViewport" parent="."]
+own_world_3d = true
+world_3d = ExtResource("5_o0mhq")
+transparent_bg = true
+size = Vector2i(511, 511)
+render_target_update_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="IronIngot"]
+transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 1, 1, 1)
+fov = 40.0
+
+[node name="IronIngot" parent="IronIngot" instance=ExtResource("10_rujs5")]
+
+[node name="IronRod" type="SubViewport" parent="."]
+own_world_3d = true
+world_3d = ExtResource("5_o0mhq")
+transparent_bg = true
+size = Vector2i(511, 511)
+render_target_update_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="IronRod"]
+transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 1, 1, 1)
+fov = 40.0
+
+[node name="IronRod" parent="IronRod" instance=ExtResource("11_cf2ig")]
+
+[node name="CopperWire" type="SubViewport" parent="."]
+own_world_3d = true
+world_3d = ExtResource("5_o0mhq")
+transparent_bg = true
+size = Vector2i(511, 511)
+render_target_update_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="CopperWire"]
+transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 1, 1, 1)
+fov = 40.0
+
+[node name="CopperWire" parent="CopperWire" instance=ExtResource("12_3del2")]
+
+[node name="IronGear" type="SubViewport" parent="."]
+own_world_3d = true
+world_3d = ExtResource("5_o0mhq")
+transparent_bg = true
+size = Vector2i(511, 511)
+render_target_update_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="IronGear"]
+transform = Transform3D(0.707107, -0.40558, 0.579228, 0, 0.819152, 0.573576, -0.707107, -0.40558, 0.579228, 1, 1, 1)
+fov = 40.0
+
+[node name="IronGear" parent="IronGear" instance=ExtResource("13_vmfmg")]
+
+[node name="level" type="SubViewport" parent="."]
+size = Vector2i(1920, 1080)
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="level"]
+custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="level/AspectRatioContainer"]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_isihy")
+
+[node name="Label" type="Label" parent="level/AspectRatioContainer"]
+offset_left = 216.0
+offset_right = 1704.0
+offset_bottom = 162.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/outline_size = 10
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("13_1bilp")
+theme_override_font_sizes/font_size = 64
+text = "
+PLEASE  CONSTRUCT  THE  FOLLOWING:"
+vertical_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="level/AspectRatioContainer"]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -80
+alignment = 2
+
+[node name="craft_this" type="HBoxContainer" parent="level/AspectRatioContainer/VBoxContainer"]
+offset_top = 80.0
+offset_right = 1920.0
+offset_bottom = 580.0
+theme_override_constants/separation = 300
+alignment = 1
+
+[node name="6" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/craft_this"]
+custom_minimum_size = Vector2(400, 400)
+offset_left = 360.0
+offset_top = 50.0
+offset_right = 760.0
+offset_bottom = 450.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("ViewportTexture_3wwvn")
+ignore_texture_size = true
+
+[node name="Label" type="Label" parent="level/AspectRatioContainer/VBoxContainer/craft_this/6"]
+self_modulate = Color(1, 1, 1, 0.784314)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 40
+theme_override_fonts/font = ExtResource("13_1bilp")
+theme_override_font_sizes/font_size = 128
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="2" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/craft_this"]
+custom_minimum_size = Vector2(500, 500)
+offset_left = 1060.0
+offset_right = 1560.0
+offset_bottom = 500.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("ViewportTexture_ol28r")
+ignore_texture_size = true
+
+[node name="Label" type="Label" parent="level/AspectRatioContainer/VBoxContainer/craft_this/2"]
+self_modulate = Color(1, 1, 1, 0.784314)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 40
+theme_override_fonts/font = ExtResource("13_1bilp")
+theme_override_font_sizes/font_size = 128
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="productionline" type="HBoxContainer" parent="level/AspectRatioContainer/VBoxContainer"]
+offset_top = 500.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="level/AspectRatioContainer/VBoxContainer/productionline"]
+offset_left = 63.0
+offset_right = 1857.0
+offset_bottom = 580.0
+size_flags_horizontal = 4
+theme_override_constants/separation = -50
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer"]
+offset_left = 15.0
+offset_right = 1779.0
+offset_bottom = 300.0
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+offset_right = 300.0
+offset_bottom = 300.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("ViewportTexture_hqckk")
+ignore_texture_size = true
+
+[node name="TextureRect3" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer"]
+offset_left = 304.0
+offset_top = 86.0
+offset_right = 484.0
+offset_bottom = 214.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_afbl2")
+
+[node name="TextureRect4" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+offset_left = 488.0
+offset_right = 788.0
+offset_bottom = 300.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("ViewportTexture_srd01")
+ignore_texture_size = true
+
+[node name="TextureRect5" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer"]
+offset_left = 792.0
+offset_top = 86.0
+offset_right = 972.0
+offset_bottom = 214.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_afbl2")
+
+[node name="TextureRect2" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer/TextureRect5"]
+custom_minimum_size = Vector2(150, 150)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("ViewportTexture_wjpq1")
+ignore_texture_size = true
+
+[node name="TextureRect6" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+offset_left = 976.0
+offset_right = 1276.0
+offset_bottom = 300.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("ViewportTexture_ivds1")
+ignore_texture_size = true
+
+[node name="TextureRect7" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer"]
+offset_left = 1280.0
+offset_top = 86.0
+offset_right = 1460.0
+offset_bottom = 214.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_afbl2")
+
+[node name="TextureRect8" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+offset_left = 1464.0
+offset_right = 1764.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("ViewportTexture_svfhx")
+ignore_texture_size = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer"]
+offset_top = 250.0
+offset_right = 1794.0
+offset_bottom = 580.0
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 300)
+offset_top = 15.0
+offset_right = 300.0
+offset_bottom = 315.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("ViewportTexture_hy1a2")
+ignore_texture_size = true
+
+[node name="TextureRect3" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer2"]
+offset_left = 304.0
+offset_top = 101.0
+offset_right = 484.0
+offset_bottom = 229.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_afbl2")
+
+[node name="TextureRect4" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 300)
+offset_left = 488.0
+offset_top = 15.0
+offset_right = 788.0
+offset_bottom = 315.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("ViewportTexture_46w0c")
+ignore_texture_size = true
+
+[node name="TextureRect5" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer2"]
+offset_left = 792.0
+offset_top = 101.0
+offset_right = 972.0
+offset_bottom = 229.0
+size_flags_vertical = 4
+texture = ExtResource("14_afbl2")
+
+[node name="TextureRect2" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer2/TextureRect5"]
+custom_minimum_size = Vector2(150, 150)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("ViewportTexture_o7biq")
+ignore_texture_size = true
+
+[node name="TextureRect6" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 300)
+offset_left = 976.0
+offset_top = 15.0
+offset_right = 1276.0
+offset_bottom = 315.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("ViewportTexture_m42mt")
+ignore_texture_size = true
+
+[node name="TextureRect7" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer2"]
+offset_left = 1280.0
+offset_top = 101.0
+offset_right = 1460.0
+offset_bottom = 229.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_afbl2")
+
+[node name="TextureRect2" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(330, 330)
+offset_left = 1464.0
+offset_right = 1794.0
+offset_bottom = 330.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("ViewportTexture_o3upl")
+ignore_texture_size = true
