@@ -41,3 +41,25 @@ var level_time_expectations = {
 		"3": 120
 	},
 }
+
+
+# spara i filer
+func _notification(what):
+	if what != NOTIFICATION_EXIT_TREE: return
+	save_game()
+
+func save_game():
+	var leveldata = "user://MINiRY.save"
+	var file = FileAccess.open(leveldata, FileAccess.WRITE)
+	file.store_var(level_completion, false)
+
+
+func _ready():
+	var leveldata = "user://MINiRY.save"
+
+	# load data
+	if not FileAccess.file_exists("user://MINiRY.save"):
+		return
+	var file = FileAccess.open(leveldata, FileAccess.READ)
+	level_completion = file.get_var(false)
+	print(level_completion)

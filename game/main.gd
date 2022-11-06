@@ -52,7 +52,7 @@ func input_material(item : Globals.items):
 		Globals.level_completion[Globals.current_level] = 2
 	else:
 		Globals.level_completion[Globals.current_level] = 1
-	
+	Globals.save_game()
 	get_tree().change_scene_to_packed(load("res://main_menu.tscn"))
 
 # [{"type":items.IronRod, "amount":10}, {"type":items.CopperWire, "amount":10}]
