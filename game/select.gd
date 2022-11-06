@@ -5,6 +5,7 @@ extends RayCast3D
 #@onready var gridMap = get_node("/root/main/GridMap")
 
 var held_item_rotation = 0
+var can_place = false
 
 var ITEMS = {
 	"None": null,
@@ -60,6 +61,7 @@ func _input(event):
 			if "Arrow" in get_collider().name:
 				get_collider().get_parent().get_parent().click_arrow(get_collider())
 		else:
+			if not can_place: return
 			if not is_colliding(): return
 			if held_item_name == null: return
 			var object = load(held_item_name.replace("blueprint_", "")).instantiate()
@@ -100,8 +102,10 @@ func _process(_delta):
 			print(held_item.get_child(0).get_node("CollideCheck"))
 			if held_item.get_child(0).get_node("CollideCheck").has_overlapping_areas():
 				load("res://blueprint.tres").albedo_color = Color(210.0/255.0, 0.0/255.0, 90.0/255.0, 150.0/255.0) # red
+				can_place = false
 			else:
 				load("res://blueprint.tres").albedo_color = Color(60.0/255.0, 90.0/255.0, 255.0/255.0, 150.0/255.0) # blue
+				can_place = true
 	held_item.show()
 	held_item.global_position = get_collision_point()
 	held_item.global_rotation.z = 0

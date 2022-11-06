@@ -12,7 +12,6 @@ func _ready():
 #	$map/Screen/SubViewport/AspectRatioContainer/TextureRect.texture = $Anka.get_texture()
 	screen = load("res://levels/level_" + Globals.current_level + ".tscn").instantiate()
 	add_child(screen)
-	print(screen)
 	$map/Screen/Sprite3D.texture = screen.get_node("level").get_texture()
 	if Globals.current_level != "0": $map/Screen/time_left.texture = $time_left.get_texture()
 
