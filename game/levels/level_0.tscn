@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1g54w5wwiru4"]
+
+[ext_resource type="FontFile" uid="uid://d3atht6ersxhp" path="res://Orbitron-VariableFont_wght.ttf" id="1_xhejw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arjvm"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.760784, 0.54902, 0.32549, 1)
+
+[node name="level0" type="Node3D"]
+
+[node name="level" type="SubViewport" parent="."]
+disable_3d = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="level"]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Panel" type="Panel" parent="level/AspectRatioContainer"]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_arjvm")
+
+[node name="Label" type="Label" parent="level/AspectRatioContainer"]
+offset_left = 438.0
+offset_top = 414.0
+offset_right = 1481.0
+offset_bottom = 666.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_xhejw")
+theme_override_font_sizes/font_size = 64
+text = "SANDBOX
+
+DO  WHATEVER  YOU  WANT"
+horizontal_alignment = 1

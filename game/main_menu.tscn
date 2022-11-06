@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmxqsckbb6ww3"]
+[gd_scene load_steps=20 format=3 uid="uid://bmxqsckbb6ww3"]
 
 [ext_resource type="Texture2D" uid="uid://bjfvlpvox2l1f" path="res://floortexture.png" id="1_jvl57"]
 [ext_resource type="Script" path="res://main_menu.gd" id="1_r0gqw"]
@@ -43,6 +43,25 @@ corner_radius_bottom_left = 100
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mp3ea"]
 bg_color = Color(0.447059, 0.447059, 0.447059, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_28or1"]
+load_path = "res://.godot/imported/Star.png-fe193f16e268cc5baacdd3409245fe77.ctex"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k0qxd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhngj"]
+bg_color = Color(0, 0, 0, 0.196078)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56m7u"]
+bg_color = Color(0, 0, 0, 0.392157)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
@@ -122,6 +141,7 @@ theme_override_constants/separation = 80
 alignment = 1
 
 [node name="levels" type="Button" parent="CanvasLayer/meny"]
+layout_mode = 2
 offset_top = 102.0
 offset_right = 381.0
 offset_bottom = 188.0
@@ -135,6 +155,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ngnjq")
 text = "LEVELS"
 
 [node name="sandbox" type="Button" parent="CanvasLayer/meny"]
+layout_mode = 2
 offset_top = 268.0
 offset_right = 381.0
 offset_bottom = 354.0
@@ -148,6 +169,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ngnjq")
 text = "SANDBOX"
 
 [node name="avsluta" type="Button" parent="CanvasLayer/meny"]
+layout_mode = 2
 offset_top = 434.0
 offset_right = 381.0
 offset_bottom = 520.0
@@ -185,6 +207,7 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer/levels"]
 custom_minimum_size = Vector2(800, 300)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -199,6 +222,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ljnyr")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/levels"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -214,6 +238,7 @@ theme_override_constants/separation = 50
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/levels/VBoxContainer"]
+layout_mode = 2
 offset_right = 700.0
 offset_bottom = 200.0
 theme_override_constants/separation = 50
@@ -221,18 +246,20 @@ alignment = 1
 
 [node name="level1" type="Control" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 200)
-layout_mode = 3
+layout_mode = 2
 anchors_preset = 0
 offset_right = 200.0
 offset_bottom = 200.0
 
 [node name="Panel" type="Panel" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1"]
 custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_mp3ea")
 
 [node name="Label" type="Label" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -247,13 +274,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Starlink" type="Control" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1"]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 0
 offset_left = 250.0
 offset_right = 250.0
 offset_bottom = 200.0
 
 [node name="Star" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1/Starlink"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -268,6 +296,7 @@ texture = ExtResource("8_2uw6v")
 ignore_texture_size = true
 
 [node name="Star2" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1/Starlink"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -278,11 +307,12 @@ offset_top = -69.0
 offset_right = -48.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("8_2uw6v")
+texture = SubResource("CompressedTexture2D_28or1")
 ignore_texture_size = true
 
 [node name="Anka" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1"]
 custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -293,9 +323,19 @@ grow_vertical = 0
 texture = ExtResource("8_j2x3h")
 ignore_texture_size = true
 
+[node name="Button" type="Button" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k0qxd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bhngj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_56m7u")
+
 [node name="level2" type="Control" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 200)
-layout_mode = 3
+layout_mode = 2
 anchors_preset = 0
 offset_left = 250.0
 offset_right = 450.0
@@ -303,11 +343,13 @@ offset_bottom = 200.0
 
 [node name="Panel" type="Panel" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2"]
 custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_mp3ea")
 
 [node name="Label" type="Label" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -322,13 +364,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Starlink" type="Control" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2"]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 0
 offset_left = 250.0
 offset_right = 250.0
 offset_bottom = 200.0
 
 [node name="Star" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2/Starlink"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -343,6 +386,7 @@ texture = ExtResource("8_2uw6v")
 ignore_texture_size = true
 
 [node name="Star2" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2/Starlink"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -358,6 +402,7 @@ ignore_texture_size = true
 
 [node name="Anka" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2"]
 custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -368,9 +413,19 @@ grow_vertical = 0
 texture = ExtResource("8_j2x3h")
 ignore_texture_size = true
 
+[node name="Button" type="Button" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k0qxd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bhngj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_56m7u")
+
 [node name="level3" type="Control" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 200)
-layout_mode = 3
+layout_mode = 2
 anchors_preset = 0
 offset_left = 500.0
 offset_right = 700.0
@@ -378,11 +433,13 @@ offset_bottom = 200.0
 
 [node name="Panel" type="Panel" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3"]
 custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_mp3ea")
 
 [node name="Label" type="Label" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -397,13 +454,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Starlink" type="Control" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3"]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 0
 offset_left = 250.0
 offset_right = 250.0
 offset_bottom = 200.0
 
 [node name="Star" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3/Starlink"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -418,6 +476,7 @@ texture = ExtResource("8_2uw6v")
 ignore_texture_size = true
 
 [node name="Star2" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3/Starlink"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -433,6 +492,7 @@ ignore_texture_size = true
 
 [node name="Anka" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3"]
 custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -443,6 +503,16 @@ grow_vertical = 0
 texture = ExtResource("8_j2x3h")
 ignore_texture_size = true
 
+[node name="Button" type="Button" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k0qxd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bhngj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_56m7u")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.80799, 0.280236, -0.518286, 0, 0.879649, 0.475624, 0.589196, -0.3843, 0.710747, -9.746, 3.529, 3.772)
 
@@ -451,3 +521,6 @@ transform = Transform3D(0.80799, 0.280236, -0.518286, 0, 0.879649, 0.475624, 0.5
 [connection signal="pressed" from="CanvasLayer/meny/levels" to="." method="_on_levels_pressed"]
 [connection signal="pressed" from="CanvasLayer/meny/sandbox" to="." method="_on_sandbox_pressed"]
 [connection signal="pressed" from="CanvasLayer/meny/avsluta" to="." method="_on_avsluta_pressed"]
+[connection signal="pressed" from="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1/Button" to="." method="_on_level_button_pressed" binds= ["1"]]
+[connection signal="pressed" from="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2/Button" to="." method="_on_level_button_pressed" binds= ["2"]]
+[connection signal="pressed" from="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3/Button" to="." method="_on_level_button_pressed" binds= ["3"]]
