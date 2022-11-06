@@ -271,6 +271,23 @@ size_flags_vertical = 4
 texture = SubResource("ViewportTexture_t30y6")
 ignore_texture_size = true
 
+[node name="Label" type="Label" parent="level/AspectRatioContainer/VBoxContainer/craft_this/TextureRect"]
+self_modulate = Color(1, 1, 1, 0.784314)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 40
+theme_override_fonts/font = ExtResource("14_7ke00")
+theme_override_font_sizes/font_size = 128
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TextureRect2" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/craft_this"]
 custom_minimum_size = Vector2(400, 400)
 offset_left = 1110.0
@@ -280,6 +297,23 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_wnpw7")
 ignore_texture_size = true
+
+[node name="Label" type="Label" parent="level/AspectRatioContainer/VBoxContainer/craft_this/TextureRect2"]
+self_modulate = Color(1, 1, 1, 0.784314)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 40
+theme_override_fonts/font = ExtResource("14_7ke00")
+theme_override_font_sizes/font_size = 128
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="productionline" type="HBoxContainer" parent="level/AspectRatioContainer/VBoxContainer"]
 offset_top = 530.0

@@ -28,7 +28,6 @@ func _physics_process(_delta):
 			body.global_transform.origin += forward.rotated(Vector3.UP, deg_to_rad(belt.get_meta("rotation"))) *.01
 
 
-
 func _on_item_spawn_timer_timeout():
 	if $IronSpak.power_on: spawn_item($belt/input0.global_position, Globals.items.IronOre)
 	if $CopperSpak.power_on: spawn_item($belt002/input1.global_position, Globals.items.CopperOre)
@@ -51,6 +50,8 @@ func spawn_item(place_position : Vector3, desired_item : Globals.items):
 
 
 func _on_item_output_area_body_entered(body):
+	if not body.is_in_group("item"): return
 	$Lucka/AnimationPlayer.play("Lucka")
 	await get_tree().create_timer(1).timeout
-	if body.is_in_group("item"): body.queue_free()
+	get_parent().input_material(body.item)
+	body.queue_free()
