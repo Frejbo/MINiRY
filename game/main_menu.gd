@@ -8,15 +8,15 @@ func _ready():
 func _on_spawn_items_timer_timeout():
 	var item = load("res://item.tscn").instantiate()
 	item.item = Globals.items.IronOre
-	item.global_position = $machine/spawn_items.global_position
 	$machine.add_child(item)
+	item.global_position = $machine/spawn_items.global_position
 
 
 func _on_remove_items_body_entered(body):
 	if body.is_in_group("item"):
 		body.queue_free()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var belt_uv = $machine/conveyorbelt/conveyorbelt/belt.get_active_material(2).uv1_offset
 	belt_uv.y += 0.0065
 	if belt_uv.y >= 1:
