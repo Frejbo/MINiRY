@@ -44,14 +44,12 @@ script = ExtResource("1_p5j2b")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(400, 400)
-layout_mode = 2
 offset_left = 100.0
 offset_right = 500.0
 offset_bottom = 400.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_bxspu")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
 offset_left = 100.0
 offset_right = 500.0
 offset_bottom = 400.0
@@ -59,7 +57,6 @@ alignment = 1
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(200, 175)
-layout_mode = 2
 offset_left = 100.0
 offset_top = 80.0
 offset_right = 300.0
@@ -69,21 +66,19 @@ size_flags_vertical = 0
 metadata/_edit_group_ = true
 
 [node name="Starlink" type="Control" parent="VBoxContainer/AspectRatioContainer"]
-layout_mode = 2
+layout_mode = 3
 anchors_preset = 0
 offset_left = 12.5
 offset_right = 187.5
 size_flags_vertical = 0
 
 [node name="Star" type="TextureRect" parent="VBoxContainer/AspectRatioContainer/Starlink"]
-layout_mode = 1
 offset_right = 69.0
 offset_bottom = 69.0
 texture = ExtResource("2_1whja")
 ignore_texture_size = true
 
 [node name="Star2" type="TextureRect" parent="VBoxContainer/AspectRatioContainer/Starlink"]
-layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -95,7 +90,6 @@ ignore_texture_size = true
 
 [node name="Anka" type="TextureRect" parent="VBoxContainer/AspectRatioContainer"]
 custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
 offset_left = 49.5
 offset_right = 149.5
 offset_bottom = 100.0
@@ -108,7 +102,6 @@ ignore_texture_size = true
 
 [node name="avsluta" type="Button" parent="VBoxContainer"]
 process_mode = 3
-layout_mode = 2
 offset_left = 139.0
 offset_top = 259.0
 offset_right = 261.0

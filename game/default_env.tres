@@ -17,4 +17,7 @@ ssao_enabled = true
 ssao_intensity = 7.0
 ssil_enabled = true
 sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_bounce_feedback = 0.8
+sdfgi_min_cell_size = 0.976563
 sdfgi_energy = 2.0
