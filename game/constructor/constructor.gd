@@ -1,13 +1,14 @@
 extends Node3D
 
 var anim = $AnimationPlayer
-var can_produce = [Globals.items.IronGear, Globals.items.IronRod, Globals.items.CopperWire]
+var can_produce = [Globals.items.IronGear, Globals.items.IronRod, Globals.items.CopperWire, Globals.items.BadAnkaFrame]
 var producing = Globals.items.IronGear
 
 var made_of = {
 	Globals.items.IronGear: Globals.items.IronIngot,
 	Globals.items.IronRod: Globals.items.IronIngot,
-	Globals.items.CopperWire: Globals.items.CopperIngot
+	Globals.items.CopperWire: Globals.items.CopperIngot,
+	Globals.items.BadAnkaFrame: Globals.items.IronIngot
 }
 
 

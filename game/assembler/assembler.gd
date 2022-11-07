@@ -5,7 +5,7 @@ var processing = false
 func _physics_process(_delta):
 	if processing: return
 	
-	var required_materials = [Globals.items.IronIngot, Globals.items.CopperIngot]
+	var required_materials = [Globals.items.BadAnkaFrame, Globals.items.CopperIngot]
 	var taken_materials = []
 	
 	

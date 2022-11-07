@@ -45,8 +45,8 @@ func _on_item_spawn_timer_timeout():
 func spawn_item(place_position : Vector3, desired_item : Globals.items):
 	var item = preload("res://item.tscn").instantiate()
 	item.item = desired_item
-	item.global_position = place_position
 	add_child(item)
+	item.global_position = place_position
 
 
 func _on_item_output_area_body_entered(body):

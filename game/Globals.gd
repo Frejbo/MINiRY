@@ -1,7 +1,7 @@
 extends Node
 
-enum items {IronOre, IronIngot, IronGear, IronRod, CopperOre, CopperIngot, CopperWire, BadAnka}
-const amount_of_total_items = 7
+enum items {IronOre, IronIngot, IronGear, IronRod, CopperOre, CopperIngot, CopperWire, BadAnka, BadAnkaFrame}
+const amount_of_total_items = 8
 const item_paths = {
 	items.IronOre: "res://items/IronOre.gltf",
 	items.IronIngot: "res://items/IronIngot.gltf",
@@ -10,7 +10,8 @@ const item_paths = {
 	items.CopperOre: "res://items/CopperOre.gltf",
 	items.CopperIngot: "res://items/CopperIngot.gltf",
 	items.CopperWire: "res://items/CopperWire.gltf",
-	items.BadAnka: "res://items/BadAnka.gltf"
+	items.BadAnka: "res://items/BadAnka.gltf",
+	items.BadAnkaFrame: "res://items/BadAnkaFrame.gltf",
 }
 
 var current_level : String
