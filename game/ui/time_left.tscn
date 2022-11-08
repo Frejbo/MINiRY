@@ -15,7 +15,7 @@ render_target_update_mode = 4
 script = ExtResource("1_m3hep")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-custom_minimum_size = Vector2(200, 175)
+custom_minimum_size = Vector2i(200, 175)
 offset_right = 200.0
 offset_bottom = 175.0
 size_flags_horizontal = 0
@@ -46,7 +46,7 @@ texture = SubResource("CompressedTexture2D_67ujf")
 ignore_texture_size = true
 
 [node name="Anka" type="TextureRect" parent="AspectRatioContainer"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2i(100, 100)
 offset_left = 49.5
 offset_right = 149.5
 offset_bottom = 100.0

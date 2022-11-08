@@ -9,7 +9,6 @@ func _process(delta):
 
 func _ready():
 	# set screen viewports textures, buggat och ger error om gjort via editorn...
-#	$map/Screen/SubViewport/AspectRatioContainer/TextureRect.texture = $Anka.get_texture()
 	screen = load("res://levels/level_" + Globals.current_level + ".tscn").instantiate()
 	add_child(screen)
 	$map/Screen/Sprite3D.texture = screen.get_node("level").get_texture()
@@ -47,9 +46,6 @@ func input_material(item : Globals.items):
 		Globals.level_completion[Globals.current_level] = 1
 	Globals.save_game()
 	
-	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	var success_screen = load("res://ui/success_screen.tscn").instantiate()
 	$Player/CanvasLayer.add_child(success_screen)
-
-# [{"type":items.IronRod, "amount":10}, {"type":items.CopperWire, "amount":10}]
