@@ -170,7 +170,7 @@ offset_right = 372.0
 offset_bottom = 106.0
 
 [node name="conveyor" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
-custom_minimum_size = Vector2i(80, 80)
+custom_minimum_size = Vector2(80, 80)
 offset_right = 80.0
 offset_bottom = 80.0
 theme_override_styles/panel = ExtResource("3_gdl7h")
@@ -181,7 +181,7 @@ offset = Vector2(0, -30)
 region_rect = Rect2(70, 70, 70, 70)
 
 [node name="smelter" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
-custom_minimum_size = Vector2i(80, 80)
+custom_minimum_size = Vector2(80, 80)
 offset_left = 84.0
 offset_right = 164.0
 offset_bottom = 80.0
@@ -193,7 +193,7 @@ offset = Vector2(0, -30)
 region_rect = Rect2(70, 70, 70, 70)
 
 [node name="constructor" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
-custom_minimum_size = Vector2i(80, 80)
+custom_minimum_size = Vector2(80, 80)
 offset_left = 168.0
 offset_right = 248.0
 offset_bottom = 80.0
@@ -205,7 +205,7 @@ offset = Vector2(0, -30)
 region_rect = Rect2(70, 70, 70, 70)
 
 [node name="Assembler" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
-custom_minimum_size = Vector2i(80, 80)
+custom_minimum_size = Vector2(80, 80)
 offset_left = 252.0
 offset_right = 332.0
 offset_bottom = 80.0
@@ -250,7 +250,7 @@ script = ExtResource("4_ihtkn")
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer/pauseMenu"]
-custom_minimum_size = Vector2i(450, 330)
+custom_minimum_size = Vector2(450, 330)
 offset_right = 450.0
 offset_bottom = 330.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_y36c0")
@@ -299,4 +299,4 @@ text = "EXIT"
 [connection signal="pressed" from="CanvasLayer/pauseMenu/VBoxContainer/avsluta" to="CanvasLayer/pauseMenu" method="_on_avsluta_pressed"]
 
 [editable path="hotbar_renders/smelter/smelter"]
-[editable path="hotbar_renders/smelter/smelter/smelter2"]
+[editable path="hotbar_renders/smelter/smelter/smelter"]

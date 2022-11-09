@@ -567,4 +567,4 @@ texture = SubResource("ViewportTexture_o3upl")
 ignore_texture_size = true
 
 [editable path="smelter/smelter"]
-[editable path="smelter/smelter/smelter2"]
+[editable path="smelter/smelter/smelter"]

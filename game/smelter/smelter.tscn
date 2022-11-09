@@ -54,12 +54,12 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_366f6")
 draw_pass_1 = SubResource("SphereMesh_6wvit")
 
-[node name="smelter2" parent="." instance=ExtResource("2_wlefa")]
+[node name="smelter" parent="." instance=ExtResource("2_wlefa")]
 
-[node name="processArea" type="Area3D" parent="smelter2"]
+[node name="processArea" type="Area3D" parent="smelter"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.326731, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="smelter2/processArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="smelter/processArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42095, 0)
 shape = SubResource("BoxShape3D_i8sl7")
 
@@ -70,6 +70,6 @@ shape = SubResource("ConcavePolygonShape3D_bsbqn")
 [node name="conveyorbelt" parent="." instance=ExtResource("3_o0c6i")]
 metadata/object = NodePath("..")
 
-[connection signal="body_entered" from="smelter2/processArea" to="." method="_on_process_area_body_entered"]
+[connection signal="body_entered" from="smelter/processArea" to="." method="_on_process_area_body_entered"]
 
-[editable path="smelter2"]
+[editable path="smelter"]
