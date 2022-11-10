@@ -1,8 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://4gd2tan1vsly"]
+[gd_scene load_steps=14 format=3 uid="uid://4gd2tan1vsly"]
 
 [ext_resource type="Script" path="res://smelter/smelter.gd" id="1_rseaw"]
+[ext_resource type="Texture2D" uid="uid://d1nfus7nhp7pt" path="res://smoke_07.png" id="2_c4x2s"]
 [ext_resource type="PackedScene" uid="uid://dkvpu5iv1v0ph" path="res://smelter/smelter.gltf" id="2_wlefa"]
 [ext_resource type="PackedScene" uid="uid://dqaeyvbfcfp2e" path="res://conveyor/conveyorbelt.tscn" id="3_o0c6i"]
+
+[sub_resource type="Curve" id="Curve_0aet6"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.733645, 97.2727), 87.5454, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6qmw2"]
+curve = SubResource("Curve_0aet6")
 
 [sub_resource type="Curve" id="Curve_2tokk"]
 _data = [Vector2(0, 0.0090909), 0.0, 10.7, 0, 0, Vector2(0.140187, 1), 0.0, 0.0, 0, 0, Vector2(0.813084, 0.772727), -0.542918, -0.542918, 0, 0, Vector2(1, 0.0181818), -5.28052, 0.0, 0, 0]
@@ -14,19 +23,28 @@ curve = SubResource("Curve_2tokk")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_366f6"]
 lifetime_randomness = 0.5
 emission_shape = 3
-emission_box_extents = Vector3(0.554, 0.418, 0.731)
+emission_box_extents = Vector3(0.554, 0.518, 0.943)
 gravity = Vector3(0, 0, 0)
-scale_min = 0.5
-scale_max = 1.5
+radial_accel_min = -0.05
+tangential_accel_min = -0.02
+tangential_accel_max = 0.02
+damping_curve = SubResource("CurveTexture_6qmw2")
+angle_min = -180.0
+angle_max = 180.0
+scale_min = 0.7
+scale_max = 1.73
 scale_curve = SubResource("CurveTexture_pmkfr")
-color = Color(1, 1, 0, 1)
+turbulence_noise_scale = 1.0
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ymb5"]
 transparency = 1
-albedo_color = Color(0.968627, 0.454902, 0, 1)
+albedo_color = Color(0.968627, 0.454902, 0, 0.117647)
+albedo_texture = ExtResource("2_c4x2s")
 roughness = 0.0
 emission_enabled = true
-emission = Color(1, 0.690196, 0, 1)
+emission = Color(1, 0.239216, 0, 1)
 emission_energy_multiplier = 16.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_6wvit"]
@@ -45,8 +63,8 @@ script = ExtResource("1_rseaw")
 
 [node name="GpuParticles3d" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41268, 0)
-amount = 1024
-lifetime = 20.0
+amount = 4000
+lifetime = 10.0
 speed_scale = 2.0
 fixed_fps = 60
 visibility_aabb = AABB(-0.586612, -0.434337, -0.699662, 1.17322, 0.62844, 1.39932)

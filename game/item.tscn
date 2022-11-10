@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsohf66homeql"]
+[gd_scene load_steps=12 format=3 uid="uid://dkwe4gmne86r3"]
 
 [ext_resource type="Script" path="res://item.gd" id="1_g541j"]
 [ext_resource type="PackedScene" uid="uid://4bd78tx4s7jk" path="res://items/IronIngot.gltf" id="2_wdrcf"]
