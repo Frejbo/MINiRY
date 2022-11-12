@@ -133,9 +133,6 @@ func process_held_item_state():
 #		while held_item.get_node().
 		
 		
-		
-		print(held_item_rotation)
-		print(get_collider().get_parent().intended_rotation_snapping_help)
 #		print(round(rad_to_deg(get_collider().get_parent().global_rotation.y)))
 		var colliding_rot = get_collider().get_parent().intended_rotation_snapping_help
 		if (held_item_rotation == colliding_rot) or (held_item_rotation-180 == colliding_rot) or (colliding_rot-180 == held_item_rotation):

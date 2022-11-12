@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://r7s6yhv5uwpc"]
+
+[ext_resource type="PackedScene" uid="uid://ekptw2lm41w5" path="res://conveyor/conveyorbelt_end.gltf" id="2_arnb7"]
+[ext_resource type="PackedScene" uid="uid://rve8rkjrkcpo" path="res://conveyor/conveyorbelt_middle.gltf" id="3_yc8r7"]
+[ext_resource type="PackedScene" uid="uid://bm135lk3m7vwl" path="res://conveyor/conveyorbelt_start.gltf" id="4_x0ah7"]
+[ext_resource type="Environment" uid="uid://ctymbwu7imuu3" path="res://default_env.tres" id="5_lr7a1"]
+
+[sub_resource type="GDScript" id="GDScript_slado"]
+script/source = "extends Node3D
+
+"
+
+[node name="Node3D" type="Node3D"]
+script = SubResource("GDScript_slado")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.910539, 0.413422, 0, -0.413422, 0.910539, -0.0547519, 2.16834, 4.0599)
+
+[node name="conveyorbelt_end" parent="." instance=ExtResource("2_arnb7")]
+
+[node name="conveyorbelt_middle" parent="." instance=ExtResource("3_yc8r7")]
+
+[node name="conveyorbelt_start" parent="." instance=ExtResource("4_x0ah7")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("5_lr7a1")
