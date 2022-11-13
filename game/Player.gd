@@ -35,9 +35,9 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		if Globals.is_multiplayer:
-			if synchronizer.is_multiplayer_authority():
-				move_and_slide()
+		if Globals.is_multiplayer and synchronizer.is_multiplayer_authority():
+#			if synchronizer.is_multiplayer_authority():
+			move_and_slide()
 		else:
 				move_and_slide()
 	
@@ -45,19 +45,27 @@ func _physics_process(delta):
 		global_position = Vector3(0, 5, 0)
 		velocity = Vector3()
 
-func _ready():
+func _enter_tree():
 	$CanvasLayer/CenterContainer/hotbar/conveyor/Sprite2D.texture = $hotbar_renders/conveyor.get_texture()
 	$CanvasLayer/CenterContainer/hotbar/smelter/Sprite2D.texture = $hotbar_renders/smelter.get_texture()
 	$CanvasLayer/CenterContainer/hotbar/constructor/Sprite2D.texture = $hotbar_renders/constructor.get_texture()
 	$CanvasLayer/CenterContainer/hotbar/Assembler/Sprite2D.texture = $hotbar_renders/Assembler.get_texture()
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
+
+#func _enter_tree():
+	await get_tree().process_frame
+	var synchronizer = $MultiplayerSynchronizer
+	print(str(name).to_int())
+	$Rotation_Helper/ansikte.hide()
 	if Globals.is_multiplayer:
 		synchronizer.set_multiplayer_authority(str(name).to_int())
 		if synchronizer.is_multiplayer_authority():
 			$Rotation_Helper/Camera3d.current = true
-			$Rotation_Helper/ansikte.hide()
+		else:
+			$Rotation_Helper/ansikte.show()
+
+
 
 
 func _input(event):

@@ -69,7 +69,7 @@ func _input(event):
 			object.global_transform = held_item.global_transform
 			if held_item_name == ITEMS["Conveyor"]:
 				object.intended_rotation_snapping_help = held_item_rotation # hjälper snapping
-			main.add_child(object)
+			main.get_node("buildings").add_child(object, true)
 		
 		
 		# Spak
@@ -130,14 +130,6 @@ func process_held_item_state():
 		
 		
 		# snapping
-#		print((held_item.global_position - get_collider().get_parent().global_position).normalized())
-#		while held_item.get_node().
-		
-		
-		
-		print(held_item_rotation)
-		print(get_collider().get_parent().intended_rotation_snapping_help)
-#		print(round(rad_to_deg(get_collider().get_parent().global_rotation.y)))
 		var colliding_rot = get_collider().get_parent().intended_rotation_snapping_help
 		if (held_item_rotation == colliding_rot) or (held_item_rotation-180 == colliding_rot) or (colliding_rot-180 == held_item_rotation):
 			held_item.global_position = get_collider().get_node("place_position_marker_same_rot").global_position
