@@ -4,7 +4,7 @@ extends CharacterBody3D
 
 var MOUSE_SENSITIVITY = 0.1
 
-
+@onready var synchronizer = $MultiplayerSynchronizer
 
 
 const SPEED = 5.0
@@ -34,7 +34,12 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED: move_and_slide()
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		if Globals.is_multiplayer:
+			if synchronizer.is_multiplayer_authority():
+				move_and_slide()
+		else:
+				move_and_slide()
 	
 	if global_position.y < -20: # teleports back up
 		global_position = Vector3(0, 5, 0)
@@ -47,9 +52,16 @@ func _ready():
 	$CanvasLayer/CenterContainer/hotbar/Assembler/Sprite2D.texture = $hotbar_renders/Assembler.get_texture()
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	if Globals.is_multiplayer:
+		synchronizer.set_multiplayer_authority(str(name).to_int())
+		if synchronizer.is_multiplayer_authority():
+			$Rotation_Helper/Camera3d.current = true
+			$Rotation_Helper/ansikte.hide()
 
 
 func _input(event):
+	if Globals.is_multiplayer: if not synchronizer.is_multiplayer_authority(): return
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		rotation_helper.rotation.x = clamp(rotation_helper.rotation.x + deg_to_rad(event.relative.y * -MOUSE_SENSITIVITY), -1.5, 1.5)
 		self.rotate_y(deg_to_rad(event.relative.x * MOUSE_SENSITIVITY * -1))

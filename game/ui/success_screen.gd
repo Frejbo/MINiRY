@@ -14,4 +14,5 @@ func _ready():
 func _on_avsluta_pressed():
 	get_tree().paused = false
 	await get_tree().process_frame
-	get_tree().change_scene_to_packed(load("res://main_menu.tscn"))
+	get_node("/root/world").add_child(load("res://main_menu.tscn").instantiate())
+	get_node("/root/world/main").queue_free()

@@ -243,7 +243,11 @@ fov = 40.0
 
 [node name="CopperWire" parent="CopperWire" instance=ExtResource("12_3del2")]
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+[node name="level" type="SubViewport" parent="."]
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="level"]
 custom_minimum_size = Vector2(1920, 1080)
 anchors_preset = 15
 anchor_right = 1.0
@@ -251,13 +255,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="AspectRatioContainer"]
+[node name="Panel" type="Panel" parent="level/AspectRatioContainer"]
 custom_minimum_size = Vector2(1920, 1080)
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_isihy")
 
-[node name="Label" type="Label" parent="AspectRatioContainer"]
+[node name="Label" type="Label" parent="level/AspectRatioContainer"]
 offset_left = 216.0
 offset_right = 1704.0
 offset_bottom = 162.0
@@ -271,7 +275,7 @@ text = "
 PLEASE  CONSTRUCT  THE  FOLLOWING:"
 vertical_alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="level/AspectRatioContainer"]
 custom_minimum_size = Vector2(1920, 1080)
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -280,14 +284,14 @@ size_flags_vertical = 4
 theme_override_constants/separation = -369
 alignment = 2
 
-[node name="craft_this" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
+[node name="craft_this" type="HBoxContainer" parent="level/AspectRatioContainer/VBoxContainer"]
 offset_top = 149.0
 offset_right = 1920.0
 offset_bottom = 549.0
 theme_override_constants/separation = 300
 alignment = 1
 
-[node name="7" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/craft_this"]
+[node name="7" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/craft_this"]
 custom_minimum_size = Vector2(400, 400)
 offset_left = 760.0
 offset_right = 1160.0
@@ -297,7 +301,7 @@ size_flags_vertical = 4
 texture = SubResource("ViewportTexture_3wwvn")
 ignore_texture_size = true
 
-[node name="Label" type="Label" parent="AspectRatioContainer/VBoxContainer/craft_this/7"]
+[node name="Label" type="Label" parent="level/AspectRatioContainer/VBoxContainer/craft_this/7"]
 self_modulate = Color(1, 1, 1, 0.784314)
 anchors_preset = 15
 anchor_right = 1.0
@@ -314,13 +318,13 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="productionline" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
+[node name="productionline" type="HBoxContainer" parent="level/AspectRatioContainer/VBoxContainer"]
 offset_top = 180.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/VBoxContainer/productionline"]
+[node name="VBoxContainer" type="VBoxContainer" parent="level/AspectRatioContainer/VBoxContainer/productionline"]
 offset_left = 67.0
 offset_right = 1852.0
 offset_bottom = 900.0
@@ -328,7 +332,7 @@ size_flags_horizontal = 4
 theme_override_constants/separation = -50
 alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer"]
 custom_minimum_size = Vector2(0, 500)
 offset_right = 1785.0
 offset_bottom = 900.0
@@ -336,12 +340,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = -5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3"]
 offset_right = 1290.0
 offset_bottom = 900.0
 alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer"]
 offset_left = 420.0
 offset_top = 296.0
 offset_right = 1290.0
@@ -350,7 +354,7 @@ size_flags_horizontal = 8
 theme_override_constants/separation = -30
 alignment = 2
 
-[node name="TextureRect2" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 300)
 offset_right = 300.0
 offset_bottom = 300.0
@@ -359,7 +363,7 @@ size_flags_vertical = 4
 texture = SubResource("ViewportTexture_hqckk")
 ignore_texture_size = true
 
-[node name="TextureRect3" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
 offset_left = 270.0
 offset_top = 86.0
 offset_right = 450.0
@@ -368,7 +372,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("14_afbl2")
 
-[node name="TextureRect4" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+[node name="TextureRect4" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 300)
 offset_left = 420.0
 offset_right = 720.0
@@ -378,7 +382,7 @@ size_flags_vertical = 4
 texture = SubResource("ViewportTexture_46w0c")
 ignore_texture_size = true
 
-[node name="TextureRect5" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+[node name="TextureRect5" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
 offset_left = 690.0
 offset_top = 86.0
 offset_right = 870.0
@@ -387,7 +391,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("14_afbl2")
 
-[node name="TextureRect2" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer/TextureRect5"]
+[node name="TextureRect2" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer/TextureRect5"]
 custom_minimum_size = Vector2(200, 200)
 anchors_preset = 8
 anchor_left = 0.5
@@ -405,7 +409,7 @@ size_flags_vertical = 4
 texture = SubResource("ViewportTexture_wjpq1")
 ignore_texture_size = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer"]
 offset_top = 600.0
 offset_right = 1290.0
 offset_bottom = 900.0
@@ -413,7 +417,7 @@ size_flags_horizontal = 4
 theme_override_constants/separation = -30
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(300, 300)
 offset_right = 300.0
 offset_bottom = 300.0
@@ -422,7 +426,7 @@ size_flags_vertical = 4
 texture = SubResource("ViewportTexture_hy1a2")
 ignore_texture_size = true
 
-[node name="TextureRect3" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect3" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
 offset_left = 270.0
 offset_top = 86.0
 offset_right = 450.0
@@ -431,7 +435,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("14_afbl2")
 
-[node name="TextureRect4" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect4" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(300, 300)
 offset_left = 420.0
 offset_right = 720.0
@@ -441,7 +445,7 @@ size_flags_vertical = 4
 texture = SubResource("ViewportTexture_46w0c")
 ignore_texture_size = true
 
-[node name="TextureRect5" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect5" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
 offset_left = 690.0
 offset_top = 86.0
 offset_right = 870.0
@@ -449,7 +453,7 @@ offset_bottom = 214.0
 size_flags_vertical = 4
 texture = ExtResource("14_afbl2")
 
-[node name="TextureRect2" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2/TextureRect5"]
+[node name="TextureRect2" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2/TextureRect5"]
 custom_minimum_size = Vector2(200, 200)
 anchors_preset = 8
 anchor_left = 0.5
@@ -467,7 +471,7 @@ size_flags_vertical = 4
 texture = SubResource("ViewportTexture_o7biq")
 ignore_texture_size = true
 
-[node name="TextureRect6" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect6" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(300, 300)
 offset_left = 840.0
 offset_right = 1140.0
@@ -477,7 +481,7 @@ size_flags_vertical = 4
 texture = SubResource("ViewportTexture_5j4bw")
 ignore_texture_size = true
 
-[node name="TextureRect7" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect7" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
 offset_left = 1110.0
 offset_top = 86.0
 offset_right = 1290.0
@@ -485,7 +489,7 @@ offset_bottom = 214.0
 size_flags_vertical = 4
 texture = ExtResource("14_afbl2")
 
-[node name="TextureRect2" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2/TextureRect7"]
+[node name="TextureRect2" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2/TextureRect7"]
 custom_minimum_size = Vector2(200, 200)
 anchors_preset = 8
 anchor_left = 0.5
@@ -503,7 +507,7 @@ size_flags_vertical = 4
 texture = SubResource("ViewportTexture_yja7r")
 ignore_texture_size = true
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3"]
 offset_left = 1285.0
 offset_right = 1785.0
 offset_bottom = 900.0
@@ -512,7 +516,7 @@ size_flags_vertical = 4
 theme_override_constants/separation = -40
 alignment = 2
 
-[node name="TextureRect3" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer2"]
+[node name="TextureRect3" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer2"]
 custom_minimum_size = Vector2(300, 300)
 offset_left = 100.0
 offset_right = 400.0
@@ -522,7 +526,7 @@ size_flags_vertical = 4
 texture = SubResource("ViewportTexture_omak0")
 ignore_texture_size = true
 
-[node name="CenterContainer" type="CenterContainer" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer2"]
+[node name="CenterContainer" type="CenterContainer" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 180)
 offset_left = 250.0
 offset_top = 260.0
@@ -530,13 +534,13 @@ offset_right = 250.0
 offset_bottom = 440.0
 size_flags_horizontal = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer2/CenterContainer"]
+[node name="Sprite2D" type="Sprite2D" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer2/CenterContainer"]
 position = Vector2(-100, 0)
 rotation = -1.5708
 texture = ExtResource("14_afbl2")
 offset = Vector2(-100, 128)
 
-[node name="TextureRect2" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer2"]
+[node name="TextureRect2" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer2"]
 custom_minimum_size = Vector2(500, 500)
 offset_top = 400.0
 offset_right = 500.0
@@ -545,10 +549,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_j8t84")
 ignore_texture_size = true
-
-[node name="level" type="SubViewport" parent="."]
-size = Vector2i(1920, 1080)
-render_target_update_mode = 4
 
 [editable path="smelter/smelter"]
 [editable path="smelter/smelter/smelter"]

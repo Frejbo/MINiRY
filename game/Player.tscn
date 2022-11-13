@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bvd4770g2k43p"]
+[gd_scene load_steps=21 format=3 uid="uid://bvd4770g2k43p"]
 
 [ext_resource type="Script" path="res://select.gd" id="1_4kw3x"]
 [ext_resource type="Script" path="res://Player.gd" id="1_rsm3n"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://d3atht6ersxhp" path="res://Orbitron-VariableFont_wght.ttf" id="4_p7kp3"]
 [ext_resource type="PackedScene" uid="uid://4gd2tan1vsly" path="res://smelter/smelter.tscn" id="4_shg0q"]
 [ext_resource type="PackedScene" uid="uid://mu5ibf2ct5yf" path="res://constructor/constructor.tscn" id="5_h3soa"]
+[ext_resource type="Texture2D" uid="uid://dpbpjup6jqc63" path="res://ui/ansikte.png" id="7_pstn2"]
 [ext_resource type="PackedScene" uid="uid://s7bg72vhuf1h" path="res://assembler/assembler.tscn" id="9_4naps"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u84l8"]
@@ -54,7 +55,16 @@ expand_margin_top = 15.0
 expand_margin_right = 15.0
 expand_margin_bottom = 15.0
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_k12hi"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/sync = true
+
 [node name="Player" type="CharacterBody3D" groups=["movable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 script = ExtResource("1_rsm3n")
 
 [node name="hotbar_renders" type="Control" parent="."]
@@ -120,7 +130,6 @@ transform = Transform3D(-0.707107, 0.343891, -0.61785, 0, 0.873773, 0.486335, 0.
 fov = 50.0
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("CapsuleMesh_va5hv")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
@@ -142,6 +151,10 @@ script = ExtResource("1_4kw3x")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.774)
 
 [node name="null" type="Node3D" parent="Rotation_Helper/RayCast3d/held_item"]
+
+[node name="ansikte" type="Sprite3D" parent="Rotation_Helper"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.201491)
+texture = ExtResource("7_pstn2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -299,6 +312,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_d7sgv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_d7sgv")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_d7sgv")
 text = "EXIT"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_k12hi")
 
 [connection signal="pressed" from="CanvasLayer/pauseMenu/VBoxContainer/fortsätt" to="CanvasLayer/pauseMenu" method="_on_fortstt_pressed"]
 [connection signal="pressed" from="CanvasLayer/pauseMenu/VBoxContainer/avsluta" to="CanvasLayer/pauseMenu" method="_on_avsluta_pressed"]

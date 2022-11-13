@@ -30,7 +30,8 @@ func _on_avsluta_pressed():
 
 func _on_sandbox_pressed():
 	Globals.current_level = "0"
-	get_tree().change_scene_to_packed(load("res://main.tscn"))
+	get_parent().add_child(load("res://main.tscn").instantiate())
+	queue_free()
 
 
 func _on_levels_pressed():
@@ -54,8 +55,45 @@ func _on_levels_pressed():
 
 func _on_level_button_pressed(extra_arg_0 : String):
 	Globals.current_level = extra_arg_0
-	var game = load("res://main.tscn")
+	var game = load("res://main.tscn").instantiate()
 	
 #	var screen = load("res://levels/level_" + extra_arg_0 + ".tscn").instantiate()
 #	game.get_node("map/Screen/Sprite3D").texture = screen.get_node("level").get_texture()
-	get_tree().change_scene_to_packed(game)
+	get_parent().add_child(game)
+	queue_free()
+
+
+
+var peer = ENetMultiplayerPeer.new()
+
+func _on_host_pressed():
+	Globals.current_level = "0"
+	var game = preload("res://main.tscn").instantiate()
+	
+	Globals.peer.create_server(6969)
+	multiplayer.multiplayer_peer = Globals.peer
+	Globals.peer.peer_connected.connect(func(id): game.create_player(id))
+	Globals.peer.peer_disconnected.connect(func(id): game.destroy_player(id))
+	
+	Globals.is_multiplayer = true
+	
+	get_parent().add_child(game)
+	queue_free()
+
+
+func _on_connect_pressed():
+	Globals.current_level = "0"
+	var game = preload("res://main.tscn").instantiate()
+	
+	Globals.peer.create_client("localhost", 6969)
+	multiplayer.multiplayer_peer = Globals.peer
+	print("anslöt")
+	
+	Globals.is_multiplayer = true
+	
+	get_parent().add_child(game)
+	queue_free()
+
+
+func _on_multiplayer_pressed():
+	$CanvasLayer/multiplayer_meny.visible = !$CanvasLayer/multiplayer_meny.visible

@@ -62,3 +62,7 @@ func _ready():
 		return
 	var file = FileAccess.open(leveldata, FileAccess.READ)
 	level_completion = file.get_var(false)
+
+
+var peer = ENetMultiplayerPeer.new()
+var is_multiplayer = false

@@ -23,7 +23,8 @@ func _on_avsluta_pressed():
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	await get_tree().process_frame
-	get_tree().change_scene_to_file("res://main_menu.tscn")
+	get_node("/root/world").add_child(load("res://main_menu.tscn").instantiate())
+	get_node("/root/world/main").queue_free()
 
 
 func _on_fortstt_pressed():

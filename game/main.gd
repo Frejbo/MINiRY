@@ -49,3 +49,11 @@ func input_material(item : Globals.items):
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	var success_screen = load("res://ui/success_screen.tscn").instantiate()
 	$Player/CanvasLayer.add_child(success_screen)
+
+
+
+func create_player(id=1):
+	var character = preload("res://Player.tscn").instantiate()
+	character.name = str(id)
+	add_child(character)
+	print("A player connected, id="+id)

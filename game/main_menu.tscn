@@ -141,9 +141,9 @@ theme_override_constants/separation = 80
 alignment = 1
 
 [node name="levels" type="Button" parent="CanvasLayer/meny"]
-offset_top = 102.0
+offset_top = 39.0
 offset_right = 373.0
-offset_bottom = 188.0
+offset_bottom = 125.0
 focus_mode = 0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_fj18n")
@@ -154,9 +154,9 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ngnjq")
 text = "LEVELS"
 
 [node name="sandbox" type="Button" parent="CanvasLayer/meny"]
-offset_top = 268.0
+offset_top = 205.0
 offset_right = 373.0
-offset_bottom = 354.0
+offset_bottom = 291.0
 focus_mode = 0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_fj18n")
@@ -167,9 +167,9 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ngnjq")
 text = "SANDBOX"
 
 [node name="avsluta" type="Button" parent="CanvasLayer/meny"]
-offset_top = 434.0
+offset_top = 371.0
 offset_right = 373.0
-offset_bottom = 520.0
+offset_bottom = 457.0
 focus_mode = 0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_fj18n")
@@ -178,6 +178,19 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ngnjq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ngnjq")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ngnjq")
 text = "EXIT"
+
+[node name="multiplayer" type="Button" parent="CanvasLayer/meny"]
+offset_top = 537.0
+offset_right = 373.0
+offset_bottom = 583.0
+focus_mode = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_fj18n")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ngnjq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ngnjq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ngnjq")
+text = "MULTIPLAYER"
 
 [node name="titel" type="Label" parent="CanvasLayer"]
 offset_right = 976.0
@@ -489,6 +502,89 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_k0qxd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_bhngj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_56m7u")
 
+[node name="multiplayer_meny" type="Control" parent="CanvasLayer"]
+visible = false
+custom_minimum_size = Vector2(800, 300)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -150.0
+offset_right = 400.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="CanvasLayer/multiplayer_meny"]
+custom_minimum_size = Vector2(800, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -150.0
+offset_right = 400.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ljnyr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/multiplayer_meny"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/multiplayer_meny/HBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+offset_left = 98.0
+offset_right = 398.0
+offset_bottom = 300.0
+alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/multiplayer_meny/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 60)
+offset_left = 75.0
+offset_top = 73.0
+offset_right = 225.0
+offset_bottom = 133.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_fj18n")
+theme_override_font_sizes/font_size = 32
+text = "6969"
+placeholder_text = "port"
+context_menu_enabled = false
+
+[node name="connect" type="Button" parent="CanvasLayer/multiplayer_meny/HBoxContainer/VBoxContainer"]
+offset_left = 61.0
+offset_top = 137.0
+offset_right = 239.0
+offset_bottom = 226.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_fj18n")
+theme_override_font_sizes/font_size = 64
+text = "CONNECT"
+
+[node name="host" type="Button" parent="CanvasLayer/multiplayer_meny/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+offset_left = 402.0
+offset_top = 105.0
+offset_right = 702.0
+offset_bottom = 194.0
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_fj18n")
+theme_override_font_sizes/font_size = 64
+text = "HOST"
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.80799, 0.280236, -0.518286, 0, 0.879649, 0.475624, 0.589196, -0.3843, 0.710747, -9.746, 3.529, 3.772)
 
@@ -497,6 +593,9 @@ transform = Transform3D(0.80799, 0.280236, -0.518286, 0, 0.879649, 0.475624, 0.5
 [connection signal="pressed" from="CanvasLayer/meny/levels" to="." method="_on_levels_pressed"]
 [connection signal="pressed" from="CanvasLayer/meny/sandbox" to="." method="_on_sandbox_pressed"]
 [connection signal="pressed" from="CanvasLayer/meny/avsluta" to="." method="_on_avsluta_pressed"]
+[connection signal="pressed" from="CanvasLayer/meny/multiplayer" to="." method="_on_multiplayer_pressed"]
 [connection signal="pressed" from="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1/Button" to="." method="_on_level_button_pressed" binds= ["1"]]
 [connection signal="pressed" from="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2/Button" to="." method="_on_level_button_pressed" binds= ["2"]]
 [connection signal="pressed" from="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3/Button" to="." method="_on_level_button_pressed" binds= ["3"]]
+[connection signal="pressed" from="CanvasLayer/multiplayer_meny/HBoxContainer/VBoxContainer/connect" to="." method="_on_connect_pressed"]
+[connection signal="pressed" from="CanvasLayer/multiplayer_meny/HBoxContainer/host" to="." method="_on_host_pressed"]

@@ -1,6 +1,6 @@
 extends RayCast3D
 
-@onready var main = get_node("/root/main")
+@onready var main = get_node("/root/world/main")
 @onready var held_item = $held_item
 #@onready var gridMap = get_node("/root/main/GridMap")
 
@@ -32,6 +32,7 @@ func focus_hotbar(index : int) -> bool:
 	else: return false
 
 func _input(event):
+	if Globals.is_multiplayer: if not get_parent().get_parent().synchronizer.is_multiplayer_authority(): return
 	if event.is_action_pressed("1"):
 		if focus_hotbar(0):
 			held_item_name = ITEMS["Conveyor"]
