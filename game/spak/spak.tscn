@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6h7wdbxlat84"]
+[gd_scene load_steps=5 format=3 uid="uid://c6h7wdbxlat84"]
 
 [ext_resource type="Script" path="res://spak/spak.gd" id="1_a8q0g"]
 [ext_resource type="PackedScene" uid="uid://gt8shkmahphq" path="res://spak/Spak.gltf" id="2_qkc0w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1sqgl"]
 size = Vector3(0.849, 1.099, 0.4)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_7ta6u"]
+properties/0/path = NodePath("Spak/AnimationPlayer:current_animation")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath("Spak/Handtag:rotation")
+properties/1/spawn = true
+properties/1/sync = true
 
 [node name="Area3D" type="Area3D" groups=["clickable", "spak"]]
 script = ExtResource("1_a8q0g")
@@ -14,3 +22,9 @@ script = ExtResource("1_a8q0g")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
 shape = SubResource("BoxShape3D_1sqgl")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_7ta6u")
+visibility_update_mode = 1
+
+[editable path="Spak"]

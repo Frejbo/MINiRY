@@ -424,6 +424,18 @@ autostart = true
 _spawnable_scenes = PackedStringArray("res://Player.tscn", "res://conveyor/conveyorbelt.tscn")
 spawn_path = NodePath("..")
 
+[node name="items" type="Node3D" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="items"]
+_spawnable_scenes = PackedStringArray("res://item.tscn")
+spawn_path = NodePath("..")
+
+[node name="buildings" type="Node3D" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="buildings"]
+_spawnable_scenes = PackedStringArray("res://conveyor/conveyorbelt.tscn", "res://smelter/smelter.tscn", "res://constructor/constructor.tscn", "res://assembler/assembler.tscn")
+spawn_path = NodePath("..")
+
 [connection signal="body_entered" from="map/item_output_area" to="map" method="_on_item_output_area_body_entered"]
 [connection signal="timeout" from="item_spawn_timer" to="map" method="_on_item_spawn_timer_timeout"]
 
