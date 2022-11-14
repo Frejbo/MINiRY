@@ -1,8 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://dtod260wuix6b"]
+[gd_scene load_steps=26 format=3 uid="uid://dtod260wuix6b"]
 
 [ext_resource type="PackedScene" uid="uid://dafa8xsis6sdx" path="res://map.gltf" id="1_6ujcp"]
 [ext_resource type="Script" path="res://main.gd" id="1_fs8ov"]
-[ext_resource type="PackedScene" uid="uid://bvd4770g2k43p" path="res://Player.tscn" id="1_g4fxp"]
 [ext_resource type="PackedScene" uid="uid://dk4l6kutrl0yp" path="res://ui/time_left.tscn" id="2_bai4p"]
 [ext_resource type="Environment" uid="uid://ctymbwu7imuu3" path="res://default_env.tres" id="2_w6ah1"]
 [ext_resource type="Script" path="res://map.gd" id="5_aaccr"]
@@ -320,9 +319,6 @@ script = ExtResource("1_fs8ov")
 
 [node name="time_left" parent="." instance=ExtResource("2_bai4p")]
 canvas_item_default_texture_filter = 0
-
-[node name="1" parent="." instance=ExtResource("1_g4fxp")]
-transform = Transform3D(-0.622501, 0, -0.782619, 0, 1, 0, 0.782619, 0, -0.622501, 0, 1.48498, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_w6ah1")

@@ -64,11 +64,13 @@ func _on_level_button_pressed(extra_arg_0 : String):
 
 
 
-var peer = ENetMultiplayerPeer.new()
+#var peer = ENetMultiplayerPeer.new()
 
 func _on_host_pressed():
 	Globals.current_level = "0"
 	var game = preload("res://main.tscn").instantiate()
+	get_parent().add_child(game)
+	Globals.peer = ENetMultiplayerPeer.new()
 	
 	Globals.peer.create_server(6969)
 	multiplayer.multiplayer_peer = Globals.peer
@@ -76,16 +78,16 @@ func _on_host_pressed():
 	Globals.peer.peer_disconnected.connect(func(id): game.destroy_player(id))
 	
 	Globals.is_multiplayer = true
-	
-	get_parent().add_child(game)
+	game.create_player()
 	queue_free()
 
 
 func _on_connect_pressed():
 	Globals.current_level = "0"
 	var game = preload("res://main.tscn").instantiate()
+	Globals.peer = ENetMultiplayerPeer.new()
 	
-	Globals.peer.create_client("localhost", 6969)
+	Globals.peer.create_client($CanvasLayer/multiplayer_meny/HBoxContainer/VBoxContainer/TextEdit.text, 6969)
 	multiplayer.multiplayer_peer = Globals.peer
 	print("anslöt")
 	

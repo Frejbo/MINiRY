@@ -32,16 +32,7 @@ func _on_item_spawn_timer_timeout():
 	if $IronSpak.power_on: spawn_item($belt/input0.global_position, Globals.items.IronOre)
 	if $CopperSpak.power_on: spawn_item($belt002/input1.global_position, Globals.items.CopperOre)
 	
-#	var item = preload("res://item.tscn").instantiate()
-#	item.item = Globals.items.IronOre
-#	item.global_position = $belt/input0.global_position
-#	add_child(item)
-#
-#	item = preload("res://item.tscn").instantiate()
-#	item.item = Globals.items.CopperOre
-#	item.global_position = $belt002/input1.global_position
-#	add_child(item)
-	print(get_parent().get_node("buildings").get_child_count())
+#	print(get_parent().get_node("buildings").get_child_count())
 
 func spawn_item(place_position : Vector3, desired_item : Globals.items):
 	var item = preload("res://item.tscn").instantiate()

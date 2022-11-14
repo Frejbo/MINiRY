@@ -64,5 +64,5 @@ func _ready():
 	level_completion = file.get_var(false)
 
 
-var peer = ENetMultiplayerPeer.new()
+var peer : ENetMultiplayerPeer
 var is_multiplayer = false
