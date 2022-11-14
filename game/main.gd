@@ -53,10 +53,6 @@ func input_material(item : Globals.items):
 
 
 func create_player(id=1):
-#	print(Globals.peer.get_unique_id())
-	print(multiplayer.multiplayer_peer.get_unique_id())
-#	if Globals.peer.get_unique_id() != id:
-#		return
 	var character = preload("res://Player.tscn").instantiate()
 	character.name = str(id)
 	add_child(character)
