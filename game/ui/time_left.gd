@@ -1,7 +1,7 @@
 extends SubViewport
 @onready var label = $AspectRatioContainer/Label
 
-func _process(_delta):
+func _process(delta):
 	if Globals.current_level == "0": return
 	var time_expectations = Globals.level_time_expectations[Globals.current_level]
 	var time_taken = get_parent().time_taken

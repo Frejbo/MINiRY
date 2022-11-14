@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dkwe4gmne86r3"]
+[gd_scene load_steps=12 format=3 uid="uid://dkwe4gmne86r3"]
 
 [ext_resource type="Script" path="res://item.gd" id="1_g541j"]
 [ext_resource type="PackedScene" uid="uid://4bd78tx4s7jk" path="res://items/IronIngot.gltf" id="2_wdrcf"]
@@ -13,11 +13,6 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2vina"]
 size = Vector3(1.1, 0.2, 1.1)
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_onrxe"]
-properties/0/path = NodePath(".:item")
-properties/0/spawn = true
-properties/0/sync = true
 
 [node name="Item" type="RigidBody3D" groups=["item", "movable"]]
 script = ExtResource("1_g541j")
@@ -57,8 +52,5 @@ shape = SubResource("BoxShape3D_2vina")
 [node name="check_alive_timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_onrxe")
 
 [connection signal="timeout" from="check_alive_timer" to="." method="check_for_removal"]

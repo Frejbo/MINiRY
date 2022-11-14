@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-@export var item:Globals.items = Globals.items.BadAnka
+@export var item:Globals.items
 
 # IronOre
 # IronIngot
