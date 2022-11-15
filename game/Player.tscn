@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://bvd4770g2k43p"]
+[gd_scene load_steps=20 format=3 uid="uid://bvd4770g2k43p"]
 
 [ext_resource type="Script" path="res://select.gd" id="1_4kw3x"]
 [ext_resource type="Script" path="res://Player.gd" id="1_rsm3n"]
-[ext_resource type="PackedScene" uid="uid://dqaeyvbfcfp2e" path="res://conveyor/conveyorbelt.tscn" id="3_aemvj"]
 [ext_resource type="StyleBox" uid="uid://cw7ilj2jxqnpw" path="res://hotbar_bg.tres" id="3_gdl7h"]
 [ext_resource type="Script" path="res://pauseMenu.gd" id="4_ihtkn"]
 [ext_resource type="FontFile" uid="uid://d3atht6ersxhp" path="res://Orbitron-VariableFont_wght.ttf" id="4_p7kp3"]
@@ -80,13 +79,6 @@ transparent_bg = true
 size = Vector2i(70, 70)
 render_target_update_mode = 1
 
-[node name="conveyorbelt" parent="hotbar_renders/conveyor" instance=ExtResource("3_aemvj")]
-transform = Transform3D(1, 1.19209e-07, -1.49012e-07, -1.19209e-07, 1, -1.19209e-07, -1.49012e-07, 1.19209e-07, 1, -4.76837e-07, 9.53674e-07, -4.76837e-07)
-
-[node name="Camera3D" type="Camera3D" parent="hotbar_renders/conveyor/conveyorbelt"]
-transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707106, 0.707106, -0.707107, -0.5, 0.5, 2, 3, 2)
-fov = 50.0
-
 [node name="smelter" type="SubViewport" parent="hotbar_renders"]
 own_world_3d = true
 world_3d = SubResource("World3D_qhgy5")
@@ -127,6 +119,10 @@ render_target_update_mode = 1
 
 [node name="Camera3D" type="Camera3D" parent="hotbar_renders/Assembler/Assembler2"]
 transform = Transform3D(-0.707107, 0.343891, -0.61785, 0, 0.873773, 0.486335, 0.707107, 0.343891, -0.61785, -4, 4, -4)
+fov = 50.0
+
+[node name="hotbar_renders@conveyor@conveyorbelt@Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707106, 0.707106, -0.707107, -0.5, 0.5, 2, 3, 2)
 fov = 50.0
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="."]
@@ -178,7 +174,7 @@ offset_right = 332.0
 offset_bottom = 80.0
 
 [node name="conveyor" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2i(80, 80)
 offset_right = 80.0
 offset_bottom = 80.0
 theme_override_styles/panel = ExtResource("3_gdl7h")
@@ -189,7 +185,7 @@ offset = Vector2(0, -30)
 region_rect = Rect2(70, 70, 70, 70)
 
 [node name="smelter" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2i(80, 80)
 offset_left = 84.0
 offset_right = 164.0
 offset_bottom = 80.0
@@ -201,7 +197,7 @@ offset = Vector2(0, -30)
 region_rect = Rect2(70, 70, 70, 70)
 
 [node name="constructor" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2i(80, 80)
 offset_left = 168.0
 offset_right = 248.0
 offset_bottom = 80.0
@@ -213,7 +209,7 @@ offset = Vector2(0, -30)
 region_rect = Rect2(70, 70, 70, 70)
 
 [node name="Assembler" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2i(80, 80)
 offset_left = 252.0
 offset_right = 332.0
 offset_bottom = 80.0
@@ -258,7 +254,7 @@ script = ExtResource("4_ihtkn")
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer/pauseMenu"]
-custom_minimum_size = Vector2(450, 330)
+custom_minimum_size = Vector2i(450, 330)
 offset_right = 450.0
 offset_bottom = 330.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_y36c0")

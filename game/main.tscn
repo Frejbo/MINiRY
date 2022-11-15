@@ -399,18 +399,18 @@ shape = SubResource("BoxShape3D_445ub")
 [node name="Screen" type="Node3D" parent="map"]
 
 [node name="Sprite3D" type="Sprite3D" parent="map/Screen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.413, 9.99)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.413, 10.4989)
 flip_h = true
 
 [node name="time_left" type="Sprite3D" parent="map/Screen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.182, 2.56696, 9.99)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.182, 2.56696, 10.4989)
 flip_h = true
 
 [node name="IronSpak" parent="map" instance=ExtResource("6_ppcem")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.0088, 2, 1.2266)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.503, 2, 1.2266)
 
 [node name="CopperSpak" parent="map" instance=ExtResource("6_ppcem")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.0088, 2, -5.00589)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.503, 2, -5.00589)
 
 [node name="item_spawn_timer" type="Timer" parent="."]
 wait_time = 3.0

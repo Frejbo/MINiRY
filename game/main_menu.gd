@@ -30,7 +30,9 @@ func _on_avsluta_pressed():
 
 func _on_sandbox_pressed():
 	Globals.current_level = "0"
-	get_parent().add_child(load("res://main.tscn").instantiate())
+	var game = load("res://main.tscn").instantiate()
+	get_parent().add_child(game)
+	game.create_player()
 	queue_free()
 
 
@@ -60,6 +62,7 @@ func _on_level_button_pressed(extra_arg_0 : String):
 #	var screen = load("res://levels/level_" + extra_arg_0 + ".tscn").instantiate()
 #	game.get_node("map/Screen/Sprite3D").texture = screen.get_node("level").get_texture()
 	get_parent().add_child(game)
+	game.create_player()
 	queue_free()
 
 
