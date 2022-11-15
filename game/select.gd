@@ -69,7 +69,11 @@ func _input(event):
 			object.global_transform = held_item.global_transform
 			if held_item_name == ITEMS["Conveyor"]:
 				object.intended_rotation_snapping_help = held_item_rotation # hjälper snapping
-			main.get_node("buildings").add_child(object, true)
+			if Globals.is_multiplayer:
+				main.rpc("add_building", object)
+				print("Yes")
+			else:
+				main.get_node("buildings").add_child(object, true)
 		
 		
 		# Spak

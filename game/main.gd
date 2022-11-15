@@ -57,3 +57,9 @@ func create_player(id=1):
 	character.name = str(id)
 	add_child(character)
 	print("A player connected, id="+str(id))
+
+
+@rpc
+func add_building(object):
+	print("adding " + object.name)
+	$buildings.add_child(object)

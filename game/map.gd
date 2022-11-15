@@ -32,7 +32,7 @@ func _on_item_spawn_timer_timeout():
 	if $IronSpak.power_on: spawn_item($belt/input0.global_position, Globals.items.IronOre)
 	if $CopperSpak.power_on: spawn_item($belt002/input1.global_position, Globals.items.CopperOre)
 	
-	print(get_parent().get_node("buildings").get_child_count())
+#	print(get_parent().get_node("buildings").get_child_count())
 
 func spawn_item(place_position : Vector3, desired_item : Globals.items):
 	var item = preload("res://item.tscn").instantiate()
@@ -47,3 +47,5 @@ func _on_item_output_area_body_entered(body):
 	await get_tree().create_timer(1).timeout
 	get_parent().input_material(body.item)
 	body.queue_free()
+
+
