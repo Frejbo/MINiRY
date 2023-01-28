@@ -24,15 +24,11 @@ offset_bottom = 1080.0
 
 [node name="Panel" type="Panel" parent="level/AspectRatioContainer"]
 custom_minimum_size = Vector2(1920, 1080)
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_arjvm")
 
 [node name="Label" type="Label" parent="level/AspectRatioContainer"]
-offset_left = 438.0
-offset_top = 414.0
-offset_right = 1481.0
-offset_bottom = 666.0
+layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("1_xhejw")

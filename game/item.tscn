@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dlvuwkgoswvrj" path="res://items/BadAnka.gltf" id="8_cep4n"]
 [ext_resource type="PackedScene" uid="uid://c6li1wf3q7hm0" path="res://items/BadAnkaFrame.gltf" id="10_q054b"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_2vina"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ucn31"]
 size = Vector3(1.1, 0.2, 1.1)
 
 [node name="Item" type="RigidBody3D" groups=["item", "movable"]]
@@ -47,7 +47,7 @@ visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-shape = SubResource("BoxShape3D_2vina")
+shape = SubResource("BoxShape3D_ucn31")
 
 [node name="check_alive_timer" type="Timer" parent="."]
 wait_time = 5.0

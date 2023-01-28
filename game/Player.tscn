@@ -161,16 +161,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="hotbar" type="HBoxContainer" parent="CanvasLayer/CenterContainer"]
 layout_mode = 2
-offset_left = 40.0
-offset_top = 26.0
-offset_right = 372.0
-offset_bottom = 106.0
 
 [node name="conveyor" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-offset_right = 80.0
-offset_bottom = 80.0
 theme_override_styles/panel = ExtResource("3_gdl7h")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/CenterContainer/hotbar/conveyor"]
@@ -181,9 +175,6 @@ region_rect = Rect2(70, 70, 70, 70)
 [node name="smelter" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-offset_left = 84.0
-offset_right = 164.0
-offset_bottom = 80.0
 theme_override_styles/panel = ExtResource("3_gdl7h")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/CenterContainer/hotbar/smelter"]
@@ -194,9 +185,6 @@ region_rect = Rect2(70, 70, 70, 70)
 [node name="constructor" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-offset_left = 168.0
-offset_right = 248.0
-offset_bottom = 80.0
 theme_override_styles/panel = ExtResource("3_gdl7h")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/CenterContainer/hotbar/constructor"]
@@ -207,9 +195,6 @@ region_rect = Rect2(70, 70, 70, 70)
 [node name="Assembler" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-offset_left = 252.0
-offset_right = 332.0
-offset_bottom = 80.0
 theme_override_styles/panel = ExtResource("3_gdl7h")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/CenterContainer/hotbar/Assembler"]
@@ -253,25 +238,17 @@ metadata/_edit_use_anchors_ = true
 [node name="Panel" type="Panel" parent="CanvasLayer/pauseMenu"]
 custom_minimum_size = Vector2(450, 330)
 layout_mode = 2
-offset_right = 450.0
-offset_bottom = 330.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_y36c0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/pauseMenu"]
 process_mode = 4
 layout_mode = 2
-offset_left = 106.0
-offset_top = 69.0
-offset_right = 344.0
-offset_bottom = 261.0
 theme_override_constants/separation = 70
 alignment = 1
 
 [node name="fortsätt" type="Button" parent="CanvasLayer/pauseMenu/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
-offset_right = 302.0
-offset_bottom = 61.0
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -286,9 +263,6 @@ text = "RESUME"
 [node name="avsluta" type="Button" parent="CanvasLayer/pauseMenu/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
-offset_top = 131.0
-offset_right = 302.0
-offset_bottom = 192.0
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
