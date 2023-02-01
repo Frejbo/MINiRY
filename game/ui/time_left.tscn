@@ -15,7 +15,7 @@ render_target_update_mode = 4
 script = ExtResource("1_m3hep")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-custom_minimum_size = Vector2(200, 175)
+custom_minimum_size = Vector2i(200, 175)
 offset_right = 200.0
 offset_bottom = 175.0
 size_flags_horizontal = 0
@@ -23,36 +23,31 @@ size_flags_vertical = 0
 metadata/_edit_group_ = true
 
 [node name="Starlink" type="Control" parent="AspectRatioContainer"]
-layout_mode = 2
+layout_mode = 3
+anchors_preset = 0
 size_flags_vertical = 0
 
 [node name="Star" type="TextureRect" parent="AspectRatioContainer/Starlink"]
-layout_mode = 0
 offset_right = 69.0
 offset_bottom = 69.0
 texture = ExtResource("1_mew68")
-expand_mode = 1
 
 [node name="Star2" type="TextureRect" parent="AspectRatioContainer/Starlink"]
-layout_mode = 0
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -69.0
 offset_bottom = 69.0
 grow_horizontal = 0
 texture = SubResource("CompressedTexture2D_67ujf")
-expand_mode = 1
 
 [node name="Anka" type="TextureRect" parent="AspectRatioContainer"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
+custom_minimum_size = Vector2i(100, 100)
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("2_3nfv2")
-expand_mode = 1
 
 [node name="Label" type="Label" parent="AspectRatioContainer"]
-layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
