@@ -1,6 +1,6 @@
 extends Node3D
 
-var anim = $AnimationPlayer
+@onready var anim = $AnimationPlayer
 var can_produce = [Globals.items.IronGear, Globals.items.IronRod, Globals.items.CopperWire, Globals.items.BadAnkaFrame]
 var producing = Globals.items.IronGear
 

@@ -30,7 +30,7 @@ height = 2.262
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mw7m8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opth0"]
-bg_color = Color(0.6, 0.6, 0.6, 0.607843)
+bg_color = Color(1, 1, 1, 0.607843)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -138,10 +138,10 @@ collision_mask = 17
 collide_with_areas = true
 script = ExtResource("1_4kw3x")
 
-[node name="held_item" type="Node3D" parent="Rotation_Helper/RayCast3d"]
+[node name="held_item_parent" type="Node3D" parent="Rotation_Helper/RayCast3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.774)
 
-[node name="null" type="Node3D" parent="Rotation_Helper/RayCast3d/held_item"]
+[node name="null" type="Node3D" parent="Rotation_Helper/RayCast3d/held_item_parent"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -160,9 +160,11 @@ size_flags_vertical = 8
 metadata/_edit_use_anchors_ = true
 
 [node name="hotbar" type="HBoxContainer" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
 
 [node name="conveyor" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
-custom_minimum_size = Vector2i(80, 80)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = ExtResource("3_gdl7h")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/CenterContainer/hotbar/conveyor"]
@@ -171,7 +173,8 @@ offset = Vector2(0, -30)
 region_rect = Rect2(70, 70, 70, 70)
 
 [node name="smelter" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
-custom_minimum_size = Vector2i(80, 80)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = ExtResource("3_gdl7h")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/CenterContainer/hotbar/smelter"]
@@ -180,7 +183,8 @@ offset = Vector2(0, -30)
 region_rect = Rect2(70, 70, 70, 70)
 
 [node name="constructor" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
-custom_minimum_size = Vector2i(80, 80)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = ExtResource("3_gdl7h")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/CenterContainer/hotbar/constructor"]
@@ -189,7 +193,8 @@ offset = Vector2(0, -30)
 region_rect = Rect2(70, 70, 70, 70)
 
 [node name="Assembler" type="Panel" parent="CanvasLayer/CenterContainer/hotbar"]
-custom_minimum_size = Vector2i(80, 80)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 theme_override_styles/panel = ExtResource("3_gdl7h")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/CenterContainer/hotbar/Assembler"]
@@ -205,8 +210,6 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -10.0
 offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -231,16 +234,19 @@ script = ExtResource("4_ihtkn")
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer/pauseMenu"]
-custom_minimum_size = Vector2i(450, 330)
+custom_minimum_size = Vector2(450, 330)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_y36c0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/pauseMenu"]
 process_mode = 4
+layout_mode = 2
 theme_override_constants/separation = 70
 alignment = 1
 
 [node name="fortsätt" type="Button" parent="CanvasLayer/pauseMenu/VBoxContainer"]
 process_mode = 3
+layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -254,6 +260,7 @@ text = "RESUME"
 
 [node name="avsluta" type="Button" parent="CanvasLayer/pauseMenu/VBoxContainer"]
 process_mode = 3
+layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)

@@ -14,3 +14,10 @@ func _physics_process(_delta):
 		if not body.is_in_group("movable"): continue
 		var forward = -get_global_transform().basis.x
 		body.global_transform.origin += forward*.01
+	
+	# rotera bandets UV textur
+	var belt_uv = $conveyorbelt/belt.get_active_material(0).uv1_offset
+	belt_uv.y += 0.0008
+	if belt_uv.y >= 1:
+		belt_uv.y -= 1
+	$conveyorbelt/belt.get_active_material(0).uv1_offset = belt_uv

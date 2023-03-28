@@ -14,7 +14,6 @@ points = PackedVector3Array(0.489726, 0.137234, 0.299922, -0.489727, 0.137236, -
 
 [node name="constructor2" parent="Armature/Skeleton3D" index="0"]
 material_overlay = ExtResource("2_l4yf4")
-transparency = 0.5
 
 [node name="RightArrow_z+" parent="." index="1"]
 material_overlay = ExtResource("2_l4yf4")

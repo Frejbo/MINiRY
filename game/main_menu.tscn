@@ -141,6 +141,7 @@ theme_override_constants/separation = 80
 alignment = 1
 
 [node name="levels" type="Button" parent="CanvasLayer/meny"]
+layout_mode = 2
 focus_mode = 0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_fj18n")
@@ -151,6 +152,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ngnjq")
 text = "LEVELS"
 
 [node name="sandbox" type="Button" parent="CanvasLayer/meny"]
+layout_mode = 2
 focus_mode = 0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_fj18n")
@@ -161,6 +163,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ngnjq")
 text = "SANDBOX"
 
 [node name="avsluta" type="Button" parent="CanvasLayer/meny"]
+layout_mode = 2
 focus_mode = 0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_fj18n")
@@ -194,8 +197,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer/levels"]
-custom_minimum_size = Vector2i(800, 300)
-anchors_preset = 8
+custom_minimum_size = Vector2(800, 300)
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -209,7 +212,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ljnyr")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/levels"]
-anchors_preset = 8
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -224,22 +227,23 @@ theme_override_constants/separation = 50
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/levels/VBoxContainer"]
+layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
 [node name="level1" type="Control" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2i(200, 200)
-layout_mode = 3
-anchors_preset = 0
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1"]
-custom_minimum_size = Vector2i(200, 200)
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_mp3ea")
 
 [node name="Label" type="Label" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1"]
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -17.0
@@ -260,7 +264,7 @@ offset_right = 250.0
 offset_bottom = 200.0
 
 [node name="Star" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1/Starlink"]
-anchors_preset = 7
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -273,7 +277,7 @@ grow_vertical = 0
 texture = ExtResource("8_2uw6v")
 
 [node name="Star2" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1/Starlink"]
-anchors_preset = 7
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -286,8 +290,8 @@ grow_vertical = 0
 texture = SubResource("CompressedTexture2D_28or1")
 
 [node name="Anka" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1"]
-custom_minimum_size = Vector2i(100, 100)
-anchors_preset = 7
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -297,7 +301,8 @@ grow_vertical = 0
 texture = ExtResource("8_j2x3h")
 
 [node name="Button" type="Button" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1"]
-custom_minimum_size = Vector2i(200, 200)
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 focus_mode = 0
@@ -306,18 +311,18 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_bhngj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_56m7u")
 
 [node name="level2" type="Control" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2i(200, 200)
-layout_mode = 3
-anchors_preset = 0
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2"]
-custom_minimum_size = Vector2i(200, 200)
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_mp3ea")
 
 [node name="Label" type="Label" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2"]
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -17.0
@@ -338,7 +343,7 @@ offset_right = 250.0
 offset_bottom = 200.0
 
 [node name="Star" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2/Starlink"]
-anchors_preset = 7
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -351,7 +356,7 @@ grow_vertical = 0
 texture = ExtResource("8_2uw6v")
 
 [node name="Star2" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2/Starlink"]
-anchors_preset = 7
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -364,8 +369,8 @@ grow_vertical = 0
 texture = ExtResource("8_2uw6v")
 
 [node name="Anka" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2"]
-custom_minimum_size = Vector2i(100, 100)
-anchors_preset = 7
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -375,7 +380,8 @@ grow_vertical = 0
 texture = ExtResource("8_j2x3h")
 
 [node name="Button" type="Button" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2"]
-custom_minimum_size = Vector2i(200, 200)
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 focus_mode = 0
@@ -384,18 +390,18 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_bhngj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_56m7u")
 
 [node name="level3" type="Control" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2i(200, 200)
-layout_mode = 3
-anchors_preset = 0
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3"]
-custom_minimum_size = Vector2i(200, 200)
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_mp3ea")
 
 [node name="Label" type="Label" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3"]
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -17.0
@@ -416,7 +422,7 @@ offset_right = 250.0
 offset_bottom = 200.0
 
 [node name="Star" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3/Starlink"]
-anchors_preset = 7
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -429,7 +435,7 @@ grow_vertical = 0
 texture = ExtResource("8_2uw6v")
 
 [node name="Star2" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3/Starlink"]
-anchors_preset = 7
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -442,8 +448,8 @@ grow_vertical = 0
 texture = ExtResource("8_2uw6v")
 
 [node name="Anka" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3"]
-custom_minimum_size = Vector2i(100, 100)
-anchors_preset = 7
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -453,7 +459,8 @@ grow_vertical = 0
 texture = ExtResource("8_j2x3h")
 
 [node name="Button" type="Button" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3"]
-custom_minimum_size = Vector2i(200, 200)
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 focus_mode = 0

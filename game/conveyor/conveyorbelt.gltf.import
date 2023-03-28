@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://6ex0cvjv4b1h"
+uid="uid://dt6b6m8grcdnf"
 path="res://.godot/imported/conveyorbelt.gltf-48e34d4074ba196a4e5759b0cb3218e4.scn"
 
 [deps]
@@ -25,5 +25,8 @@ meshes/lightmap_texel_size=0.2
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={}
+gltf/embedded_image_handling=1
