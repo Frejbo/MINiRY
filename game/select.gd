@@ -143,7 +143,20 @@ func process_held_item_state():
 
 # sätter vissa values till statiska, dessa ska inte kunna ändras.
 func modify_place_position(object):
-	object.global_position.y = 3
+	object.global_position.y = 0
+	object.global_position = object.global_position.snapped(Vector3(2, 0, 2))
 	object.global_rotation.z = 0
 	object.global_rotation.x = 0
+	print("conv", object.global_position)
 	return object.global_transform
+
+#func get_closest_snap(vector : Vector3) -> Vector3:
+#	return Vector3(round_to_even(vector.x), vector.y, round_to_even(vector.z))
+#func round_to_even(num : float) -> int:
+#	var rounded_num = int(round(num))
+#	if rounded_num % 2 != 0:
+#		if abs(rounded_num - num) < .5:
+#			rounded_num += 1
+#		else:
+#			rounded_num -= 1
+#	return rounded_num

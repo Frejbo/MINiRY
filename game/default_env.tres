@@ -1,12 +1,9 @@
-[gd_resource type="Environment" load_steps=4 format=3 uid="uid://ctymbwu7imuu3"]
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://ctymbwu7imuu3"]
 
-[ext_resource type="Texture2D" uid="uid://dq2lj86vtoi5j" path="res://old_depot_4k.exr" id="1_sgvyp"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kr3bi"]
-panorama = ExtResource("1_sgvyp")
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_h7ei8"]
 
 [sub_resource type="Sky" id="Sky_amocm"]
-sky_material = SubResource("PanoramaSkyMaterial_kr3bi")
+sky_material = SubResource("PhysicalSkyMaterial_h7ei8")
 
 [resource]
 background_mode = 2
@@ -21,3 +18,4 @@ sdfgi_use_occlusion = true
 sdfgi_bounce_feedback = 0.8
 sdfgi_min_cell_size = 0.976563
 sdfgi_energy = 2.0
+glow_enabled = true

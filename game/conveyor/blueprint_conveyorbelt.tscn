@@ -3,8 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dt6b6m8grcdnf" path="res://conveyor/conveyorbelt.gltf" id="1_wc707"]
 [ext_resource type="Material" uid="uid://duww3rttr6fys" path="res://blueprint.tres" id="2_xpivh"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u7y0t"]
-points = PackedVector3Array(-1, 0.247455, -1, -1, 0.171006, -0.988058, -1, 0.752447, -1, 1, 0.247455, -1, -1, 0.101997, -0.952819, 1, 0.171006, -0.988058, -1, 0.828896, -0.988058, 1, 0.752447, -1, -1, 0.0471809, -0.898003, 1, 0.101997, -0.952819, -1, 0.897905, -0.952819, 1, 0.828896, -0.988058, -1, 0.0120399, -0.829092, 1, 0.0471809, -0.898003, -1, 0.952721, -0.898003, 1, 0.897905, -0.952819, -1, 0, -0.752545, 1, 0.0120399, -0.829092, -1, 0.987862, -0.829092, 1, 0.952721, -0.898003, -1, 0, 0.752349, 1, 0, -0.752545, -1, 1, -0.752545, 1, 0.987862, -0.829092, -1, 0.0120399, 0.828896, 1, 0, 0.752349, -1, 1, 0.752349, 1, 1, -0.752545, -1, 0.0471809, 0.897807, 1, 0.0120399, 0.828896, -1, 0.987862, 0.828896, 1, 1, 0.752349, -1, 0.101997, 0.952623, 1, 0.0471809, 0.897807, -1, 0.952721, 0.897807, 1, 0.987862, 0.828896, -1, 0.171006, 0.987862, 1, 0.101997, 0.952623, -1, 0.897905, 0.952623, 1, 0.952721, 0.897807, -1, 0.247455, 1, 1, 0.171006, 0.987862, -1, 0.828896, 0.987862, 1, 0.897905, 0.952623, -1, 0.752447, 1, 1, 0.247455, 1, 1, 0.828896, 0.987862, 1, 0.752447, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_o7cwu"]
 
 [node name="conveyorbelt" type="Node3D"]
 
@@ -17,7 +16,7 @@ material_override = ExtResource("2_xpivh")
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollideCheck"]
-transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_u7y0t")
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_o7cwu")
 
 [editable path="conveyorbelt"]

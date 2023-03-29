@@ -6,6 +6,7 @@ var screen
 
 func _process(delta):
 	time_taken+=delta
+#	print(global_position)
 
 func _ready():
 	# set screen viewports textures, buggat och ger error om gjort via editorn...
