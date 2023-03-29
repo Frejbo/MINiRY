@@ -34,16 +34,18 @@ func _on_levels_pressed():
 	var index = 1
 	for hbox in vbox.get_children():
 		for node in hbox.get_children():
-			if Globals.level_completion[str(index)] == 0:
-				node.get_node("Anka").texture = load("res://ui/InteAnka.png")
-				for texture in node.get_node("Starlink").get_children():
-					texture.texture = load("res://ui/InteStar.png")
-			elif Globals.level_completion[str(index)] == 1:
-				node.get_node("Anka").texture = load("res://ui/InteAnka.png")
-				node.get_node("Starlink/Star2").texture = load("res://ui/InteStar.png")
-			elif Globals.level_completion[str(index)] == 2:
-				node.get_node("Anka").texture = load("res://ui/InteAnka.png")
+			match Globals.level_completion[str(index)]:
+				0:
+					node.get_node("Anka").texture = load("res://ui/InteAnka.png")
+					for texture in node.get_node("Starlink").get_children():
+						texture.texture = load("res://ui/InteStar.png")
+				1:
+					node.get_node("Anka").texture = load("res://ui/InteAnka.png")
+					node.get_node("Starlink/Star2").texture = load("res://ui/InteStar.png")
+				2:
+					node.get_node("Anka").texture = load("res://ui/InteAnka.png")
 			index += 1
+			
 	$CanvasLayer/levels.visible = !$CanvasLayer/levels.visible
 
 
