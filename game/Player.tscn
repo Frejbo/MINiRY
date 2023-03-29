@@ -141,8 +141,6 @@ script = ExtResource("1_4kw3x")
 [node name="held_item_parent" type="Node3D" parent="Rotation_Helper/RayCast3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.774)
 
-[node name="null" type="Node3D" parent="Rotation_Helper/RayCast3d/held_item_parent"]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]

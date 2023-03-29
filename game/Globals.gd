@@ -13,6 +13,7 @@ const item_paths = {
 	items.BadAnka: "res://items/BadAnka.gltf",
 	items.BadAnkaFrame: "res://items/BadAnkaFrame.gltf",
 }
+const CONVEYOR_SPEED = .4
 
 var current_level : String
 
@@ -62,3 +63,14 @@ func _ready():
 		return
 	var file = FileAccess.open(leveldata, FileAccess.READ)
 	level_completion = file.get_var(false)
+
+
+
+func _physics_process(delta):
+	# rotera bandens UV textur, kan inte vara i conveyor.gd eftersom materialet är globalt och accellererar för varje utplacerat band isf.
+	var belt = preload("res://conveyor/conveyorbelt.gltf").instantiate().get_child(0)
+	var belt_uv = belt.get_active_material(0).uv1_offset
+	belt_uv.y += CONVEYOR_SPEED * delta
+	if belt_uv.y >= 1:
+		belt_uv.y -= 1
+	belt.get_active_material(0).uv1_offset = belt_uv

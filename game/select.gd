@@ -1,11 +1,12 @@
 extends RayCast3D
 
 @onready var main = get_node("/root/main")
-@onready var held_item_parent = $held_item_parent
 #@onready var gridMap = get_node("/root/main/GridMap")
 
 var held_item_rotation = 0
-var can_place = false
+const RED_BLUEPRINT_TINT = Color(210.0/255.0, 0.0/255.0, 90.0/255.0, 150.0/255.0)
+const BLUE_BLUEPRINT_TINT = Color(60.0/255.0, 90.0/255.0, 255.0/255.0, 150.0/255.0)
+
 
 var ITEMS = {
 	"None": null,
@@ -62,15 +63,12 @@ func _input(event):
 			if "Arrow" in get_collider().name:
 				get_collider().get_parent().get_parent().click_arrow(get_collider())
 		
-		if is_colliding() and can_place and held_item_parent != null:
+		if is_colliding() and can_place():
 			# place objects
-			print(held_item_parent.global_position)
 			var object = load(held_item_name.replace("blueprint_", "")).instantiate()
-			object.global_transform = held_item_parent.global_transform
-#			if held_item_name == ITEMS["Conveyor"]:
-#				object.intended_rotation_snapping_help = held_item_rotation # hjälper snapping
+			object.global_transform = $held_item_parent.global_transform
 			main.get_node("buildings").add_child(object)
-			print(object.global_transform)
+			object.global_transform = modify_place_position(object)
 		
 		
 		# Spak
@@ -96,28 +94,31 @@ func _input(event):
 		held_item_rotation+=90
 		if held_item_rotation >= 180: held_item_rotation -= 360
 
+func can_place() -> bool:
+	print(get_child(0))
+	return ($held_item_parent.get_child_count() > 0 and load("res://blueprint.tres").albedo_color == BLUE_BLUEPRINT_TINT)
 
 func _physics_process(_delta):
 	if not is_colliding():
-		held_item_parent.hide()
+		$held_item_parent.hide()
 		return
 	
 	process_held_item_state()
-	print(held_item_parent)
-	held_item_parent.show()
+	$held_item_parent.show()
 	
 	# Byt ut objektet under held_item till held_item_name
 	var actual_name = ""
 	if held_item_name != null:
 		actual_name = held_item_name.replace(":", "").replace(".", "").replace("/", "")
-	if held_item_parent.get_child_count() > 0:
-		if held_item_parent.get_child(0).name == actual_name: return
+	if $held_item_parent.get_child_count() > 0:
+		if $held_item_parent.get_child(0).name == actual_name: return
 	
-	if held_item_parent.get_child_count() > 0: held_item_parent.get_child(0).queue_free()
+	if $held_item_parent.get_child_count() > 0: $held_item_parent.get_child(0).queue_free()
 	if held_item_name != null:
 		var object = load(held_item_name).instantiate()
 		object.name = held_item_name
-		held_item_parent.add_child(object)
+		print(object)
+		$held_item_parent.add_child(object)
 	
 
 func process_held_item_state():
@@ -125,22 +126,24 @@ func process_held_item_state():
 	await get_tree().process_frame
 	if get_collider() == null: return
 
-	held_item_parent.global_position = get_collision_point()
+	$held_item_parent.global_position = get_collision_point()
 	
-	if held_item_parent.get_child_count() > 0:
-		if held_item_parent.get_child(0).has_node("CollideCheck"):
-			var collide_check = held_item_parent.get_child(0).get_node("CollideCheck")
+	if $held_item_parent.get_child_count() > 0:
+		if $held_item_parent.get_child(0).has_node("CollideCheck"):
+			var collide_check = $held_item_parent.get_child(0).get_node("CollideCheck")
 			if collide_check.has_overlapping_areas():
-				load("res://blueprint.tres").albedo_color = Color(210.0/255.0, 0.0/255.0, 90.0/255.0, 150.0/255.0) # red
-				can_place = false
+				load("res://blueprint.tres").albedo_color = RED_BLUEPRINT_TINT
 			else:
-				load("res://blueprint.tres").albedo_color = Color(60.0/255.0, 90.0/255.0, 255.0/255.0, 150.0/255.0) # blue
-				can_place = true
+				load("res://blueprint.tres").albedo_color = BLUE_BLUEPRINT_TINT
 		
-		# sätter vissa values till statiska, dessa ska inte kunna ändras.
-		held_item_parent.get_child(0).position.y = 0
-		held_item_parent.position.y = 0
-		held_item_parent.global_rotation.z = 0
-		held_item_parent.global_rotation.x = 0
-		held_item_parent.global_rotation.y = deg_to_rad(held_item_rotation)
+#		$held_item_parent.get_child(0).position.y = 0
+		$held_item_parent.global_transform = modify_place_position($held_item_parent)
+		$held_item_parent.global_rotation.y = deg_to_rad(held_item_rotation)
 
+
+# sätter vissa values till statiska, dessa ska inte kunna ändras.
+func modify_place_position(object):
+	object.global_position.y = 3
+	object.global_rotation.z = 0
+	object.global_rotation.x = 0
+	return object.global_transform

@@ -29,8 +29,8 @@ extends Node3D
 
 
 func _on_item_spawn_timer_timeout():
-	if $IronSpak.power_on: spawn_item($input0.global_position, Globals.items.IronOre)
-	if $CopperSpak.power_on: spawn_item($input1.global_position, Globals.items.CopperOre)
+	if $IronSpak.power_on: spawn_item($iron_conveyor_inputbelt/input0.global_position, Globals.items.IronOre)
+	if $CopperSpak.power_on: spawn_item($copper_conveyor_inputbelt/input1.global_position, Globals.items.CopperOre)
 	
 #	var item = preload("res://item.tscn").instantiate()
 #	item.item = Globals.items.IronOre
@@ -51,7 +51,6 @@ func spawn_item(place_position : Vector3, desired_item : Globals.items):
 
 func _on_item_output_area_body_entered(body):
 	if not body.is_in_group("item"): return
-	$Lucka/AnimationPlayer.play("Lucka")
 	await get_tree().create_timer(1).timeout
 	get_parent().input_material(body.item)
 	body.queue_free()
