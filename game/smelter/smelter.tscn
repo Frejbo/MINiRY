@@ -63,7 +63,7 @@ script = ExtResource("1_rseaw")
 
 [node name="GpuParticles3d" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41268, 0)
-amount = 4000
+amount = 2000
 lifetime = 10.0
 speed_scale = 4.0
 explosiveness = 0.1

@@ -229,7 +229,7 @@ fov = 40.0
 [node name="CopperWire" parent="CopperWire" instance=ExtResource("13_yrp5j")]
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-custom_minimum_size = Vector2i(1920, 1080)
+custom_minimum_size = Vector2(1920, 1080)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -237,15 +237,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="AspectRatioContainer"]
-custom_minimum_size = Vector2i(1920, 1080)
-offset_right = 1920.0
-offset_bottom = 1080.0
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_52fmu")
 
 [node name="Label" type="Label" parent="AspectRatioContainer"]
-offset_left = 216.0
-offset_right = 1704.0
-offset_bottom = 162.0
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_constants/outline_size = 10
@@ -257,33 +254,28 @@ PLEASE  CONSTRUCT  THE  FOLLOWING:"
 vertical_alignment = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer"]
-custom_minimum_size = Vector2i(1920, 1080)
-offset_right = 1920.0
-offset_bottom = 1080.0
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 2
 
 [node name="craft_this" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
-offset_top = 176.0
-offset_right = 1920.0
-offset_bottom = 576.0
+layout_mode = 2
 theme_override_constants/separation = 300
 alignment = 1
 
 [node name="7" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/craft_this"]
-custom_minimum_size = Vector2i(400, 400)
-offset_left = 760.0
-offset_right = 1160.0
-offset_bottom = 400.0
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_s6y7a")
-ignore_texture_size = true
+expand_mode = 1
 
 [node name="Label" type="Label" parent="AspectRatioContainer/VBoxContainer/craft_this/7"]
 self_modulate = Color(1, 1, 1, 0.784314)
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -299,80 +291,57 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="productionline" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
-custom_minimum_size = Vector2i(0, 450)
-offset_top = 580.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+custom_minimum_size = Vector2(0, 450)
+layout_mode = 2
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/VBoxContainer/productionline"]
-offset_left = 272.0
-offset_right = 472.0
-offset_bottom = 500.0
+layout_mode = 2
 alignment = 1
 
 [node name="TextureRect2" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer"]
-custom_minimum_size = Vector2i(200, 200)
-offset_top = 48.0
-offset_right = 200.0
-offset_bottom = 248.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_hashk")
-ignore_texture_size = true
+expand_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer"]
-custom_minimum_size = Vector2i(200, 200)
-offset_top = 252.0
-offset_right = 200.0
-offset_bottom = 452.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_l65y7")
-ignore_texture_size = true
+expand_mode = 1
 
 [node name="TextureRect6" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline"]
-offset_left = 476.0
-offset_top = 186.0
-offset_right = 656.0
-offset_bottom = 314.0
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("15_vkngs")
 
 [node name="TextureRect2" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline"]
-custom_minimum_size = Vector2i(500, 500)
-offset_left = 660.0
-offset_right = 1160.0
-offset_bottom = 500.0
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_l7w3n")
-ignore_texture_size = true
+expand_mode = 1
 
 [node name="TextureRect5" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline"]
-offset_left = 1164.0
-offset_top = 186.0
-offset_right = 1344.0
-offset_bottom = 314.0
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("15_vkngs")
 
 [node name="TextureRect3" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline"]
-custom_minimum_size = Vector2i(300, 300)
-offset_left = 1348.0
-offset_top = 100.0
-offset_right = 1648.0
-offset_bottom = 400.0
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_vye2c")
-ignore_texture_size = true
+expand_mode = 1
 
 [node name="level" type="SubViewport" parent="."]
 size = Vector2i(1920, 1080)

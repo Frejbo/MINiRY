@@ -2,8 +2,6 @@ extends Node3D
 
 @onready var area = $conveyorbelt/Area3d
 
-var intended_rotation_snapping_help : int
-
 func _physics_process(delta):
 	for hjul in $conveyorbelt.get_children():
 		if not "hjul" in hjul.name: continue

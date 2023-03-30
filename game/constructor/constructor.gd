@@ -37,7 +37,7 @@ func _on_process_area_body_entered(body):
 
 var currently_producing : int = 0
 func _process(_delta):
-	var item_node = $Item/item
+	var item_node : Node3D = $Item/item
 	if currently_producing == producing: return
 	# change item
 	item_node.get_child(0).queue_free()

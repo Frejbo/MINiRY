@@ -1,22 +1,22 @@
 extends Node3D
 
-var map = Globals.level_requirements[Globals.current_level]
+var map = Globals.level_requirements[str(Globals.current_level)]
 var time_taken : float = 0
 var screen
 
 func _process(delta):
 	time_taken+=delta
-#	print(global_position)
 
 func _ready():
 	# set screen viewports textures, buggat och ger error om gjort via editorn...
-	screen = load("res://levels/level_" + Globals.current_level + ".tscn").instantiate()
+	screen = load("res://levels/level_" + str(Globals.current_level) + ".tscn").instantiate()
 	add_child(screen)
 	$map/Screen/Sprite3D.texture = screen.get_node("level").get_texture()
-	if Globals.current_level != "0": $map/Screen/time_left.texture = $time_left.get_texture()
+	if Globals.current_level != 0: $map/Screen/time_left.texture = $time_left.get_texture()
+
 
 func input_material(item : Globals.items):
-	if Globals.current_level == "0": return
+	if Globals.current_level == 0: return
 	for req_item in map:
 		if req_item["type"] == item:
 			req_item["amount"]-=1
@@ -25,12 +25,12 @@ func input_material(item : Globals.items):
 	
 	# edit the screen
 	var craft_this = screen.get_node("level/AspectRatioContainer/VBoxContainer/craft_this")
-	var yes = false
+	var found : bool = false
 	for i in craft_this.get_children():
 		if str(item) in i.name:
-			yes = true
+			found = true
 			continue
-	if not yes: return
+	if not found: return
 	var label = craft_this.get_node(str(item)+"/Label")
 	if label.text.to_int() > 0:
 		label.text = str(label.text.to_int() - 1)

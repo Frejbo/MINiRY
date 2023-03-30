@@ -95,7 +95,6 @@ func _input(event):
 		if held_item_rotation >= 180: held_item_rotation -= 360
 
 func can_place() -> bool:
-	print(get_child(0))
 	return ($held_item_parent.get_child_count() > 0 and load("res://blueprint.tres").albedo_color == BLUE_BLUEPRINT_TINT)
 
 func _physics_process(_delta):
@@ -117,7 +116,6 @@ func _physics_process(_delta):
 	if held_item_name != null:
 		var object = load(held_item_name).instantiate()
 		object.name = held_item_name
-		print(object)
 		$held_item_parent.add_child(object)
 	
 
@@ -136,7 +134,6 @@ func process_held_item_state():
 			else:
 				load("res://blueprint.tres").albedo_color = BLUE_BLUEPRINT_TINT
 		
-#		$held_item_parent.get_child(0).position.y = 0
 		$held_item_parent.global_transform = modify_place_position($held_item_parent)
 		$held_item_parent.global_rotation.y = deg_to_rad(held_item_rotation)
 
@@ -147,16 +144,4 @@ func modify_place_position(object):
 	object.global_position = object.global_position.snapped(Vector3(2, 0, 2))
 	object.global_rotation.z = 0
 	object.global_rotation.x = 0
-	print("conv", object.global_position)
 	return object.global_transform
-
-#func get_closest_snap(vector : Vector3) -> Vector3:
-#	return Vector3(round_to_even(vector.x), vector.y, round_to_even(vector.z))
-#func round_to_even(num : float) -> int:
-#	var rounded_num = int(round(num))
-#	if rounded_num % 2 != 0:
-#		if abs(rounded_num - num) < .5:
-#			rounded_num += 1
-#		else:
-#			rounded_num -= 1
-#	return rounded_num

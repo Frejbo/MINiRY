@@ -13,18 +13,18 @@ const item_paths = {
 	items.BadAnka: "res://items/BadAnka.gltf",
 	items.BadAnkaFrame: "res://items/BadAnkaFrame.gltf",
 }
-const CONVEYOR_SPEED = .4
+const CONVEYOR_SPEED = .3
 
-var current_level : String
+var current_level : int
 
-var level_completion = {
+var level_completion = { # sparar hur många stjärnor man fått på varje level.
 	"1": 0,
 	"2": 0,
 	"3": 0
 }
 
 var level_requirements = {
-	"0": [],
+	"0": [], # level '0' är sandbox.
 	"1": [{"type":items.IronRod, "amount":10}, {"type":items.CopperWire, "amount":10}],
 	"2": [{"type":items.BadAnka, "amount":1}],
 	"3": [{"type":items.IronGear, "amount":20}, {"type":items.CopperWire, "amount":20}]
@@ -46,27 +46,26 @@ var level_time_expectations = {
 
 # spara i filer
 func _notification(what):
-	if what != NOTIFICATION_EXIT_TREE: return
-	save_game()
+	# Om spelet stängs av, spara levlarna.
+	if what == NOTIFICATION_EXIT_TREE:
+		save_game()
 
 func save_game():
-	var leveldata = "user://MINiRY.save"
-	var file = FileAccess.open(leveldata, FileAccess.WRITE)
+	# spara progress på levlarna.
+	var file = FileAccess.open("user://MINiRY.save", FileAccess.WRITE)
 	file.store_var(level_completion, false)
 
 
-func _ready():
-	var leveldata = "user://MINiRY.save"
-
+func _enter_tree():
 	# load data
-	if not FileAccess.file_exists("user://MINiRY.save"):
-		return
-	var file = FileAccess.open(leveldata, FileAccess.READ)
-	level_completion = file.get_var(false)
+	if not FileAccess.file_exists("user://MINiRY.save"): return # ingen save-fil hittas, ladda ej.
+	var file = FileAccess.open("user://MINiRY.save", FileAccess.READ)
+	level_completion = file.get_var()
 
 
 
 func _physics_process(delta):
+	# Flyttar bandens UV textur för att simulera rotation av bandet. Materialet är länkat.
 	# rotera bandens UV textur, kan inte vara i conveyor.gd eftersom materialet är globalt och accellererar för varje utplacerat band isf.
 	var belt = preload("res://conveyor/conveyorbelt.gltf").instantiate().get_child(0)
 	var belt_uv = belt.get_active_material(0).uv1_offset
