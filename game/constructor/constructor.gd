@@ -51,12 +51,12 @@ func click_arrow(area):
 		producing += 1
 		while not producing in can_produce:
 			producing += 1
-			if producing > Globals.amount_of_total_items: producing = 0 
+			if producing > Globals.items.size(): producing = 0 
 		$AnimationArrows.play("RightArrows")
 	
 	if "Left" in area.name:
 		producing -= 1
 		while not producing in can_produce:
 			producing -= 1
-			if producing < 0: producing = Globals.amount_of_total_items
+			if producing < 0: producing = Globals.items.size()
 		$AnimationArrows.play("LeftArrows")

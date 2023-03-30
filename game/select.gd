@@ -67,6 +67,7 @@ func _input(event):
 			# place objects
 			var object = load(held_item_name.replace("blueprint_", "")).instantiate()
 			object.global_transform = $held_item_parent.global_transform
+			object.add_to_group("safe_to_remove")
 			main.get_node("buildings").add_child(object)
 			object.global_transform = modify_place_position(object)
 		
@@ -79,8 +80,7 @@ func _input(event):
 	
 	if event.is_action_pressed("secondary"):
 		# tar bort objekt
-		if not is_colliding(): return
-		if get_collider() == null: return # kan hända ibland med spammklick
+		if not is_colliding() or get_collider() == null: return # kan hända att is_colliding() == true trots att det inte finns någon collider, främst med spammklick.
 		if get_collider().has_meta("object"):
 			get_collider().get_node(get_collider().get_meta("object")).queue_free() # tar bort den säkra noden
 		elif get_collider().is_in_group("safe_to_remove"):

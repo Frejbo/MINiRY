@@ -129,7 +129,7 @@ _data = {
 "RightArrows": SubResource("Animation_r0snd")
 }
 
-[node name="constructor" groups=["safe_to_remove"] instance=ExtResource("1_d342p")]
+[node name="constructor" instance=ExtResource("1_d342p")]
 script = ExtResource("2_tfs24")
 
 [node name="Item" type="SubViewport" parent="." index="0"]

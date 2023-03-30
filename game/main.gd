@@ -1,6 +1,6 @@
 extends Node3D
 
-var map = Globals.level_requirements[str(Globals.current_level)]
+var map = Globals.level_requirements[Globals.current_level]
 var time_taken : float = 0
 var screen
 

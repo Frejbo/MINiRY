@@ -1,7 +1,6 @@
 extends Node
-
+#A game factory playground, 20x20 meters with walls. Cool dark lightning. Videogame concept art
 enum items {IronOre, IronIngot, IronGear, IronRod, CopperOre, CopperIngot, CopperWire, BadAnka, BadAnkaFrame}
-const amount_of_total_items = 8
 const item_paths = {
 	items.IronOre: "res://items/IronOre.gltf",
 	items.IronIngot: "res://items/IronIngot.gltf",
@@ -13,32 +12,33 @@ const item_paths = {
 	items.BadAnka: "res://items/BadAnka.gltf",
 	items.BadAnkaFrame: "res://items/BadAnkaFrame.gltf",
 }
-const CONVEYOR_SPEED = .3
+const CONVEYOR_SPEED = .5
 
 var current_level : int
 
 var level_completion = { # sparar hur många stjärnor man fått på varje level.
-	"1": 0,
-	"2": 0,
-	"3": 0
+	1: 0,
+	2: 0,
+	3: 0
 }
 
-var level_requirements = {
-	"0": [], # level '0' är sandbox.
-	"1": [{"type":items.IronRod, "amount":10}, {"type":items.CopperWire, "amount":10}],
-	"2": [{"type":items.BadAnka, "amount":1}],
-	"3": [{"type":items.IronGear, "amount":20}, {"type":items.CopperWire, "amount":20}]
+# Vad som krävs för att köra de olika levlarna.
+var level_requirements = { # väljer att används dictionary istället för lista/array här eftersom det inte är viktigt vilken ordning de ligger i, men det är viktigt att rätt level hämtas snarare än att hämta "den på plats 2".
+	0: [], # level '0' är sandbox.
+	1: [{"type":items.IronRod, "amount":10}, {"type":items.CopperWire, "amount":10}],
+	2: [{"type":items.BadAnka, "amount":1}],
+	3: [{"type":items.IronGear, "amount":20}, {"type":items.CopperWire, "amount":20}]
 }
 var level_time_expectations = {
-	"1": { # level 1
+	1: { # level 1
 		"2": 130, # sekunder för att klara 2 stjärnor
 		"3": 100 # sekunder för att klara 3 stjärnor
 	},
-	"2": {
+	2: {
 		"2": 70,
 		"3": 40
 	},
-	"3": {
+	3: {
 		"2": 150,
 		"3": 120
 	},
