@@ -54,8 +54,9 @@ expand_margin_top = 15.0
 expand_margin_right = 15.0
 expand_margin_bottom = 15.0
 
-[node name="Player" type="CharacterBody3D" groups=["movable"]]
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_rsm3n")
+metadata/conveyor_move_velocity = []
 
 [node name="hotbar_renders" type="Control" parent="."]
 layout_mode = 3
@@ -135,7 +136,6 @@ fov = 70.0
 [node name="RayCast3d" type="RayCast3D" parent="Rotation_Helper"]
 target_position = Vector3(0, 0, -10)
 collision_mask = 17
-collide_with_areas = true
 script = ExtResource("1_4kw3x")
 
 [node name="held_item_parent" type="Node3D" parent="Rotation_Helper/RayCast3d"]

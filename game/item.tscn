@@ -12,10 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://c6li1wf3q7hm0" path="res://items/BadAnkaFrame.gltf" id="10_q054b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ucn31"]
-size = Vector3(1, 0.2, 1)
+size = Vector3(0.7, 0.2, 0.7)
 
-[node name="Item" type="RigidBody3D" groups=["item", "movable"]]
+[node name="Item" type="RigidBody3D" groups=["item", "safe_to_remove"]]
 script = ExtResource("1_g541j")
+metadata/conveyor_move_velocity = []
 
 [node name="AllItems" type="Node3D" parent="."]
 
@@ -45,11 +46,12 @@ visible = false
 [node name="BadAnkaFrame" parent="AllItems" instance=ExtResource("10_q054b")]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["safe_to_remove"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("BoxShape3D_ucn31")
 
 [node name="check_alive_timer" type="Timer" parent="."]
+process_callback = 0
 wait_time = 5.0
 autostart = true
 
