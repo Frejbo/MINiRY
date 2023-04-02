@@ -1,10 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://mu5ibf2ct5yf"]
+[gd_scene load_steps=14 format=3 uid="uid://mu5ibf2ct5yf"]
 
 [ext_resource type="PackedScene" uid="uid://ba83tcb1xxu8f" path="res://constructor/constructor.gltf" id="1_d342p"]
 [ext_resource type="Script" path="res://constructor/constructor.gd" id="2_tfs24"]
+[ext_resource type="Environment" uid="uid://dtxgcbbp5mn8n" path="res://placeholder_env.tres" id="3_630kv"]
 [ext_resource type="PackedScene" uid="uid://dqaeyvbfcfp2e" path="res://conveyor/conveyorbelt.tscn" id="3_k8chx"]
 [ext_resource type="PackedScene" uid="uid://dpjcisg40fw1s" path="res://items/IronGear.gltf" id="4_2bp50"]
-[ext_resource type="World3D" uid="uid://5tfm6phu8q4y" path="res://Placeholder_environment.tres" id="4_5rr25"]
+
+[sub_resource type="World3D" id="World3D_2byo6"]
+environment = ExtResource("3_630kv")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cd3mo"]
 size = Vector3(0.1, 0.862, 1.596)
@@ -134,7 +137,7 @@ script = ExtResource("2_tfs24")
 
 [node name="Item" type="SubViewport" parent="." index="0"]
 own_world_3d = true
-world_3d = ExtResource("4_5rr25")
+world_3d = SubResource("World3D_2byo6")
 transparent_bg = true
 size = Vector2i(1024, 1024)
 render_target_update_mode = 4

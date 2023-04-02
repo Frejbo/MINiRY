@@ -1,10 +1,10 @@
 extends Node3D
 
-@onready var anim = $AnimationPlayer
-var can_produce = [Globals.items.IronGear, Globals.items.IronRod, Globals.items.CopperWire, Globals.items.BadAnkaFrame]
-var producing = Globals.items.IronGear
+@onready var anim := $AnimationPlayer
+const can_produce := [Globals.items.IronGear, Globals.items.IronRod, Globals.items.CopperWire, Globals.items.BadAnkaFrame]
+var producing := Globals.items.IronGear
 
-var made_of = {
+const made_of := {
 	Globals.items.IronGear: Globals.items.IronIngot,
 	Globals.items.IronRod: Globals.items.IronIngot,
 	Globals.items.CopperWire: Globals.items.CopperIngot,
@@ -28,23 +28,9 @@ func _on_process_area_body_entered(body):
 	
 	if made_of[producing] == body.item:
 		body.item = producing # converting
-#	if body.item == Globals.items.IronIngot: # måste känna av
-	
 	
 	body.update_material()
 	anim.play_backwards("ArmatureAction")
-
-
-var currently_producing : int = 0
-func _process(_delta):
-	var item_node : Node3D = $Item/item
-	if currently_producing == producing: return
-	# change item
-	item_node.get_child(0).queue_free()
-	
-	var item = load(Globals.item_paths[producing]).instantiate()
-	item_node.add_child(item)
-	currently_producing = producing
 
 func click_arrow(area):
 	if "Right" in area.name:
@@ -60,3 +46,12 @@ func click_arrow(area):
 			producing -= 1
 			if producing < 0: producing = Globals.items.size()
 		$AnimationArrows.play("LeftArrows")
+	set_display_item()
+
+func set_display_item():
+	# update what item that is being viewed on the machine
+	var item_node : Node3D = $Item/item
+	item_node.get_child(0).queue_free()
+	
+	var item = load(Globals.item_paths[producing]).instantiate()
+	item_node.add_child(item)

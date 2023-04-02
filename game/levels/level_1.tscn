@@ -1,10 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://c38bg6k73h7gf"]
+[gd_scene load_steps=28 format=3 uid="uid://c38bg6k73h7gf"]
 
 [ext_resource type="PackedScene" uid="uid://dqaeyvbfcfp2e" path="res://conveyor/conveyorbelt.tscn" id="2_5iuc5"]
 [ext_resource type="PackedScene" uid="uid://4gd2tan1vsly" path="res://smelter/smelter.tscn" id="3_uw8ns"]
+[ext_resource type="Environment" uid="uid://dtxgcbbp5mn8n" path="res://placeholder_env.tres" id="3_xvls8"]
 [ext_resource type="PackedScene" uid="uid://mu5ibf2ct5yf" path="res://constructor/constructor.tscn" id="4_sw34h"]
 [ext_resource type="PackedScene" uid="uid://s7bg72vhuf1h" path="res://assembler/assembler.tscn" id="5_x1bll"]
-[ext_resource type="World3D" uid="uid://5tfm6phu8q4y" path="res://Placeholder_environment.tres" id="6_janyh"]
 [ext_resource type="PackedScene" uid="uid://dlvuwkgoswvrj" path="res://items/BadAnka.gltf" id="7_0ajmf"]
 [ext_resource type="PackedScene" uid="uid://b8wvd81shy2av" path="res://items/CopperOre.gltf" id="8_4c836"]
 [ext_resource type="PackedScene" uid="uid://c6li1wf3q7hm0" path="res://items/BadAnkaFrame.gltf" id="9_chg7g"]
@@ -54,31 +54,8 @@ viewport_path = NodePath("IronIngot")
 [sub_resource type="ViewportTexture" id="ViewportTexture_ybv6a"]
 viewport_path = NodePath("IronRod")
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vuv6b"]
-sky_energy_multiplier = 10.0
-
-[sub_resource type="Sky" id="Sky_a85vy"]
-sky_material = SubResource("ProceduralSkyMaterial_vuv6b")
-
-[sub_resource type="Environment" id="Environment_b7fu4"]
-background_mode = 2
-sky = SubResource("Sky_a85vy")
-
-[sub_resource type="World3D" id="World3D_bqi86"]
-environment = SubResource("Environment_b7fu4")
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ek582"]
-sky_energy_multiplier = 10.0
-
-[sub_resource type="Sky" id="Sky_b2dhm"]
-sky_material = SubResource("ProceduralSkyMaterial_ek582")
-
-[sub_resource type="Environment" id="Environment_wkmkg"]
-background_mode = 2
-sky = SubResource("Sky_b2dhm")
-
-[sub_resource type="World3D" id="World3D_g3rjw"]
-environment = SubResource("Environment_wkmkg")
+[sub_resource type="World3D" id="World3D_ux6en"]
+environment = ExtResource("3_xvls8")
 
 [node name="level1" type="Node3D"]
 
@@ -316,7 +293,7 @@ texture = SubResource("ViewportTexture_ybv6a")
 
 [node name="conveyor" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = SubResource("World3D_bqi86")
+world_3d = SubResource("World3D_ux6en")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -330,7 +307,7 @@ fov = 50.0
 
 [node name="smelter" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = SubResource("World3D_g3rjw")
+world_3d = SubResource("World3D_ux6en")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -346,7 +323,7 @@ emitting = false
 
 [node name="constructor" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = SubResource("World3D_bqi86")
+world_3d = SubResource("World3D_ux6en")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -359,7 +336,7 @@ fov = 50.0
 
 [node name="Assembler" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = SubResource("World3D_bqi86")
+world_3d = SubResource("World3D_ux6en")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -372,7 +349,7 @@ fov = 50.0
 
 [node name="Anka" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = ExtResource("6_janyh")
+world_3d = SubResource("World3D_ux6en")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -386,7 +363,7 @@ transform = Transform3D(-0.993684, 0, -0.112215, 0, 1, 0, 0.112215, 0, -0.993684
 
 [node name="AnkaFrame" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = ExtResource("6_janyh")
+world_3d = SubResource("World3D_ux6en")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 4
@@ -399,7 +376,7 @@ fov = 50.0
 
 [node name="CopperOre" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = ExtResource("6_janyh")
+world_3d = SubResource("World3D_ux6en")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -412,7 +389,7 @@ fov = 40.0
 
 [node name="IronOre" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = ExtResource("6_janyh")
+world_3d = SubResource("World3D_ux6en")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -425,7 +402,7 @@ fov = 40.0
 
 [node name="CopperIngot" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = ExtResource("6_janyh")
+world_3d = SubResource("World3D_ux6en")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -438,7 +415,7 @@ fov = 40.0
 
 [node name="IronIngot" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = ExtResource("6_janyh")
+world_3d = SubResource("World3D_ux6en")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -451,7 +428,7 @@ fov = 40.0
 
 [node name="IronRod" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = ExtResource("6_janyh")
+world_3d = SubResource("World3D_ux6en")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -464,7 +441,7 @@ fov = 40.0
 
 [node name="CopperWire" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = ExtResource("6_janyh")
+world_3d = SubResource("World3D_ux6en")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1

@@ -1,10 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://bvpi0xhwvlf7s"]
+[gd_scene load_steps=28 format=3 uid="uid://bvpi0xhwvlf7s"]
 
+[ext_resource type="Environment" uid="uid://dtxgcbbp5mn8n" path="res://placeholder_env.tres" id="1_6acx0"]
 [ext_resource type="PackedScene" uid="uid://dqaeyvbfcfp2e" path="res://conveyor/conveyorbelt.tscn" id="1_a6qj3"]
 [ext_resource type="PackedScene" uid="uid://4gd2tan1vsly" path="res://smelter/smelter.tscn" id="2_1js8y"]
 [ext_resource type="PackedScene" uid="uid://mu5ibf2ct5yf" path="res://constructor/constructor.tscn" id="3_8hm7n"]
 [ext_resource type="PackedScene" uid="uid://s7bg72vhuf1h" path="res://assembler/assembler.tscn" id="4_rsq1b"]
-[ext_resource type="World3D" uid="uid://5tfm6phu8q4y" path="res://Placeholder_environment.tres" id="5_o0mhq"]
 [ext_resource type="PackedScene" uid="uid://dlvuwkgoswvrj" path="res://items/BadAnka.gltf" id="6_6rta5"]
 [ext_resource type="PackedScene" uid="uid://c6li1wf3q7hm0" path="res://items/BadAnkaFrame.gltf" id="7_k32xm"]
 [ext_resource type="PackedScene" uid="uid://b8wvd81shy2av" path="res://items/CopperOre.gltf" id="7_p3fmv"]
@@ -16,31 +16,8 @@
 [ext_resource type="FontFile" uid="uid://d3atht6ersxhp" path="res://Orbitron-VariableFont_wght.ttf" id="13_1bilp"]
 [ext_resource type="Texture2D" uid="uid://014mqqd162qd" path="res://ui/Kort pil.png" id="14_afbl2"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1dv4i"]
-sky_energy_multiplier = 10.0
-
-[sub_resource type="Sky" id="Sky_jfb5c"]
-sky_material = SubResource("ProceduralSkyMaterial_1dv4i")
-
-[sub_resource type="Environment" id="Environment_dstjg"]
-background_mode = 2
-sky = SubResource("Sky_jfb5c")
-
-[sub_resource type="World3D" id="World3D_pe1h1"]
-environment = SubResource("Environment_dstjg")
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pkmdr"]
-sky_energy_multiplier = 10.0
-
-[sub_resource type="Sky" id="Sky_hqibe"]
-sky_material = SubResource("ProceduralSkyMaterial_pkmdr")
-
-[sub_resource type="Environment" id="Environment_yf4b2"]
-background_mode = 2
-sky = SubResource("Sky_hqibe")
-
-[sub_resource type="World3D" id="World3D_01cha"]
-environment = SubResource("Environment_yf4b2")
+[sub_resource type="World3D" id="World3D_2jr4f"]
+environment = ExtResource("1_6acx0")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_isihy"]
 bg_color = Color(0, 0, 0, 1)
@@ -84,7 +61,7 @@ viewport_path = NodePath("Assembler")
 
 [node name="conveyor" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = SubResource("World3D_pe1h1")
+world_3d = SubResource("World3D_2jr4f")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -98,7 +75,7 @@ fov = 50.0
 
 [node name="smelter" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = SubResource("World3D_01cha")
+world_3d = SubResource("World3D_2jr4f")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -114,7 +91,7 @@ emitting = false
 
 [node name="constructor" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = SubResource("World3D_pe1h1")
+world_3d = SubResource("World3D_2jr4f")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -127,7 +104,7 @@ fov = 50.0
 
 [node name="Assembler" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = SubResource("World3D_pe1h1")
+world_3d = SubResource("World3D_2jr4f")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -140,7 +117,7 @@ fov = 50.0
 
 [node name="Anka" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = ExtResource("5_o0mhq")
+world_3d = SubResource("World3D_2jr4f")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -154,7 +131,7 @@ transform = Transform3D(-0.993684, 0, -0.112215, 0, 1, 0, 0.112215, 0, -0.993684
 
 [node name="AnkaFrame" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = ExtResource("5_o0mhq")
+world_3d = SubResource("World3D_2jr4f")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 4
@@ -167,7 +144,7 @@ fov = 50.0
 
 [node name="CopperOre" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = ExtResource("5_o0mhq")
+world_3d = SubResource("World3D_2jr4f")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -180,7 +157,7 @@ fov = 40.0
 
 [node name="IronOre" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = ExtResource("5_o0mhq")
+world_3d = SubResource("World3D_2jr4f")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -193,7 +170,7 @@ fov = 40.0
 
 [node name="CopperIngot" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = ExtResource("5_o0mhq")
+world_3d = SubResource("World3D_2jr4f")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -206,7 +183,7 @@ fov = 40.0
 
 [node name="IronIngot" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = ExtResource("5_o0mhq")
+world_3d = SubResource("World3D_2jr4f")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -219,7 +196,7 @@ fov = 40.0
 
 [node name="IronRod" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = ExtResource("5_o0mhq")
+world_3d = SubResource("World3D_2jr4f")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -232,7 +209,7 @@ fov = 40.0
 
 [node name="CopperWire" type="SubViewport" parent="."]
 own_world_3d = true
-world_3d = ExtResource("5_o0mhq")
+world_3d = SubResource("World3D_2jr4f")
 transparent_bg = true
 size = Vector2i(511, 511)
 render_target_update_mode = 1
@@ -243,20 +220,28 @@ fov = 40.0
 
 [node name="CopperWire" parent="CopperWire" instance=ExtResource("12_3del2")]
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+[node name="level" type="SubViewport" parent="."]
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="level"]
 custom_minimum_size = Vector2(1920, 1080)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -254.5
+offset_top = -92.0
+offset_right = 254.5
+offset_bottom = 92.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="AspectRatioContainer"]
+[node name="Panel" type="Panel" parent="level/AspectRatioContainer"]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_isihy")
 
-[node name="Label" type="Label" parent="AspectRatioContainer"]
+[node name="Label" type="Label" parent="level/AspectRatioContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -268,7 +253,7 @@ text = "
 PLEASE  CONSTRUCT  THE  FOLLOWING:"
 vertical_alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="level/AspectRatioContainer"]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -276,19 +261,19 @@ size_flags_vertical = 4
 theme_override_constants/separation = -369
 alignment = 2
 
-[node name="craft_this" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
+[node name="craft_this" type="HBoxContainer" parent="level/AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 300
 alignment = 1
 
-[node name="7" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/craft_this"]
+[node name="7" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/craft_this"]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_3wwvn")
 
-[node name="Label" type="Label" parent="AspectRatioContainer/VBoxContainer/craft_this/7"]
+[node name="Label" type="Label" parent="level/AspectRatioContainer/VBoxContainer/craft_this/7"]
 self_modulate = Color(1, 1, 1, 0.784314)
 layout_mode = 0
 anchor_right = 1.0
@@ -305,60 +290,60 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="productionline" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
+[node name="productionline" type="HBoxContainer" parent="level/AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/VBoxContainer/productionline"]
+[node name="VBoxContainer" type="VBoxContainer" parent="level/AspectRatioContainer/VBoxContainer/productionline"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = -50
 alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer"]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = -5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = -30
 alignment = 2
 
-[node name="TextureRect2" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_hqckk")
 
-[node name="TextureRect3" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("14_afbl2")
 
-[node name="TextureRect4" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+[node name="TextureRect4" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_46w0c")
 
-[node name="TextureRect5" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+[node name="TextureRect5" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("14_afbl2")
 
-[node name="TextureRect2" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer/TextureRect5"]
+[node name="TextureRect2" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer/TextureRect5"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 0
 anchor_left = 0.5
@@ -375,38 +360,38 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_wjpq1")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = -30
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_hy1a2")
 
-[node name="TextureRect3" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect3" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("14_afbl2")
 
-[node name="TextureRect4" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect4" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_46w0c")
 
-[node name="TextureRect5" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect5" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("14_afbl2")
 
-[node name="TextureRect2" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2/TextureRect5"]
+[node name="TextureRect2" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2/TextureRect5"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 0
 anchor_left = 0.5
@@ -423,19 +408,19 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_o7biq")
 
-[node name="TextureRect6" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect6" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_5j4bw")
 
-[node name="TextureRect7" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect7" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("14_afbl2")
 
-[node name="TextureRect2" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2/TextureRect7"]
+[node name="TextureRect2" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2/TextureRect7"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 0
 anchor_left = 0.5
@@ -452,41 +437,37 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_yja7r")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = -40
 alignment = 2
 
-[node name="TextureRect3" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer2"]
+[node name="TextureRect3" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer2"]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_omak0")
 
-[node name="CenterContainer" type="CenterContainer" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer2"]
+[node name="CenterContainer" type="CenterContainer" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer2/CenterContainer"]
+[node name="Sprite2D" type="Sprite2D" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer2/CenterContainer"]
 position = Vector2(-100, 0)
 rotation = -1.5708
 texture = ExtResource("14_afbl2")
 offset = Vector2(-100, 128)
 
-[node name="TextureRect2" type="TextureRect" parent="AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer2"]
+[node name="TextureRect2" type="TextureRect" parent="level/AspectRatioContainer/VBoxContainer/productionline/VBoxContainer/HBoxContainer3/VBoxContainer2"]
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_j8t84")
-
-[node name="level" type="SubViewport" parent="."]
-size = Vector2i(1920, 1080)
-render_target_update_mode = 4
 
 [editable path="smelter/smelter"]
 [editable path="smelter/smelter/smelter"]

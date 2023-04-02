@@ -1,9 +1,9 @@
 [gd_resource type="Environment" load_steps=3 format=3 uid="uid://ctymbwu7imuu3"]
 
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_h7ei8"]
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_vjxo5"]
 
 [sub_resource type="Sky" id="Sky_amocm"]
-sky_material = SubResource("PhysicalSkyMaterial_h7ei8")
+sky_material = SubResource("PhysicalSkyMaterial_vjxo5")
 
 [resource]
 background_mode = 2
