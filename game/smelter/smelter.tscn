@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://4gd2tan1vsly"]
+[gd_scene load_steps=20 format=3 uid="uid://4gd2tan1vsly"]
 
 [ext_resource type="Script" path="res://smelter/smelter.gd" id="1_rseaw"]
 [ext_resource type="Texture2D" uid="uid://d1nfus7nhp7pt" path="res://smoke_07.png" id="2_c4x2s"]
@@ -20,7 +20,7 @@ point_count = 4
 [sub_resource type="CurveTexture" id="CurveTexture_pmkfr"]
 curve = SubResource("Curve_2tokk")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_366f6"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ulqe1"]
 lifetime_randomness = 0.5
 emission_shape = 3
 emission_box_extents = Vector3(0.554, 0.518, 0.943)
@@ -32,7 +32,75 @@ damping_curve = SubResource("CurveTexture_6qmw2")
 angle_min = -180.0
 angle_max = 180.0
 scale_min = 0.7
-scale_max = 1.73
+scale_max = 1.8
+scale_curve = SubResource("CurveTexture_pmkfr")
+turbulence_noise_scale = 1.0
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00t2b"]
+transparency = 1
+albedo_color = Color(1, 0.580392, 0.329412, 0.505882)
+albedo_texture = ExtResource("2_c4x2s")
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 0.184314, 0, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_x1xnr"]
+material = SubResource("StandardMaterial3D_00t2b")
+radius = 0.05
+height = 0.1
+radial_segments = 8
+rings = 8
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rtkmj"]
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(0.554, 0.518, 0.943)
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -0.05
+tangential_accel_min = -0.02
+tangential_accel_max = 0.02
+damping_curve = SubResource("CurveTexture_6qmw2")
+angle_min = -180.0
+angle_max = 180.0
+scale_min = 0.7
+scale_max = 1.8
+scale_curve = SubResource("CurveTexture_pmkfr")
+turbulence_noise_scale = 1.0
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_va2ac"]
+transparency = 1
+albedo_color = Color(1, 0.580392, 0.329412, 0.505882)
+albedo_texture = ExtResource("2_c4x2s")
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 0.184314, 0, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_7vm7h"]
+material = SubResource("StandardMaterial3D_va2ac")
+radius = 0.05
+height = 0.1
+radial_segments = 8
+rings = 8
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_geo7e"]
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(0.554, 0.518, 0.943)
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -0.05
+tangential_accel_min = -0.02
+tangential_accel_max = 0.02
+damping_curve = SubResource("CurveTexture_6qmw2")
+angle_min = -180.0
+angle_max = 180.0
+scale_min = 1.2
+scale_max = 2.0
 scale_curve = SubResource("CurveTexture_pmkfr")
 turbulence_noise_scale = 1.0
 turbulence_influence_min = 0.0
@@ -42,17 +110,17 @@ turbulence_influence_max = 0.01
 transparency = 1
 albedo_color = Color(1, 0.580392, 0.329412, 0.505882)
 albedo_texture = ExtResource("2_c4x2s")
-roughness = 0.0
 emission_enabled = true
 emission = Color(1, 0.184314, 0, 1)
 emission_energy_multiplier = 16.0
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
-[sub_resource type="SphereMesh" id="SphereMesh_6wvit"]
+[sub_resource type="QuadMesh" id="QuadMesh_qcc18"]
 material = SubResource("StandardMaterial3D_2ymb5")
-radius = 0.05
-height = 0.1
-radial_segments = 8
-rings = 8
+size = Vector2(0.1, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i8sl7"]
 size = Vector3(0.1, 0.862, 1.596)
@@ -63,8 +131,9 @@ data = PackedVector3Array(-0.6527, -1, 1, -0.8353, 1, 1, -0.6527, 1, 1, -0.6527,
 [node name="smelter" type="StaticBody3D"]
 script = ExtResource("1_rseaw")
 
-[node name="GpuParticles3d" type="GPUParticles3D" parent="."]
+[node name="GpuParticles3d_high" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41268, 0)
+emitting = false
 amount = 4000
 lifetime = 10.0
 speed_scale = 4.0
@@ -72,8 +141,34 @@ explosiveness = 0.1
 fixed_fps = 60
 visibility_aabb = AABB(-0.586612, -0.434337, -0.699662, 1.17322, 0.62844, 1.39932)
 local_coords = true
-process_material = SubResource("ParticleProcessMaterial_366f6")
-draw_pass_1 = SubResource("SphereMesh_6wvit")
+process_material = SubResource("ParticleProcessMaterial_ulqe1")
+draw_pass_1 = SubResource("SphereMesh_x1xnr")
+
+[node name="GpuParticles3d_medium" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41268, 0)
+emitting = false
+amount = 2000
+lifetime = 10.0
+speed_scale = 4.0
+explosiveness = 0.1
+fixed_fps = 60
+visibility_aabb = AABB(-0.586612, -0.434337, -0.699662, 1.17322, 0.62844, 1.39932)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_rtkmj")
+draw_pass_1 = SubResource("SphereMesh_7vm7h")
+
+[node name="GpuParticles3d_low" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41268, 0)
+emitting = false
+amount = 2000
+lifetime = 10.0
+speed_scale = 4.0
+explosiveness = 0.1
+fixed_fps = 60
+visibility_aabb = AABB(-0.586612, -0.434337, -0.699662, 1.17322, 0.62844, 1.39932)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_geo7e")
+draw_pass_1 = SubResource("QuadMesh_qcc18")
 
 [node name="smelter" parent="." instance=ExtResource("2_wlefa")]
 

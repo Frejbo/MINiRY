@@ -53,7 +53,7 @@ func _notification(what):
 func save_game():
 	# spara progress på levlarna.
 	var file = FileAccess.open("user://MINiRY.save", FileAccess.WRITE)
-	file.store_var(level_completion, false)
+	file.store_var(level_completion)
 
 
 func _enter_tree():
