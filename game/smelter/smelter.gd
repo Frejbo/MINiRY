@@ -1,12 +1,12 @@
 extends StaticBody3D
 
-func _enter_tree():
-	match Graphics.PARTICLE_QUALITY:
-		Graphics.QUALITY_SCALE.low:
+func _ready():
+	match Settings.particle_quality:
+		Settings.SCALE.low:
 			$GpuParticles3d_low.emitting = true
-		Graphics.QUALITY_SCALE.medium:
+		Settings.SCALE.medium:
 			$GpuParticles3d_medium.emitting = true
-		Graphics.QUALITY_SCALE.high:
+		Settings.SCALE.high:
 			$GpuParticles3d_high.emitting = true
 
 func _on_process_area_body_entered(body):

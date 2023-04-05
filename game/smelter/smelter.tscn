@@ -147,7 +147,7 @@ draw_pass_1 = SubResource("SphereMesh_x1xnr")
 [node name="GpuParticles3d_medium" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41268, 0)
 emitting = false
-amount = 2000
+amount = 1000
 lifetime = 10.0
 speed_scale = 4.0
 explosiveness = 0.1

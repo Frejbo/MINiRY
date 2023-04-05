@@ -19,7 +19,8 @@ config/icon="res://icon.png"
 [autoload]
 
 Globals="*res://Globals.gd"
-Graphics="*res://Graphics.gd"
+Settings="*res://Settings.gd"
+DefaultValues="*res://ui/settings/DEFAULT_VALUES.gd"
 
 [display]
 

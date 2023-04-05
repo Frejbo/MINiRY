@@ -71,9 +71,6 @@ fov = 50.0
 
 [node name="smelter" parent="smelter" instance=ExtResource("2_23k1i")]
 
-[node name="GpuParticles3d" parent="smelter/smelter" index="0"]
-emitting = false
-
 [node name="constructor" type="SubViewport" parent="."]
 own_world_3d = true
 world_3d = SubResource("World3D_aklal")
