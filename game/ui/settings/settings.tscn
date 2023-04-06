@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://croxojydayept"]
+[gd_scene load_steps=8 format=3 uid="uid://byd5tf5xrv5u8"]
 
 [ext_resource type="Script" path="res://ui/settings/settings_menu.gd" id="1_hr1f3"]
 [ext_resource type="Script" path="res://ui/settings/Particle_quality.gd" id="1_mn4xo"]
 [ext_resource type="Theme" uid="uid://bj13ip82fk7y6" path="res://ui/theme.tres" id="3_06b7g"]
 [ext_resource type="Script" path="res://ui/settings/resolution.gd" id="3_j82lw"]
+[ext_resource type="Script" path="res://ui/settings/max_FPS.gd" id="5_2pkqm"]
+[ext_resource type="Script" path="res://ui/settings/screen mode.gd" id="5_c0neb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6y1le"]
 bg_color = Color(0, 0, 0, 0.494118)
@@ -33,20 +35,17 @@ theme = ExtResource("3_06b7g")
 
 [node name="Panel" type="Panel" parent="AspectRatioContainer"]
 layout_mode = 2
-theme = ExtResource("3_06b7g")
 theme_override_styles/panel = SubResource("StyleBoxFlat_6y1le")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-theme = ExtResource("3_06b7g")
 alignment = 1
 
 [node name="Particle quality" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("3_06b7g")
 alignment = 1
 script = ExtResource("1_mn4xo")
 
@@ -77,33 +76,78 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("3_06b7g")
 alignment = 1
 script = ExtResource("3_j82lw")
 
 [node name="name" type="Label" parent="AspectRatioContainer/VBoxContainer/Resolution"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-theme = ExtResource("3_06b7g")
 text = "Resolution"
 
 [node name="dropdown" type="OptionButton" parent="AspectRatioContainer/VBoxContainer/Resolution"]
 layout_mode = 2
-theme = ExtResource("3_06b7g")
 
 [node name="apply" type="Button" parent="AspectRatioContainer/VBoxContainer/Resolution"]
 layout_mode = 2
-theme = ExtResource("3_06b7g")
 disabled = true
 text = "APPLIED"
+
+[node name="screen mode" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+script = ExtResource("5_c0neb")
+
+[node name="name" type="Label" parent="AspectRatioContainer/VBoxContainer/screen mode"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Display mode"
+
+[node name="OptionButton" type="OptionButton" parent="AspectRatioContainer/VBoxContainer/screen mode"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 1
+popup/item_2/text = "Borderless"
+popup/item_2/id = 2
+
+[node name="apply" type="Button" parent="AspectRatioContainer/VBoxContainer/screen mode"]
+layout_mode = 2
+disabled = true
+text = "APPLIED"
+
+[node name="FPS" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+script = ExtResource("5_2pkqm")
+
+[node name="name" type="Label" parent="AspectRatioContainer/VBoxContainer/FPS"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Max FPS"
+
+[node name="SpinBox" type="SpinBox" parent="AspectRatioContainer/VBoxContainer/FPS"]
+layout_mode = 2
+min_value = 1.0
+max_value = 999.0
+value = 60.0
+alignment = 1
+custom_arrow_step = 10.0
 
 [node name="close" type="Button" parent="AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("3_06b7g")
 text = "CLOSE"
 
 [connection signal="value_changed" from="AspectRatioContainer/VBoxContainer/Particle quality/HSlider" to="AspectRatioContainer/VBoxContainer/Particle quality" method="_on_h_slider_value_changed"]
 [connection signal="item_selected" from="AspectRatioContainer/VBoxContainer/Resolution/dropdown" to="AspectRatioContainer/VBoxContainer/Resolution" method="_on_option_button_item_selected"]
 [connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Resolution/apply" to="AspectRatioContainer/VBoxContainer/Resolution" method="_on_apply_pressed"]
+[connection signal="item_selected" from="AspectRatioContainer/VBoxContainer/screen mode/OptionButton" to="AspectRatioContainer/VBoxContainer/screen mode" method="_on_option_button_item_selected"]
+[connection signal="pressed" from="AspectRatioContainer/VBoxContainer/screen mode/apply" to="AspectRatioContainer/VBoxContainer/screen mode" method="_on_apply_pressed"]
+[connection signal="value_changed" from="AspectRatioContainer/VBoxContainer/FPS/SpinBox" to="AspectRatioContainer/VBoxContainer/FPS" method="_on_spin_box_value_changed"]
 [connection signal="pressed" from="AspectRatioContainer/VBoxContainer/close" to="." method="_on_close_pressed"]

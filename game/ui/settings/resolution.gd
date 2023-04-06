@@ -11,17 +11,13 @@ const available_resolutions := [
 
 
 func _ready():
-#	var index := 0
-	print("hej")
 	for res in available_resolutions:
 		var label := str(res.x) + "x" + str(res.y)
 		$dropdown.add_item(label)
-#		index += 1
 	
 	# select active item in list to current resolution
 	var current_idx = available_resolutions.find(Settings.resolution)
 	if current_idx != -1:
-		print("current res found")
 		$dropdown.select(current_idx)
 
 var selected_res

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=20 format=3 uid="uid://bj13ip82fk7y6"]
+[gd_resource type="Theme" load_steps=21 format=3 uid="uid://bj13ip82fk7y6"]
 
 [ext_resource type="FontFile" uid="uid://d3atht6ersxhp" path="res://Orbitron-VariableFont_wght.ttf" id="1_rgbjk"]
 
@@ -104,6 +104,22 @@ expand_margin_top = 3.0
 expand_margin_right = 3.0
 expand_margin_bottom = 3.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6eyt"]
+bg_color = Color(0.760784, 0.54902, 0.32549, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pdlwa"]
 bg_color = Color(0.388235, 0.262745, 0.129412, 1)
 border_color = Color(0, 0, 0, 1)
@@ -187,6 +203,11 @@ HSlider/styles/slider = SubResource("StyleBoxFlat_dyhl6")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("1_rgbjk")
+LineEdit/colors/font_color = Color(1, 1, 1, 1)
+LineEdit/colors/font_placeholder_color = Color(1, 1, 1, 0.784314)
+LineEdit/font_sizes/font_size = 28
+LineEdit/fonts/font = ExtResource("1_rgbjk")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_u6eyt")
 OptionButton/colors/font_color = Color(1, 1, 1, 1)
 OptionButton/font_sizes/font_size = 32
 OptionButton/fonts/font = ExtResource("1_rgbjk")
