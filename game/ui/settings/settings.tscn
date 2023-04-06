@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://croxojydayept"]
+[gd_scene load_steps=6 format=3 uid="uid://croxojydayept"]
 
 [ext_resource type="Script" path="res://ui/settings/settings_menu.gd" id="1_hr1f3"]
 [ext_resource type="Script" path="res://ui/settings/Particle_quality.gd" id="1_mn4xo"]
+[ext_resource type="Theme" uid="uid://bj13ip82fk7y6" path="res://ui/theme.tres" id="3_06b7g"]
+[ext_resource type="Script" path="res://ui/settings/resolution.gd" id="3_j82lw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6y1le"]
 bg_color = Color(0, 0, 0, 0.494118)
@@ -17,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_06b7g")
 script = ExtResource("1_hr1f3")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
@@ -26,44 +29,81 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_06b7g")
 
 [node name="Panel" type="Panel" parent="AspectRatioContainer"]
 layout_mode = 2
+theme = ExtResource("3_06b7g")
 theme_override_styles/panel = SubResource("StyleBoxFlat_6y1le")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+theme = ExtResource("3_06b7g")
 alignment = 1
 
 [node name="Particle quality" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("3_06b7g")
 alignment = 1
 script = ExtResource("1_mn4xo")
 
 [node name="name" type="Label" parent="AspectRatioContainer/VBoxContainer/Particle quality"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme = ExtResource("3_06b7g")
 text = "Particle Quality"
 
 [node name="HSlider" type="HSlider" parent="AspectRatioContainer/VBoxContainer/Particle quality"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme = ExtResource("3_06b7g")
 max_value = 2.0
 value = 1.0
+scrollable = false
+tick_count = 3
+ticks_on_borders = true
 
 [node name="quality" type="Label" parent="AspectRatioContainer/VBoxContainer/Particle quality"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme = ExtResource("3_06b7g")
 text = "MEDIUM"
 horizontal_alignment = 1
+
+[node name="Resolution" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_06b7g")
+alignment = 1
+script = ExtResource("3_j82lw")
+
+[node name="name" type="Label" parent="AspectRatioContainer/VBoxContainer/Resolution"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("3_06b7g")
+text = "Resolution"
+
+[node name="dropdown" type="OptionButton" parent="AspectRatioContainer/VBoxContainer/Resolution"]
+layout_mode = 2
+theme = ExtResource("3_06b7g")
+
+[node name="apply" type="Button" parent="AspectRatioContainer/VBoxContainer/Resolution"]
+layout_mode = 2
+theme = ExtResource("3_06b7g")
+disabled = true
+text = "APPLIED"
 
 [node name="close" type="Button" parent="AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("3_06b7g")
 text = "CLOSE"
 
 [connection signal="value_changed" from="AspectRatioContainer/VBoxContainer/Particle quality/HSlider" to="AspectRatioContainer/VBoxContainer/Particle quality" method="_on_h_slider_value_changed"]
+[connection signal="item_selected" from="AspectRatioContainer/VBoxContainer/Resolution/dropdown" to="AspectRatioContainer/VBoxContainer/Resolution" method="_on_option_button_item_selected"]
+[connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Resolution/apply" to="AspectRatioContainer/VBoxContainer/Resolution" method="_on_apply_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/VBoxContainer/close" to="." method="_on_close_pressed"]
