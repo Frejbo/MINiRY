@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bvd4770g2k43p"]
+[gd_scene load_steps=20 format=3 uid="uid://bvd4770g2k43p"]
 
 [ext_resource type="Script" path="res://select.gd" id="1_4kw3x"]
 [ext_resource type="Script" path="res://Player.gd" id="1_rsm3n"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://4gd2tan1vsly" path="res://smelter/smelter.tscn" id="4_shg0q"]
 [ext_resource type="PackedScene" uid="uid://mu5ibf2ct5yf" path="res://constructor/constructor.tscn" id="5_h3soa"]
 [ext_resource type="PackedScene" uid="uid://s7bg72vhuf1h" path="res://assembler/assembler.tscn" id="9_4naps"]
+[ext_resource type="PackedScene" uid="uid://byd5tf5xrv5u8" path="res://ui/settings/settings.tscn" id="10_nb8ke"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u84l8"]
 sky_energy_multiplier = 10.0
@@ -228,8 +229,9 @@ script = ExtResource("4_ihtkn")
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer/pauseMenu"]
-custom_minimum_size = Vector2(450, 330)
+custom_minimum_size = Vector2(400, 450)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_y36c0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/pauseMenu"]
@@ -252,6 +254,20 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_d7sgv")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_d7sgv")
 text = "RESUME"
 
+[node name="settings" type="Button" parent="CanvasLayer/pauseMenu/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_p7kp3")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_d7sgv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d7sgv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d7sgv")
+text = "SETTINGS"
+
 [node name="avsluta" type="Button" parent="CanvasLayer/pauseMenu/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
@@ -266,7 +282,12 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_d7sgv")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_d7sgv")
 text = "EXIT"
 
+[node name="Settings" parent="CanvasLayer/pauseMenu" instance=ExtResource("10_nb8ke")]
+visible = false
+layout_mode = 2
+
 [connection signal="pressed" from="CanvasLayer/pauseMenu/VBoxContainer/fortsätt" to="CanvasLayer/pauseMenu" method="_on_fortstt_pressed"]
+[connection signal="pressed" from="CanvasLayer/pauseMenu/VBoxContainer/settings" to="CanvasLayer/pauseMenu" method="_on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/pauseMenu/VBoxContainer/avsluta" to="CanvasLayer/pauseMenu" method="_on_avsluta_pressed"]
 
 [editable path="hotbar_renders/smelter/smelter"]

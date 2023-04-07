@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://4gd2tan1vsly"]
+[gd_scene load_steps=21 format=3 uid="uid://4gd2tan1vsly"]
 
 [ext_resource type="Script" path="res://smelter/smelter.gd" id="1_rseaw"]
 [ext_resource type="Texture2D" uid="uid://d1nfus7nhp7pt" path="res://smoke_07.png" id="2_c4x2s"]
+[ext_resource type="Script" path="res://smelter/smelter_particles.gd" id="2_o2g8u"]
 [ext_resource type="PackedScene" uid="uid://dkvpu5iv1v0ph" path="res://smelter/smelter.gltf" id="2_wlefa"]
 [ext_resource type="PackedScene" uid="uid://dqaeyvbfcfp2e" path="res://conveyor/conveyorbelt.tscn" id="3_o0c6i"]
 
@@ -131,7 +132,10 @@ data = PackedVector3Array(-0.6527, -1, 1, -0.8353, 1, 1, -0.6527, 1, 1, -0.6527,
 [node name="smelter" type="StaticBody3D"]
 script = ExtResource("1_rseaw")
 
-[node name="GpuParticles3d_high" type="GPUParticles3D" parent="."]
+[node name="particles" type="Node3D" parent="."]
+script = ExtResource("2_o2g8u")
+
+[node name="GpuParticles3d_high" type="GPUParticles3D" parent="particles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41268, 0)
 emitting = false
 amount = 4000
@@ -144,7 +148,7 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_ulqe1")
 draw_pass_1 = SubResource("SphereMesh_x1xnr")
 
-[node name="GpuParticles3d_medium" type="GPUParticles3D" parent="."]
+[node name="GpuParticles3d_medium" type="GPUParticles3D" parent="particles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41268, 0)
 emitting = false
 amount = 1000
@@ -157,7 +161,7 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_rtkmj")
 draw_pass_1 = SubResource("SphereMesh_7vm7h")
 
-[node name="GpuParticles3d_low" type="GPUParticles3D" parent="."]
+[node name="GpuParticles3d_low" type="GPUParticles3D" parent="particles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41268, 0)
 emitting = false
 amount = 2000

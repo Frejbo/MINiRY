@@ -1,14 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://byd5tf5xrv5u8"]
+[gd_scene load_steps=11 format=3 uid="uid://byd5tf5xrv5u8"]
 
-[ext_resource type="Script" path="res://ui/settings/settings_menu.gd" id="1_hr1f3"]
 [ext_resource type="Script" path="res://ui/settings/Particle_quality.gd" id="1_mn4xo"]
+[ext_resource type="Script" path="res://Settings.gd" id="2_nmfk0"]
 [ext_resource type="Theme" uid="uid://bj13ip82fk7y6" path="res://ui/theme.tres" id="3_06b7g"]
 [ext_resource type="Script" path="res://ui/settings/resolution.gd" id="3_j82lw"]
+[ext_resource type="Environment" uid="uid://ctymbwu7imuu3" path="res://default_env.tres" id="3_lk28i"]
+[ext_resource type="Script" path="res://ui/settings/Lighting_quality.gd" id="4_2yi5n"]
 [ext_resource type="Script" path="res://ui/settings/max_FPS.gd" id="5_2pkqm"]
+[ext_resource type="Script" path="res://ui/settings/sdfgi.gd" id="5_50s8x"]
 [ext_resource type="Script" path="res://ui/settings/screen mode.gd" id="5_c0neb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6y1le"]
-bg_color = Color(0, 0, 0, 0.494118)
+bg_color = Color(0, 0, 0, 0.784314)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
@@ -22,13 +25,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_06b7g")
-script = ExtResource("1_hr1f3")
+script = ExtResource("2_nmfk0")
+default_environment = ExtResource("3_lk28i")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+custom_minimum_size = Vector2(1000, 1000)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -364.0
+offset_top = -350.0
+offset_right = 364.0
+offset_bottom = 350.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_06b7g")
@@ -46,7 +57,6 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-alignment = 1
 script = ExtResource("1_mn4xo")
 
 [node name="name" type="Label" parent="AspectRatioContainer/VBoxContainer/Particle quality"]
@@ -72,11 +82,41 @@ theme = ExtResource("3_06b7g")
 text = "MEDIUM"
 horizontal_alignment = 1
 
+[node name="Lighting quality" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("4_2yi5n")
+
+[node name="name" type="Label" parent="AspectRatioContainer/VBoxContainer/Lighting quality"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Lighting Quality"
+
+[node name="OptionButton" type="OptionButton" parent="AspectRatioContainer/VBoxContainer/Lighting quality"]
+layout_mode = 2
+
+[node name="SDFGI" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("5_50s8x")
+
+[node name="CheckButton" type="CheckButton" parent="AspectRatioContainer/VBoxContainer/SDFGI"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "SDFGI"
+
+[node name="info" type="Label" parent="AspectRatioContainer/VBoxContainer/SDFGI"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Requires restart!"
+
 [node name="Resolution" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-alignment = 1
 script = ExtResource("3_j82lw")
 
 [node name="name" type="Label" parent="AspectRatioContainer/VBoxContainer/Resolution"]
@@ -96,7 +136,6 @@ text = "APPLIED"
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-alignment = 1
 script = ExtResource("5_c0neb")
 
 [node name="name" type="Label" parent="AspectRatioContainer/VBoxContainer/screen mode"]
@@ -123,7 +162,6 @@ text = "APPLIED"
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-alignment = 1
 script = ExtResource("5_2pkqm")
 
 [node name="name" type="Label" parent="AspectRatioContainer/VBoxContainer/FPS"]
@@ -142,9 +180,12 @@ custom_arrow_step = 10.0
 [node name="close" type="Button" parent="AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "CLOSE"
 
 [connection signal="value_changed" from="AspectRatioContainer/VBoxContainer/Particle quality/HSlider" to="AspectRatioContainer/VBoxContainer/Particle quality" method="_on_h_slider_value_changed"]
+[connection signal="item_selected" from="AspectRatioContainer/VBoxContainer/Lighting quality/OptionButton" to="AspectRatioContainer/VBoxContainer/Lighting quality" method="_on_option_button_item_selected"]
+[connection signal="toggled" from="AspectRatioContainer/VBoxContainer/SDFGI/CheckButton" to="AspectRatioContainer/VBoxContainer/SDFGI" method="_on_check_button_toggled"]
 [connection signal="item_selected" from="AspectRatioContainer/VBoxContainer/Resolution/dropdown" to="AspectRatioContainer/VBoxContainer/Resolution" method="_on_option_button_item_selected"]
 [connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Resolution/apply" to="AspectRatioContainer/VBoxContainer/Resolution" method="_on_apply_pressed"]
 [connection signal="item_selected" from="AspectRatioContainer/VBoxContainer/screen mode/OptionButton" to="AspectRatioContainer/VBoxContainer/screen mode" method="_on_option_button_item_selected"]

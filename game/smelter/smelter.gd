@@ -1,14 +1,5 @@
 extends StaticBody3D
 
-func _ready():
-	match Settings.particle_quality:
-		Settings.SCALE.low:
-			$GpuParticles3d_low.emitting = true
-		Settings.SCALE.medium:
-			$GpuParticles3d_medium.emitting = true
-		Settings.SCALE.high:
-			$GpuParticles3d_high.emitting = true
-
 func _on_process_area_body_entered(body):
 	if not body.is_in_group("item"): return # only smelt items... :flushed:
 	
