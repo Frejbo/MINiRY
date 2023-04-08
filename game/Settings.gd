@@ -36,7 +36,7 @@ var resolution : Vector2i:
 #		ProjectSettings.set_setting("display/window/size/viewport_height", res.y)
 		
 		DisplayServer.window_set_size(res)
-		DisplayServer.window_set_position(Vector2i(50, 50)) # in case you can't drag the window, since windows UI is weird and allows the toolbar to be above the screen.
+		DisplayServer.window_set_position(Vector2i(0, 30)) # in case you can't drag the window, since windows UI is weird and allows the toolbar to be above the screen.
 		
 		Settings.config.set_value("DISPLAY", "resolution",  res)
 		Settings.config.save(Settings.PATH)

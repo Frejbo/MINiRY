@@ -7,7 +7,7 @@ func _ready():
 
 func _on_spawn_items_timer_timeout():
 	# varje gång timer-noden börjar om spawnar den ett item i menyn.
-	var item = load("res://item.tscn").instantiate()
+	var item = load("res://items/item.tscn").instantiate()
 	item.item = Globals.items.IronOre
 	$machine.add_child(item)
 	item.global_position = $machine/spawn_items.global_position

@@ -1,0 +1,59 @@
+[gd_scene load_steps=12 format=3 uid="uid://dkwe4gmne86r3"]
+
+[ext_resource type="Script" path="res://item.gd" id="1_0yqlf"]
+[ext_resource type="PackedScene" uid="uid://dcj34mbffdb1a" path="res://items/IronOre.gltf" id="2_wvbm7"]
+[ext_resource type="PackedScene" uid="uid://4bd78tx4s7jk" path="res://items/IronIngot.gltf" id="3_a3hqh"]
+[ext_resource type="PackedScene" uid="uid://dpjcisg40fw1s" path="res://items/IronGear.gltf" id="5_kw6sp"]
+[ext_resource type="PackedScene" uid="uid://bsa3achnnchec" path="res://items/IronRod.gltf" id="6_0mbg1"]
+[ext_resource type="PackedScene" uid="uid://b8wvd81shy2av" path="res://items/CopperOre.gltf" id="7_hpcxw"]
+[ext_resource type="PackedScene" uid="uid://bvbbtv283ojro" path="res://items/CopperIngot.gltf" id="8_vb20j"]
+[ext_resource type="PackedScene" uid="uid://jetplmx1gpb4" path="res://items/CopperWire.gltf" id="9_pdfqb"]
+[ext_resource type="PackedScene" uid="uid://dlvuwkgoswvrj" path="res://items/BadAnka.gltf" id="10_cbrs5"]
+[ext_resource type="PackedScene" uid="uid://c6li1wf3q7hm0" path="res://items/BadAnkaFrame.gltf" id="11_82kf5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ucn31"]
+size = Vector3(0.7, 0.2, 0.7)
+
+[node name="Item" type="RigidBody3D" groups=["item", "safe_to_remove"]]
+script = ExtResource("1_0yqlf")
+metadata/conveyor_move_velocity = []
+
+[node name="AllItems" type="Node3D" parent="."]
+
+[node name="IronOre" parent="AllItems" instance=ExtResource("2_wvbm7")]
+visible = false
+
+[node name="IronIngot" parent="AllItems" instance=ExtResource("3_a3hqh")]
+visible = false
+
+[node name="IronGear" parent="AllItems" instance=ExtResource("5_kw6sp")]
+visible = false
+
+[node name="IronRod" parent="AllItems" instance=ExtResource("6_0mbg1")]
+visible = false
+
+[node name="CopperOre" parent="AllItems" instance=ExtResource("7_hpcxw")]
+visible = false
+
+[node name="CopperIngot" parent="AllItems" instance=ExtResource("8_vb20j")]
+visible = false
+
+[node name="CopperWire" parent="AllItems" instance=ExtResource("9_pdfqb")]
+visible = false
+
+[node name="BadAnka" parent="AllItems" instance=ExtResource("10_cbrs5")]
+visible = false
+
+[node name="BadAnkaFrame" parent="AllItems" instance=ExtResource("11_82kf5")]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["safe_to_remove"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_ucn31")
+
+[node name="check_alive_timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="check_alive_timer" to="." method="check_for_removal"]
