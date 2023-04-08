@@ -13,7 +13,7 @@ const THREE_READABLE_SCALE := ["LOW", "MEDIUM", "HIGH"] # används för att häm
 
 var config := ConfigFile.new()
 
-func _ready():
+func _enter_tree():
 	if config.load("user://settings.cfg") != OK: print("Found no config file, creating new.")
 	
 	Engine.max_fps = max_fps
