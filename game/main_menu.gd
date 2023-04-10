@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var loadingscreen : Control
+
 func _ready():
 	# Sätter musen till synlig (mest för när man kört spelet och går tillbaks till menyn)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -44,6 +46,19 @@ func _on_levels_pressed():
 
 func _start_level(level : int):
 	Globals.current_level = level
-	get_tree().change_scene_to_packed(load("res://main.tscn"))
-#	var screen = load("res://levels/level_" + extra_arg_0 + ".tscn").instantiate()
-#	game.get_node("map/Screen/Sprite3D").texture = screen.get_node("level").get_texture()
+	loadingscreen.load_game()
+	
+	# animate main_menu transforming into loadingscreen, along with animationplayer in the loadingscreen scene.
+	var tween := create_tween()
+	var time := .7
+	tween.set_parallel(true)
+	tween.tween_property($CanvasLayer/meny, "modulate:a", 0, time)
+	tween.tween_property($CanvasLayer/titel, "modulate:a", 0, time)
+	tween.tween_property($CanvasLayer/levels, "modulate:a", 0, time)
+	var cam_final_pos = $Camera3D.position - $Camera3D.transform.basis.z / 2
+	tween.tween_property($Camera3D, "position", cam_final_pos, time)
+	tween.tween_property($Camera3D, "fov", 80, time)
+	tween.tween_property($Camera3D.attributes, "exposure_multiplier", .4, time)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.play()
