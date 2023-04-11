@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cswl1ic84xfek"]
 
-[ext_resource type="PackedScene" uid="uid://dt6b6m8grcdnf" path="res://conveyor/conveyorbelt.gltf" id="1_wc707"]
+[ext_resource type="PackedScene" uid="uid://ba4lfajbufd8g" path="res://conveyor/conveyorbelt.gltf" id="1_wc707"]
 [ext_resource type="Material" uid="uid://duww3rttr6fys" path="res://blueprint.tres" id="2_xpivh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o7cwu"]

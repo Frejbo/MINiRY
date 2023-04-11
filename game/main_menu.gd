@@ -49,8 +49,8 @@ func _start_level(level : int):
 	loadingscreen.load_game()
 	
 	# animate main_menu transforming into loadingscreen, along with animationplayer in the loadingscreen scene.
-	var tween := create_tween()
-	var time := .7
+	var tween := create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	var time := 1
 	tween.set_parallel(true)
 	tween.tween_property($CanvasLayer/meny, "modulate:a", 0, time)
 	tween.tween_property($CanvasLayer/titel, "modulate:a", 0, time)
@@ -59,6 +59,4 @@ func _start_level(level : int):
 	tween.tween_property($Camera3D, "position", cam_final_pos, time)
 	tween.tween_property($Camera3D, "fov", 80, time)
 	tween.tween_property($Camera3D.attributes, "exposure_multiplier", .4, time)
-	tween.set_trans(Tween.TRANS_CUBIC)
-	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.play()

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs6dmom4mp1ig"
-path.s3tc="res://.godot/imported/conveyorbelt_conveyorDiffuse.png-646a76d6e29bbdd66dacaf8a70158d20.s3tc.ctex"
+uid="uid://by5j5pieiglpb"
+path.s3tc="res://.godot/imported/conveyorbelt_conveyorbelt-belt-texture.png-6f6a704551b62a62268183e881f6a579.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://conveyor/conveyorbelt_conveyorDiffuse.png"
-dest_files=["res://.godot/imported/conveyorbelt_conveyorDiffuse.png-646a76d6e29bbdd66dacaf8a70158d20.s3tc.ctex"]
+source_file="res://conveyor/conveyorbelt_conveyorbelt-belt-texture.png"
+dest_files=["res://.godot/imported/conveyorbelt_conveyorbelt-belt-texture.png-6f6a704551b62a62268183e881f6a579.s3tc.ctex"]
 
 [params]
 

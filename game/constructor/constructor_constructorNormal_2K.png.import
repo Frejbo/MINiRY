@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs6dmom4mp1ig"
-path.s3tc="res://.godot/imported/conveyorbelt_conveyorDiffuse.png-646a76d6e29bbdd66dacaf8a70158d20.s3tc.ctex"
+uid="uid://di1gttdrje68n"
+path.s3tc="res://.godot/imported/constructor_constructorNormal_2K.png-58216f0613dad340d22163b6c0ec96d7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://conveyor/conveyorbelt_conveyorDiffuse.png"
-dest_files=["res://.godot/imported/conveyorbelt_conveyorDiffuse.png-646a76d6e29bbdd66dacaf8a70158d20.s3tc.ctex"]
+source_file="res://constructor/constructor_constructorNormal_2K.png"
+dest_files=["res://.godot/imported/constructor_constructorNormal_2K.png-58216f0613dad340d22163b6c0ec96d7.s3tc.ctex"]
 
 [params]
 
@@ -21,12 +21,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://constructor/constructor_constructorNormal_2K.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

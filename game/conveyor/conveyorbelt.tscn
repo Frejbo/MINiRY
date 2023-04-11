@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dqaeyvbfcfp2e"]
 
 [ext_resource type="Script" path="res://conveyor/conveyorbelt.gd" id="2_kyart"]
-[ext_resource type="PackedScene" uid="uid://dt6b6m8grcdnf" path="res://conveyor/conveyorbelt.gltf" id="2_m0ebu"]
+[ext_resource type="PackedScene" uid="uid://ba4lfajbufd8g" path="res://conveyor/conveyorbelt.gltf" id="2_m0ebu"]
 [ext_resource type="AudioStream" uid="uid://cigx4qwmk3ci3" path="res://sounds/conveyor.ogg" id="4_tuqj3"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_28e52"]
