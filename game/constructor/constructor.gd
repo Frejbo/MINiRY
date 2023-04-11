@@ -1,6 +1,6 @@
-extends Node3D
+extends StaticBody3D
 
-@onready var anim := $AnimationPlayer
+@onready var anim := $constructor/AnimationPlayer
 const can_produce := [Globals.items.IronGear, Globals.items.IronRod, Globals.items.CopperWire, Globals.items.BadAnkaFrame]
 var producing := Globals.items.IronGear
 

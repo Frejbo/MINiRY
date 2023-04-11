@@ -61,7 +61,7 @@ func _input(event):
 		if is_colliding() and get_collider().is_in_group("clickable"):
 			# Pilar på constructor:
 			if "Arrow" in get_collider().name:
-				get_collider().get_parent().get_parent().click_arrow(get_collider())
+				get_collider().get_node("../../../").click_arrow(get_collider())
 		
 		if is_colliding() and can_place():
 			# place objects
