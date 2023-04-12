@@ -12,7 +12,7 @@ func load_game():
 	$AnimationPlayer.play("tone_in")
 	set_process(true)
 
-func _process(delta):
+func _process(_delta):
 	scene_load_status = ResourceLoader.load_threaded_get_status(scene_path, progress)
 	progress_bar.value = progress[0] * 100
 	if scene_load_status == ResourceLoader.THREAD_LOAD_LOADED:
