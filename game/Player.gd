@@ -4,46 +4,50 @@ extends CharacterBody3D
 
 var MOUSE_SENSITIVITY := 0.1
 
-
-@export var MAX_SPEED := 6.0
+# moving
+@export var MAX_SPEED := 5.0
 @export var ACCELERATION := .1
-@export var DE_ACCELERATION := 0.5
-@export var JUMP_VELOCITY := 5.0
+@export var DEACCELERATION := 0.5
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var GRAVITY : float = ProjectSettings.get_setting("physics/3d/default_gravity")
+# jumping
+@export var jump_height : float
+@export var jump_time_to_peak : float
+@export var jump_time_to_descent : float
 
+@onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak)
+@onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak))
+@onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent))
+
+
+func get_gravity() -> float:
+	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
 func _physics_process(delta):
-	# Add the gravity.
+	# Gravity
 	if not is_on_floor():
-		velocity.y -= GRAVITY * delta
-
-	# Handle Jump.
+		velocity.y += get_gravity() * delta
+	# Jumping
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	
-	# slow down, gets overriden below if moving.
+		velocity.y = jump_velocity
 	
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		var y := velocity.y
+		velocity.y = 0
 		velocity += (direction * (ACCELERATION * MAX_SPEED))
-		velocity = velocity.normalized() * velocity.length()
-		
-#		print(velocity.y)
 		velocity = velocity.limit_length(MAX_SPEED)
-#		print(velocity.y)
-#		print("--")
 		velocity.y = y
+		velocity = velocity.normalized() * velocity.length()
 	else:
-		velocity.x *= DE_ACCELERATION
-		velocity.z *= DE_ACCELERATION
+		# slowing down after key is released
+		velocity.x *= DEACCELERATION
+		velocity.z *= DEACCELERATION
 	
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED: # only move if mouse mode captured.
 		move_and_slide()
+	
 	
 	
 	if global_position.y < -20: # teleports back up
