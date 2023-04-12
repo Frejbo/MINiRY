@@ -54,12 +54,11 @@ expand_margin_bottom = 15.0
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_rsm3n")
-MAX_SPEED = 6.0
 ACCELERATION = 0.15
 DEACCELERATION = 0.7
-jump_height = 2.0
-jump_time_to_peak = 0.4
-jump_time_to_descent = 0.3
+jump_height = 2.1
+jump_time_to_peak = 0.5
+jump_time_to_descent = 0.4
 metadata/conveyor_move_velocity = []
 
 [node name="hotbar_renders" type="Control" parent="."]

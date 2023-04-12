@@ -6,9 +6,10 @@ var MOUSE_SENSITIVITY := 0.1
 
 # moving
 @export var MAX_SPEED := 5.0
+@export var MAX_SPRINT_SPEED := 10.0
+var speed = MAX_SPEED
 @export var ACCELERATION := .1
 @export var DEACCELERATION := 0.5
-
 # jumping
 @export var jump_height : float
 @export var jump_time_to_peak : float
@@ -22,22 +23,20 @@ var MOUSE_SENSITIVITY := 0.1
 func get_gravity() -> float:
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	# Gravity
 	if not is_on_floor():
 		velocity.y += get_gravity() * delta
-	# Jumping
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_velocity
 	
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
 	if direction:
 		var y := velocity.y
 		velocity.y = 0
-		velocity += (direction * (ACCELERATION * MAX_SPEED))
-		velocity = velocity.limit_length(MAX_SPEED)
+		velocity += (direction * (ACCELERATION * speed))
+		velocity = velocity.limit_length(speed)
 		velocity.y = y
 		velocity = velocity.normalized() * velocity.length()
 	else:
@@ -48,9 +47,7 @@ func _physics_process(delta):
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED: # only move if mouse mode captured.
 		move_and_slide()
 	
-	
-	
-	if global_position.y < -20: # teleports back up
+	if global_position.y < -20: # teleports back up if player falls out of map for some reason
 		global_position = Vector3(0, 5, 0)
 		velocity = Vector3.ZERO
 
@@ -63,8 +60,17 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
-func _input(event):
+func _input(event) -> void:
 	# rotate the character as the player moves the mouse
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		rotation_helper.rotation.x = clamp(rotation_helper.rotation.x + deg_to_rad(event.relative.y * -MOUSE_SENSITIVITY), -1.5, 1.5)
 		self.rotate_y(deg_to_rad(event.relative.x * MOUSE_SENSITIVITY * -1))
+	
+	if Input.is_action_just_pressed("sprint"):
+		speed = MAX_SPRINT_SPEED
+	elif Input.is_action_just_released("sprint"):
+		speed = MAX_SPEED
+	
+	# Jumping
+	if Input.is_action_pressed("jump") and is_on_floor():
+		velocity.y = jump_velocity
