@@ -22,15 +22,16 @@ func _on_process_area_body_entered(body):
 	
 #	if not body.item in can_process: return
 	if body.item != made_of[producing]: return
-	
+	$AudioStreamPlayer3D.play()
 	anim.play("ArmatureAction")
-	await anim.animation_finished
+	await get_tree().create_timer(.7).timeout
 	
+	if !body.is_inside_tree(): return # ifall man tar bort itemet precis innan den processas
 	if made_of[producing] == body.item:
 		body.item = producing # converting
 	
 	body.update_material()
-	anim.play_backwards("ArmatureAction")
+
 
 func click_arrow(area):
 	if "Right" in area.name:
