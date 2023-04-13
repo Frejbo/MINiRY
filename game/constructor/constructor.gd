@@ -23,8 +23,12 @@ func _on_process_area_body_entered(body):
 #	if not body.item in can_process: return
 	if body.item != made_of[producing]: return
 	$AudioStreamPlayer3D.play()
-	anim.play("ArmatureAction")
+	anim.play("constructor")
 	await get_tree().create_timer(.7).timeout
+	
+	if Settings.particle_quality != Settings.THREE_SCALE.low: # smoke is not shown on low particles setting
+		$GPUParticles3D.restart()
+		$GPUParticles3D2.restart()
 	
 	if !body.is_inside_tree(): return # ifall man tar bort itemet precis innan den processas
 	if made_of[producing] == body.item:
