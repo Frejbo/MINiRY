@@ -14,6 +14,7 @@ border_width_bottom = 20
 border_color = Color(0.760784, 0.54902, 0.32549, 1)
 
 [node name="level" type="SubViewport" node_paths=PackedStringArray("item_manager")]
+screen_space_aa = 1
 scaling_3d_mode = 1
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
@@ -94,7 +95,7 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 125
 
-[node name="time_left" parent="screen/bottom" instance=ExtResource("3_lnbvq")]
+[node name="time_left_L" parent="screen/bottom" instance=ExtResource("3_lnbvq")]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="screen/bottom"]
@@ -104,7 +105,7 @@ text = "PRESS TAB TO VIEW RECEPIES"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="time_left2" parent="screen/bottom" instance=ExtResource("3_lnbvq")]
+[node name="time_left_R" parent="screen/bottom" instance=ExtResource("3_lnbvq")]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="screen"]

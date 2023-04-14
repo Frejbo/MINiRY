@@ -1,4 +1,5 @@
 extends Node
+const FILE_VERSION := 1
 #A game factory playground, 20x20 meters with walls. Cool dark lightning. Videogame concept art
 enum items {IronOre, IronIngot, IronGear, IronRod, CopperOre, CopperIngot, CopperWire, BadAnka, BadAnkaFrame}
 const item_paths = {
@@ -52,14 +53,25 @@ var level_completion = { # sparar hur många stjärnor man fått på varje level
 func save_game():
 	# spara progress på levlarna
 	var file = FileAccess.open("user://MINiRY.save", FileAccess.WRITE)
-	file.store_var(level_completion)
+	file.store_var({
+		"FILE_VERSION":FILE_VERSION,
+		"level_completion":level_completion
+	})
 
 
 func _enter_tree():
 	# ladda progress på levlarna
 	if not FileAccess.file_exists("user://MINiRY.save"): return # ingen save-fil hittas, ladda ej.
 	var file = FileAccess.open("user://MINiRY.save", FileAccess.READ)
-	level_completion = file.get_var()
+	var data = file.get_var()
+	
+	if !data.has("FILE_VERSION") or data.FILE_VERSION != FILE_VERSION:
+#		print(data.level_completion)# or file.get_var()["FILE_VERSION"] != FILE_VERSION:
+		file.flush()
+		print("Savedata is from older version and is not supported, flushing.")
+		return
+	
+	level_completion = data.level_completion
 
 
 

@@ -22,14 +22,21 @@ func level_clear():
 	
 	var level_expectations = Globals.level_time_expectations[Globals.current_level]
 	var seconds := (Time.get_ticks_msec() - start_time) / 1000.0
-	
+	var star : Globals.stars
 	if seconds <= level_expectations[Globals.stars.three]:
 		# Ge 3 stjärnor
-		Globals.level_completion[Globals.current_level] = Globals.stars.three
+		star = Globals.stars.three
+#		Globals.level_completion[Globals.current_level] = Globals.stars.three
 	elif seconds <= level_expectations[Globals.stars.two]:
 		# 2 stjärnor
-		Globals.level_completion[Globals.current_level] = Globals.stars.two
-	else:
+		star = Globals.stars.two
+#		Globals.level_completion[Globals.current_level] < Globals.stars.two
+	elif seconds <= level_expectations[Globals.stars.one]:
 		# 1 stjärna
-		Globals.level_completion[Globals.current_level] = Globals.stars.one
+		star = Globals.stars.one
+#		Globals.level_completion[Globals.current_level] = Globals.stars.one
+	else:
+		star = Globals.stars.zero
+	
+	Globals.level_completion[Globals.current_level] = star
 	Globals.save_game()
