@@ -65,7 +65,7 @@ func _enter_tree():
 	var file = FileAccess.open("user://MINiRY.save", FileAccess.READ)
 	var data = file.get_var()
 	
-	if !data.has("FILE_VERSION") or data.FILE_VERSION != FILE_VERSION:
+	if !data.has("FILE_VERSION") or data.FILE_VERSION != FILE_VERSION: # hade inte filversionsnummer i första releasen, måste därför ha första if delen för att det inte ska krascha.
 #		print(data.level_completion)# or file.get_var()["FILE_VERSION"] != FILE_VERSION:
 		file.flush()
 		print("Savedata is from older version and is not supported, flushing.")
