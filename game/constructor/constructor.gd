@@ -12,23 +12,21 @@ const made_of := {
 }
 
 
-func _ready():
-	get_node("Material_z+").texture = $Item.get_texture()
-	get_node("Material_z-").texture = $Item.get_texture()
+func _ready() -> void:
+	set_display_item()
 
 
-func _on_process_area_body_entered(body):
+func _on_process_area_body_entered(body) -> void:
 	if not body.is_in_group("item"): return # only smelt items... :flushed:
 	
-#	if not body.item in can_process: return
 	if body.item != made_of[producing]: return
-	$AudioStreamPlayer3D.play()
+	$construct.play()
 	anim.play("constructor")
 	await get_tree().create_timer(.7).timeout
 	
 	if Settings.particle_quality != Settings.THREE_SCALE.low: # smoke is not shown on low particles setting
-		$GPUParticles3D.restart()
-		$GPUParticles3D2.restart()
+		$smoke1.restart()
+		$smoke2.restart()
 	
 	if !body.is_inside_tree(): return # ifall man tar bort itemet precis innan den processas
 	if made_of[producing] == body.item:
@@ -37,7 +35,7 @@ func _on_process_area_body_entered(body):
 	body.update_material()
 
 
-func click_arrow(area):
+func click_arrow(area) -> void:
 	if "Right" in area.name:
 		producing += 1
 		while not producing in can_produce:
@@ -53,10 +51,8 @@ func click_arrow(area):
 		$AnimationArrows.play("LeftArrows")
 	set_display_item()
 
-func set_display_item():
+func set_display_item() -> void:
 	# update what item that is being viewed on the machine
-	var item_node : Node3D = $Item/item
-	item_node.get_child(0).queue_free()
-	
-	var item = load(Globals.item_paths[producing]).instantiate()
-	item_node.add_child(item)
+	var texture : Texture2D = $item_renderer.get_image(producing)
+	get_node("Material_z+").texture = texture
+	get_node("Material_z-").texture = texture
