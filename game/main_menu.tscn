@@ -264,6 +264,7 @@ offset_right = -182.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("8_2uw6v")
+expand_mode = 1
 
 [node name="Star2" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1/Starlink"]
 layout_mode = 0
@@ -277,6 +278,7 @@ offset_right = -48.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = SubResource("CompressedTexture2D_28or1")
+expand_mode = 1
 
 [node name="Anka" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1"]
 custom_minimum_size = Vector2(100, 100)
@@ -288,6 +290,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("8_j2x3h")
+expand_mode = 1
 
 [node name="Button" type="Button" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level1"]
 custom_minimum_size = Vector2(200, 200)
@@ -343,6 +346,7 @@ offset_right = -182.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("8_2uw6v")
+expand_mode = 1
 
 [node name="Star2" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2/Starlink"]
 layout_mode = 0
@@ -356,6 +360,7 @@ offset_right = -48.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("8_2uw6v")
+expand_mode = 1
 
 [node name="Anka" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2"]
 custom_minimum_size = Vector2(100, 100)
@@ -367,6 +372,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("8_j2x3h")
+expand_mode = 1
 
 [node name="Button" type="Button" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level2"]
 custom_minimum_size = Vector2(200, 200)
@@ -422,6 +428,7 @@ offset_right = -182.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("8_2uw6v")
+expand_mode = 1
 
 [node name="Star2" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3/Starlink"]
 layout_mode = 0
@@ -435,6 +442,7 @@ offset_right = -48.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("8_2uw6v")
+expand_mode = 1
 
 [node name="Anka" type="TextureRect" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3"]
 custom_minimum_size = Vector2(100, 100)
@@ -446,6 +454,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("8_j2x3h")
+expand_mode = 1
 
 [node name="Button" type="Button" parent="CanvasLayer/levels/VBoxContainer/HBoxContainer/level3"]
 custom_minimum_size = Vector2(200, 200)

@@ -1,66 +1,65 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk4l6kutrl0yp"]
+[gd_scene load_steps=5 format=3 uid="uid://dk4l6kutrl0yp"]
 
+[ext_resource type="Theme" uid="uid://bj13ip82fk7y6" path="res://ui/theme.tres" id="1_7bshp"]
 [ext_resource type="Script" path="res://ui/time_left.gd" id="1_m3hep"]
 [ext_resource type="Texture2D" uid="uid://c0octno42moqc" path="res://ui/Star.png" id="1_mew68"]
 [ext_resource type="Texture2D" uid="uid://d32nr01ipqlbs" path="res://ui/Anka.png" id="2_3nfv2"]
-[ext_resource type="FontFile" uid="uid://d3atht6ersxhp" path="res://Orbitron-VariableFont_wght.ttf" id="3_l1wab"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_67ujf"]
-load_path = "res://.godot/imported/Star.png-fe193f16e268cc5baacdd3409245fe77.ctex"
-
-[node name="time_left" type="SubViewport"]
-transparent_bg = true
-size = Vector2i(256, 256)
-render_target_update_mode = 4
-script = ExtResource("1_m3hep")
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-custom_minimum_size = Vector2(200, 200)
-offset_right = 512.0
-offset_bottom = 256.0
+[node name="AspectRatioContainer" type="AspectRatioContainer"]
+custom_minimum_size = Vector2(300, 200)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -128.0
+offset_right = 147.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme = ExtResource("1_7bshp")
+script = ExtResource("1_m3hep")
 metadata/_edit_group_ = true
 
-[node name="Starlink" type="Control" parent="AspectRatioContainer"]
-custom_minimum_size = Vector2(512, 100)
+[node name="Starlink" type="HBoxContainer" parent="."]
 layout_mode = 2
-size_flags_vertical = 4
+theme_override_constants/separation = 44
+alignment = 1
 
-[node name="Star" type="TextureRect" parent="AspectRatioContainer/Starlink"]
-layout_mode = 1
-offset_right = 256.0
-offset_bottom = 256.0
-texture = ExtResource("1_mew68")
-
-[node name="Star2" type="TextureRect" parent="AspectRatioContainer/Starlink"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -256.0
-offset_bottom = 256.0
-grow_horizontal = 0
-texture = SubResource("CompressedTexture2D_67ujf")
-
-[node name="Anka" type="TextureRect" parent="AspectRatioContainer"]
+[node name="Star" type="TextureRect" parent="Starlink"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = ExtResource("2_3nfv2")
+texture = ExtResource("1_mew68")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="AspectRatioContainer"]
+[node name="Star2" type="TextureRect" parent="Starlink"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("1_mew68")
+expand_mode = 1
+
+[node name="Anka" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_3nfv2")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
 size_flags_vertical = 8
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_constants/shadow_outline_size = 20
-theme_override_fonts/font = ExtResource("3_l1wab")
 theme_override_font_sizes/font_size = 64
-text = "88.8"
+text = "00.0"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
+visible_characters = 4

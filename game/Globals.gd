@@ -16,48 +16,47 @@ const CONVEYOR_SPEED = .5
 
 var current_level : int
 
-var level_completion = { # sparar hur många stjärnor man fått på varje level.
-	1: 0,
-	2: 0,
-	3: 0
-}
 
-# Vad som krävs för att köra de olika levlarna.
-var level_requirements = { # väljer att används dictionary istället för lista/array här eftersom det inte är viktigt vilken ordning de ligger i, men det är viktigt att rätt level hämtas snarare än att hämta "den på plats 2".
+# Vad som krävs för att klara de olika levlarna.
+const level_requirements = { # väljer att används dictionary istället för lista/array här eftersom det inte är viktigt vilken ordning de ligger i, men det är viktigt att rätt level hämtas snarare än att hämta "den på plats 2".
 	0: [], # level '0' är sandbox.
 	1: [{"type":items.IronRod, "amount":10}, {"type":items.CopperWire, "amount":10}],
 	2: [{"type":items.BadAnka, "amount":1}],
 	3: [{"type":items.IronGear, "amount":20}, {"type":items.CopperWire, "amount":20}]
 }
-var level_time_expectations = {
+enum stars {zero, one, two, three}
+const level_time_expectations = {
 	1: { # level 1
-		"2": 130, # sekunder för att klara 2 stjärnor
-		"3": 100 # sekunder för att klara 3 stjärnor
+		stars.one: 140, # sekunder för att klara 1 stjärna
+		stars.two: 100, # sekunder för att klara 2 stjärnor
+		stars.three: 70 # sekunder för att klara 3 stjärnor
 	},
-	2: {
-		"2": 70,
-		"3": 40
+	2: { # level 2
+		stars.one: 75,
+		stars.two: 70,
+		stars.three: 40
 	},
 	3: {
-		"2": 150,
-		"3": 120
+		stars.one: 180,
+		stars.two: 150,
+		stars.three: 120
 	},
 }
+var level_completion = { # sparar hur många stjärnor man fått på varje level.
+	1: stars.zero,
+	2: stars.zero,
+	3: stars.zero
+}
 
-# spara i filer
-func _notification(what):
-	# Om spelet stängs av, spara levlarna.
-	if what == NOTIFICATION_EXIT_TREE:
-		save_game()
 
 func save_game():
-	# spara progress på levlarna.
+	# spara progress på levlarna
 	var file = FileAccess.open("user://MINiRY.save", FileAccess.WRITE)
 	file.store_var(level_completion)
 
 
 func _enter_tree():
-	# load data
+	# ladda progress på levlarna
 	if not FileAccess.file_exists("user://MINiRY.save"): return # ingen save-fil hittas, ladda ej.
 	var file = FileAccess.open("user://MINiRY.save", FileAccess.READ)
 	level_completion = file.get_var()

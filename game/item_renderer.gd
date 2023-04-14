@@ -2,6 +2,7 @@ extends SubViewport
 
 # Replaces the object shown with the new 'item'.
 func get_image(item:Globals.items, img_size:Vector2i = size) -> Texture2D:
+	
 	while $parent.get_child_count() > 0:
 		$parent.get_child(0).free()
 	
