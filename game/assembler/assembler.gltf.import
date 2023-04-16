@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dhb0kfdk63r6a"
+uid="uid://bpxadougahe6p"
 path="res://.godot/imported/assembler.gltf-48e245b909da5811af8e648e76868fbc.scn"
 
 [deps]
@@ -25,5 +25,8 @@ meshes/lightmap_texel_size=0.2
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={}
+gltf/embedded_image_handling=1

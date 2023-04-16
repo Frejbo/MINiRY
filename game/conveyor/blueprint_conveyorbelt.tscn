@@ -14,19 +14,15 @@ material_override = ExtResource("2_xpivh")
 
 [node name="wheeldownback" parent="conveyorbelt/belt" index="0"]
 material_overlay = ExtResource("2_xpivh")
-transparency = 0.8
 
 [node name="wheeldownfront" parent="conveyorbelt/belt" index="1"]
 material_overlay = ExtResource("2_xpivh")
-transparency = 0.8
 
 [node name="wheeltopback" parent="conveyorbelt/belt" index="2"]
 material_overlay = ExtResource("2_xpivh")
-transparency = 0.8
 
 [node name="wheeltopfront" parent="conveyorbelt/belt" index="3"]
 material_overlay = ExtResource("2_xpivh")
-transparency = 0.8
 
 [node name="CollideCheck" type="Area3D" parent="."]
 collision_layer = 2

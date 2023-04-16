@@ -33,9 +33,9 @@ const level_time_expectations = {
 		stars.three: 70 # sekunder för att klara 3 stjärnor
 	},
 	2: { # level 2
-		stars.one: 75,
-		stars.two: 70,
-		stars.three: 40
+		stars.one: 120,
+		stars.two: 90,
+		stars.three: 60
 	},
 	3: {
 		stars.one: 180,

@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://d3atht6ersxhp" path="res://Orbitron-VariableFont_wght.ttf" id="4_p7kp3"]
 [ext_resource type="PackedScene" uid="uid://4gd2tan1vsly" path="res://smelter/smelter.tscn" id="4_shg0q"]
 [ext_resource type="PackedScene" uid="uid://mu5ibf2ct5yf" path="res://constructor/constructor.tscn" id="5_h3soa"]
-[ext_resource type="PackedScene" uid="uid://s7bg72vhuf1h" path="res://assembler/assembler.tscn" id="9_4naps"]
+[ext_resource type="PackedScene" uid="uid://bupbco7pgdrhh" path="res://assembler/assembler.tscn" id="9_4naps"]
 [ext_resource type="PackedScene" uid="uid://byd5tf5xrv5u8" path="res://ui/settings/settings.tscn" id="10_nb8ke"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u84l8"]
