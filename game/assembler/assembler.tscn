@@ -20,6 +20,7 @@ data = PackedVector3Array(-0.5283, 5.1962, -0.2634, -0.9798, 5.1502, 0, -0.9797,
 size = Vector3(0.425822, 0.237767, 1)
 
 [node name="New Assembler" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 script = ExtResource("1_vswf5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
