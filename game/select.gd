@@ -53,6 +53,7 @@ func _input(event):
 			held_item_name = ITEMS["Assembler"]
 		else:
 			held_item_name = ITEMS["None"]
+			
 	
 	
 	if event.is_action_pressed("primary"):
