@@ -59,15 +59,14 @@ func produce(item_A, item_B):
 	inputs = [null, null]
 	item_A.remove_from_group("item")
 	item_B.remove_from_group("item")
-	item_A.freeze = true
-	item_B.freeze = true
 	
-	$AssemblerStatusScreen.started_producing(currently_producing, anim.current_animation_length)
 	anim.play("ArmatureAction002")
+	$Screen/AssemblerStatusScreen.started_producing(currently_producing, anim.current_animation_length)
 	
 	await get_tree().create_timer(.6).timeout
 	# flytta item A till klon
 	move_node(item_A, klo)
+	item_A.freeze = true
 	
 	await get_tree().create_timer(1.8).timeout
 	# ta bort item A
@@ -77,6 +76,7 @@ func produce(item_A, item_B):
 	# flytta item B till klon
 	var parent_before = item_B.get_parent()
 	move_node(item_B, klo)
+	item_B.freeze = true
 	
 	await get_tree().create_timer(1.9).timeout
 	# Gör om item B till det producerade itemet
@@ -86,15 +86,17 @@ func produce(item_A, item_B):
 	await get_tree().create_timer(1.7).timeout
 	# Flytta tillbaks item B och ge tillbaks item taggen
 	move_node(item_B, parent_before, true)
+	item_B.freeze = false
 	item_B.add_to_group("item")
 	
 	await anim.animation_finished
 	emit_signal("ready_to_produce")
 	
-	item_B.freeze = false
 
 
 func move_node(node, new_parent, keep_transform := false) -> void:
+	if !node.is_inside_tree(): return # can happen if user deletes it while animation started.
+	
 	var node_transform = node.global_transform
 	
 	node.get_parent().remove_child(node)

@@ -3,13 +3,17 @@
 [ext_resource type="Theme" uid="uid://bj13ip82fk7y6" path="res://ui/theme.tres" id="1_lt267"]
 [ext_resource type="Script" path="res://assembler/assembler_status_screen.gd" id="1_pq5ni"]
 [ext_resource type="Texture2D" uid="uid://bnix4ay3m5jis" path="res://ui/progress_background.jpg" id="2_brmos"]
+[ext_resource type="Script" path="res://assembler/assembler_screen_dots.gd" id="2_qloi6"]
 [ext_resource type="PackedScene" uid="uid://bqng55m1ho16t" path="res://items/item_image_render.tscn" id="3_i7hbq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glupb"]
+resource_local_to_scene = true
 bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_f5xdf"]
-viewport_path = NodePath("item_renderer")
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color(0.760784, 0.54902, 0.32549, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5btvq"]
 texture = ExtResource("2_brmos")
@@ -22,13 +26,42 @@ bg_color = Color(0.760784, 0.54902, 0.32549, 1)
 [node name="AssemblerStatusScreen" type="SubViewport" node_paths=PackedStringArray("item_renderer", "progressBar")]
 size = Vector2i(1600, 800)
 script = ExtResource("1_pq5ni")
-item_renderer = NodePath("processing/VBoxContainer/TextureRect/item_renderer")
+item_renderer = NodePath("processing/VBoxContainer/item-icon/item_renderer")
 progressBar = NodePath("processing/VBoxContainer/ProgressBar")
 
-[node name="processing" type="AspectRatioContainer" parent="."]
+[node name="standby" type="AspectRatioContainer" parent="."]
 custom_minimum_size = Vector2(1600, 800)
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1600.0
+offset_bottom = 800.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lt267")
+
+[node name="Panel" type="Panel" parent="standby"]
+custom_minimum_size = Vector2(1600, 800)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_glupb")
+
+[node name="Label" type="Label" parent="standby"]
+custom_minimum_size = Vector2(1180, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 100
+text = "WAITING FOR INPUT..."
+script = ExtResource("2_qloi6")
+
+[node name="dots" type="Timer" parent="standby"]
+wait_time = 0.5
+autostart = true
+
+[node name="processing" type="AspectRatioContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(1600, 800)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_lt267")
 
 [node name="Panel" type="Panel" parent="processing"]
@@ -40,14 +73,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_glupb")
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="processing/VBoxContainer"]
+[node name="item-icon" type="TextureRect" parent="processing/VBoxContainer"]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = SubResource("ViewportTexture_f5xdf")
 
-[node name="item_renderer" parent="processing/VBoxContainer/TextureRect" instance=ExtResource("3_i7hbq")]
+[node name="item_renderer" parent="processing/VBoxContainer/item-icon" instance=ExtResource("3_i7hbq")]
 size = Vector2i(400, 400)
 
 [node name="ProgressBar" type="ProgressBar" parent="processing/VBoxContainer"]
@@ -57,3 +89,10 @@ theme_override_styles/background = SubResource("StyleBoxTexture_5btvq")
 theme_override_styles/fill = SubResource("StyleBoxFlat_l6stm")
 value = 33.0
 show_percentage = false
+
+[node name="ScreenTimeout" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="standby/dots" to="standby/Label" method="_on_dots_timeout"]
+[connection signal="timeout" from="ScreenTimeout" to="." method="_on_screen_timeout_timeout"]

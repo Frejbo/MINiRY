@@ -1,6 +1,6 @@
 extends Node3D
 
-var screen : SubViewport
+@onready var screen := $Screen/level
 
 # För vardera spak som är på, spawna ett item vid tillhörande input. Called av en timernode.
 func _on_item_spawn_timer_timeout():
@@ -9,8 +9,7 @@ func _on_item_spawn_timer_timeout():
 
 
 func _ready():
-	screen = $Screen/level
-	$Screen/Sprite3D.texture = screen.get_texture()
+	$Screen/screenSprite.texture = screen.get_texture()
 
 
 # Spawna 'desired_item' vid 'place_position'.
