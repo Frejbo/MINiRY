@@ -15,11 +15,6 @@ func _ready() -> void:
 
 
 func level_clear():
-	var player = get_node("/root/main/Player")
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	var success_screen = load("res://ui/success_screen.tscn").instantiate()
-	player.get_node("CanvasLayer").add_child(success_screen)
-	
 	var level_expectations = Globals.level_time_expectations[Globals.current_level]
 	var seconds := (Time.get_ticks_msec() - start_time) / 1000.0
 	var star : Globals.stars
@@ -37,6 +32,12 @@ func level_clear():
 #		Globals.level_completion[Globals.current_level] = Globals.stars.one
 	else:
 		star = Globals.stars.zero
-	
 	Globals.level_completion[Globals.current_level] = star
+	
+	# add success screen
+	var player = get_node("/root/main/Player")
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	var success_screen = load("res://ui/success_screen.tscn").instantiate()
+	player.get_node("CanvasLayer").add_child(success_screen)
+	
 	Globals.save_game()

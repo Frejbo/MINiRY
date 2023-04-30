@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://ctx25pq510p5n"]
+
+[ext_resource type="Theme" uid="uid://bj13ip82fk7y6" path="res://ui/theme.tres" id="1_lt267"]
+[ext_resource type="Script" path="res://assembler/assembler_status_screen.gd" id="1_pq5ni"]
+[ext_resource type="Texture2D" uid="uid://bnix4ay3m5jis" path="res://ui/progress_background.jpg" id="2_brmos"]
+[ext_resource type="PackedScene" uid="uid://bqng55m1ho16t" path="res://items/item_image_render.tscn" id="3_i7hbq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glupb"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_f5xdf"]
+viewport_path = NodePath("item_renderer")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5btvq"]
+texture = ExtResource("2_brmos")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6stm"]
+bg_color = Color(0.760784, 0.54902, 0.32549, 1)
+
+[node name="AssemblerStatusScreen" type="SubViewport" node_paths=PackedStringArray("item_renderer", "progressBar")]
+size = Vector2i(1600, 800)
+script = ExtResource("1_pq5ni")
+item_renderer = NodePath("processing/VBoxContainer/TextureRect/item_renderer")
+progressBar = NodePath("processing/VBoxContainer/ProgressBar")
+
+[node name="processing" type="AspectRatioContainer" parent="."]
+custom_minimum_size = Vector2(1600, 800)
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_lt267")
+
+[node name="Panel" type="Panel" parent="processing"]
+custom_minimum_size = Vector2(1600, 800)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_glupb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="processing"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="processing/VBoxContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("ViewportTexture_f5xdf")
+
+[node name="item_renderer" parent="processing/VBoxContainer/TextureRect" instance=ExtResource("3_i7hbq")]
+size = Vector2i(400, 400)
+
+[node name="ProgressBar" type="ProgressBar" parent="processing/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxTexture_5btvq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_l6stm")
+value = 33.0
+show_percentage = false

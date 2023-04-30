@@ -51,7 +51,6 @@ func can_produce() -> bool:
 		if !inputs[0][0] in recepies[i]: continue
 		if !inputs[1][0] in recepies[i]: continue
 		currently_producing = recepies.keys()[index]
-		print(currently_producing)
 		index += 1
 		return true
 	return false
@@ -61,6 +60,7 @@ func produce(item_A, item_B):
 	item_A.remove_from_group("item")
 	item_B.remove_from_group("item")
 	
+	$AssemblerStatusScreen.started_producing(currently_producing, anim.current_animation_length)
 	anim.play("ArmatureAction002")
 	
 	await get_tree().create_timer(.6).timeout
@@ -91,13 +91,13 @@ func produce(item_A, item_B):
 
 
 func move_node(node, new_parent, keep_transform := false) -> void:
-	var transform = node.global_transform
+	var node_transform = node.global_transform
 	
 	node.get_parent().remove_child(node)
 	new_parent.add_child(node)
 	
 	if keep_transform:
-		node.global_transform = transform
+		node.global_transform = node_transform
 	else:
 		node.position = Vector3.ZERO
 		node.rotation = Vector3.ZERO

@@ -5,12 +5,12 @@ extends Control
 var progress = []
 var scene_load_status = 0
 
-func _ready(): set_process(false)
+func _enter_tree(): set_process(false)
 
 func load_game():
+	set_process(true)
 	ResourceLoader.load_threaded_request(scene_path)
 	$AnimationPlayer.play("tone_in")
-	set_process(true)
 
 func _process(_delta):
 	scene_load_status = ResourceLoader.load_threaded_get_status(scene_path, progress)
