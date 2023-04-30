@@ -59,6 +59,8 @@ func produce(item_A, item_B):
 	inputs = [null, null]
 	item_A.remove_from_group("item")
 	item_B.remove_from_group("item")
+	item_A.freeze = true
+	item_B.freeze = true
 	
 	$AssemblerStatusScreen.started_producing(currently_producing, anim.current_animation_length)
 	anim.play("ArmatureAction002")
@@ -88,6 +90,8 @@ func produce(item_A, item_B):
 	
 	await anim.animation_finished
 	emit_signal("ready_to_produce")
+	
+	item_B.freeze = false
 
 
 func move_node(node, new_parent, keep_transform := false) -> void:

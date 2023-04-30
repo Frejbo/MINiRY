@@ -44,8 +44,14 @@ shape = SubResource("ConcavePolygonShape3D_wf385")
 
 [node name="assembler" parent="." instance=ExtResource("2_i0u5f")]
 
+[node name="Skeleton3D" parent="assembler/Armature" index="0"]
+bones/1/position = Vector3(0, 0.739795, -3.99254e-11)
+bones/2/position = Vector3(-3.72529e-09, 0.438003, -2.91038e-11)
+bones/3/position = Vector3(-3.72529e-09, 0.254903, -7.26459e-11)
+bones/4/position = Vector3(0, 0.254903, -7.26369e-11)
+
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="assembler/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, -2.01948e-28, -5.68434e-14, 1.01644e-20, -1, 1.78814e-07, -5.68434e-14, -1.78814e-07, -1, -0.0316824, 2.02219, -0.000335056)
+transform = Transform3D(1, -2.01948e-28, -5.68434e-14, 1.01644e-20, -1, 1.78814e-07, -5.68434e-14, -1.78814e-07, -1, -0.0316824, 2.02219, 0.000725608)
 bone_name = "Hals"
 bone_idx = 2
 

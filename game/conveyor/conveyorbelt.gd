@@ -14,6 +14,7 @@ func _physics_process(delta):
 		call_deferred("move_body", body, delta) # Ska ske i slutet av framen, eftersom alla conveyorbelts måste appendat sin forward velocity innan rörelsen kan ske.
 	
 	
+	
 	# roterar hjulen
 	for node in $conveyorbelt/belt.get_children(): # för alla nodes under belt
 		if not node is MeshInstance3D: continue # endast hjulen ska rotera

@@ -47,7 +47,7 @@ var max_fps : int:
 #		ProjectSettings.set_setting("application/run/max_fps", val)
 		
 		Engine.max_fps = val
-		Settings.config.set_value("DISPLAY", "max_fps",  val)
+		Settings.config.set_value("DISPLAY", "max_fps", val)
 		Settings.config.save(Settings.PATH)
 		if val == 0: # windowed
 			DisplayServer.window_set_position(Vector2i(50, 50)) # in case you can't drag the window, since windows UI is weird and allows the toolbar to be above the screen.
