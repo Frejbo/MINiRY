@@ -3,6 +3,7 @@ extends CharacterBody3D
 @onready var rotation_helper := $Rotation_Helper
 
 var MOUSE_SENSITIVITY := 0.1
+var JOYSTICK_SENSITIVITY := 2
 
 # moving
 @export var MAX_SPEED := 5.0
@@ -24,12 +25,15 @@ func get_gravity() -> float:
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
 func _physics_process(delta) -> void:
+	stick_looking()
+	
 	# Gravity
 	if not is_on_floor():
 		velocity.y += get_gravity() * delta
 	
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
+	print(input_dir)
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	if direction:
@@ -62,15 +66,23 @@ func _ready():
 
 func _input(event) -> void:
 	# rotate the character as the player moves the mouse
-	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		rotation_helper.rotation.x = clamp(rotation_helper.rotation.x + deg_to_rad(event.relative.y * -MOUSE_SENSITIVITY), -1.5, 1.5)
-		self.rotate_y(deg_to_rad(event.relative.x * MOUSE_SENSITIVITY * -1))
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseMotion: # Mouse steering
+			rotation_helper.rotation.x = clamp(rotation_helper.rotation.x + deg_to_rad(event.relative.y * -MOUSE_SENSITIVITY), -1.5, 1.5)
+			self.rotate_y(deg_to_rad(event.relative.x * MOUSE_SENSITIVITY * -1))
 	
 	if Input.is_action_just_pressed("sprint"):
 		speed = MAX_SPRINT_SPEED
 	elif Input.is_action_just_released("sprint"):
 		speed = MAX_SPEED
+	elif event is InputEventJoypadMotion and event.axis == 5:
+		speed = MAX_SPEED + ((MAX_SPRINT_SPEED - MAX_SPEED) * event.axis_value)
 	
 	# Jumping
 	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
+
+func stick_looking():
+	var vec := Input.get_vector("look_left", "look_right", "look_down", "look_up")
+	rotation_helper.rotation.x = clamp(rotation_helper.rotation.x + deg_to_rad(vec.y * JOYSTICK_SENSITIVITY), -1.5, 1.5)
+	self.rotate_y(deg_to_rad(vec.x * JOYSTICK_SENSITIVITY * -1))
