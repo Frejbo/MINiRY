@@ -107,15 +107,3 @@ func move_node(node, new_parent, keep_transform := false) -> void:
 	else:
 		node.position = Vector3.ZERO
 		node.rotation = Vector3.ZERO
-
-# debug, place items
-#func _input(event: InputEvent) -> void:
-#	if event.is_action_pressed("left"):
-#		var item = load("res://items/item.tscn").instantiate()
-#		item.item = Globals.items.IronRod
-#		$Node3D/A.add_child(item)
-#
-#	if event.is_action_pressed("right"):
-#		var item = load("res://items/item.tscn").instantiate()
-#		item.item = Globals.items.CopperOre
-#		$Node3D/B.add_child(item)

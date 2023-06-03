@@ -30,15 +30,15 @@ item_renderer = NodePath("processing/VBoxContainer/item-icon/item_renderer")
 progressBar = NodePath("processing/VBoxContainer/ProgressBar")
 
 [node name="standby" type="AspectRatioContainer" parent="."]
-custom_minimum_size = Vector2(1600, 800)
-offset_right = 1600.0
+custom_minimum_size = Vector2(1400, 800)
+offset_right = 1400.0
 offset_bottom = 800.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_lt267")
 
 [node name="Panel" type="Panel" parent="standby"]
-custom_minimum_size = Vector2(1600, 800)
+custom_minimum_size = Vector2(1400, 800)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_glupb")
 
@@ -56,16 +56,17 @@ autostart = true
 
 [node name="processing" type="AspectRatioContainer" parent="."]
 visible = false
-custom_minimum_size = Vector2(1600, 800)
+custom_minimum_size = Vector2(1400, 800)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -200.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_lt267")
 
 [node name="Panel" type="Panel" parent="processing"]
-custom_minimum_size = Vector2(1600, 800)
+custom_minimum_size = Vector2(1400, 800)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_glupb")
 
