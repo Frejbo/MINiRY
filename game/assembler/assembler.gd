@@ -14,7 +14,7 @@ var inputs = [null, null]
 # 7,2 (1,7' senare) sekunder: item B flyttas tillbaka i scenträdet till platsen den var på förut, och placeras i gruppen 'item' igen.
 # 8,1 (0,9' senare) sekunder: assemblerns animation är återställd och kan producera något nytt.
 
-@onready var klo = $assembler/Armature/Skeleton3D/BoneAttachment3D/picked_item_parent
+@onready var klo = $assembler/Klo/Skeleton3D/BoneAttachment3D/picked_item_parent
 @onready var anim = $assembler/AnimationPlayer
 const recepies := {
 	Globals.items.BadAnka : [Globals.items.BadAnkaFrame, Globals.items.CopperIngot]
@@ -61,7 +61,8 @@ func produce(item_A, item_B):
 	item_B.remove_from_group("item")
 	
 	anim.play("ArmatureAction002")
-	$Screen/AssemblerStatusScreen.started_producing(currently_producing, anim.current_animation_length)
+	anim.play("Robot armAction")
+	$"assembler/control panel/Screen/AssemblerStatusScreen".started_producing(currently_producing, anim.current_animation_length)
 	
 	await get_tree().create_timer(.6).timeout
 	# flytta item A till klon
