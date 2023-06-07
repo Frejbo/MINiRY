@@ -11,8 +11,8 @@ var inputs = [null, null]
 # 2,4 (1,8' senare) sekunder: item A tas bort.
 # 3,6 (1,2' senare) sekunder: item B flyttas i scenträdet till klon, kopiera transformation.
 # 5,5 (1,9' senare) sekunder: item B görs om till det producerade itemet.
-# 7,2 (1,7' senare) sekunder: item B flyttas tillbaka i scenträdet till platsen den var på förut, och placeras i gruppen 'item' igen.
-# 8,1 (0,9' senare) sekunder: assemblerns animation är återställd och kan producera något nytt.
+# 8 (2,5' senare) sekunder: item B flyttas tillbaka i scenträdet till platsen den var på förut, och placeras i gruppen 'item' igen.
+# 8.9 (1,7' senare) sekunder: assemblerns animation är återställd och kan producera något nytt.
 
 @onready var klo = $assembler/Klo/Skeleton3D/BoneAttachment3D/picked_item_parent
 @onready var anim = $assembler/AnimationPlayer
@@ -60,8 +60,7 @@ func produce(item_A, item_B):
 	item_A.remove_from_group("item")
 	item_B.remove_from_group("item")
 	
-	anim.play("ArmatureAction002")
-	anim.play("Robot armAction")
+	anim.play("Baked")
 	$"assembler/control panel/Screen/AssemblerStatusScreen".started_producing(currently_producing, anim.current_animation_length)
 	
 	await get_tree().create_timer(.6).timeout
@@ -84,7 +83,7 @@ func produce(item_A, item_B):
 	item_B.item = currently_producing
 	item_B.update_material()
 	
-	await get_tree().create_timer(1.7).timeout
+	await get_tree().create_timer(2.5).timeout
 	# Flytta tillbaks item B och ge tillbaks item taggen
 	move_node(item_B, parent_before, true)
 	item_B.freeze = false
